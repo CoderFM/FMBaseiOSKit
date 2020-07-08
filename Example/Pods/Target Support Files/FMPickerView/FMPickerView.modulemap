@@ -1,0 +1,6 @@
+framework module FMPickerView {
+  umbrella header "FMPickerView-umbrella.h"
+
+  export *
+  module * { export * }
+}

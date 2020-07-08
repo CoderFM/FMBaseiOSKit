@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="r5u-xZ-oKv">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="wQg-tq-qST">
+            <objects>
+                <viewController id="whP-gf-Uak" customClass="FMViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uEw-UM-LJ8"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mvr-aV-6Um"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TpU-gO-2f1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3U-RX-dMM">
+                                <rect key="frame" x="153" y="194" width="69" height="30"/>
+                                <state key="normal" title="sheet弹窗"/>
+                                <connections>
+                                    <action selector="sheetClick:" destination="whP-gf-Uak" eventType="touchUpInside" id="MU7-Hz-2Qz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="olt-uK-ZPI">
+                                <rect key="frame" x="156.5" y="254" width="62" height="30"/>
+                                <state key="normal" title="alert弹窗"/>
+                                <connections>
+                                    <action selector="alertClick:" destination="whP-gf-Uak" eventType="touchUpInside" id="cUl-eF-lCa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSh-QI-yYH">
+                                <rect key="frame" x="138.5" y="314" width="98" height="30"/>
+                                <state key="normal" title="FMLayout布局"/>
+                                <connections>
+                                    <action selector="layoutClick:" destination="whP-gf-Uak" eventType="touchUpInside" id="PCr-zG-rKF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HeG-Hk-Y1H">
+                                <rect key="frame" x="156.5" y="374" width="62" height="30"/>
+                                <state key="normal" title="表单提交"/>
+                                <connections>
+                                    <action selector="formClick:" destination="whP-gf-Uak" eventType="touchUpInside" id="ZYL-GC-eED"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vSh-QI-yYH" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="5Cu-wt-bUL"/>
+                            <constraint firstItem="X3U-RX-dMM" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="150" id="EWM-ao-xE4"/>
+                            <constraint firstItem="X3U-RX-dMM" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="FRT-j0-hly"/>
+                            <constraint firstItem="vSh-QI-yYH" firstAttribute="top" secondItem="olt-uK-ZPI" secondAttribute="bottom" constant="30" id="VuD-yR-etu"/>
+                            <constraint firstItem="HeG-Hk-Y1H" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="eDB-nV-8XL"/>
+                            <constraint firstItem="HeG-Hk-Y1H" firstAttribute="top" secondItem="vSh-QI-yYH" secondAttribute="bottom" constant="30" id="pvy-RS-QOJ"/>
+                            <constraint firstItem="olt-uK-ZPI" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="qf0-SJ-kh2"/>
+                            <constraint firstItem="olt-uK-ZPI" firstAttribute="top" secondItem="X3U-RX-dMM" secondAttribute="bottom" constant="30" id="sj7-xx-Lu3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HtZ-c9-v73"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000.8" y="192.95352323838082"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="h2f-wc-PDQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r5u-xZ-oKv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AHO-w7-8nz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="whP-gf-Uak" kind="relationship" relationship="rootViewController" id="tSZ-fP-Hix"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U4C-5Q-Kon" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="61.600000000000001" y="192.95352323838082"/>
+        </scene>
+    </scenes>
+</document>

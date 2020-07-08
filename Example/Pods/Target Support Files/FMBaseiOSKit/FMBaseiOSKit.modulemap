@@ -1,0 +1,6 @@
+framework module FMBaseiOSKit {
+  umbrella header "FMBaseiOSKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

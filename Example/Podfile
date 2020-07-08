@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'FMBaseiOSKit_Example' do
+  pod 'FMBaseiOSKit', :path => '../'
+
+  target 'FMBaseiOSKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
