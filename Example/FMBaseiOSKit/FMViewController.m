@@ -40,6 +40,9 @@
         FMNavBtnsView *nav1 = [[FMNavBtnsView alloc] init];
         nav1.canScroll = YES;
         nav1.itemMargin = 40;
+        nav1.lineAnimation = FMNavBtnsLineAnimationZoom;
+        nav1.lineBottomMargin = 10;
+        nav1.lineTitleMargin = 4;
         nav1.titles = @[@"标签1", @"标签标签11", @"标", @"标签1标签标签11", @"标签221", @"标签1asdasdadasd", @"标222签1", @"标s签1", @"标223434签1", @"标签1", @"标签标签11"];
         [self.view addSubview:nav1];
         [nav1 mas_makeConstraints:^(MASConstraintMaker *make) {

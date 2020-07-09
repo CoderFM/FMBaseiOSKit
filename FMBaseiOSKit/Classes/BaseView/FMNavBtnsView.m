@@ -318,7 +318,7 @@ typedef NS_ENUM(NSUInteger, FMNavBtnsLineStyle) {
     if (self.lineStyle == FMNavBtnsLineStyleAuto) {
         CGFloat x = CGRectGetMinX(self.selectBtn.frame) + self.itemMargin*0.5 - self.lineTitleMargin;
         CGFloat y = CGRectGetHeight(self.frame) - self.lineSize.height - self.lineBottomMargin;
-        CGFloat width = CGRectGetWidth(self.selectBtn.frame) - self.itemMargin - self.lineTitleMargin * 2;
+        CGFloat width = CGRectGetWidth(self.selectBtn.frame) - self.itemMargin + self.lineTitleMargin * 2;
         CGRect frame = CGRectMake(x, y, width, self.lineSize.height);
         return frame;
     } else {

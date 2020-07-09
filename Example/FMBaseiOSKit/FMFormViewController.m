@@ -102,7 +102,11 @@
         FormListTextModel *model = [FormListTextModel modelWithPlaceholder:@"请选择" keyboardType:UIKeyboardTypeDefault hasRight:YES righrContent:[UIImage imageNamed:@"mine_arrow_right_black"] title:@"选择"];
         model.isSelect = YES;
         [model setSelectBlock:^(id  _Nonnull tftv, FormListTextModel * _Nonnull model) {
-            
+            [FMPickerDataView showTitle:@"选择器" items:@[@[@"1", @"2", @"3", @"3"]] showText:^NSString * _Nullable(NSInteger component, id  _Nonnull obj) {
+                return obj;
+            } complete:^(NSArray * _Nonnull selects, NSDictionary * _Nonnull selectRows) {
+                
+            }];
         }];
         [self.dataSource addObject:model];
     }
