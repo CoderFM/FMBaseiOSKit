@@ -16,6 +16,8 @@ typedef NS_ENUM(NSUInteger, FMNavBtnsLineStyle) {
     FMNavBtnsLineStyleFixed,
 };
 
+CGRect ConvertFrameProgress(CGRect original, CGRect finalFrame, CGFloat progress);
+
 @interface FMNavBtnsView ()
 
 @property(nonatomic, strong)NSMutableArray *btns;
@@ -287,7 +289,7 @@ typedef NS_ENUM(NSUInteger, FMNavBtnsLineStyle) {
         }
         self.lineView.hidden = NO;
         if (self.canScroll) {
-            CGRect finalFrame = [self caculateLineFinalFrame];
+            CGRect finalFrame = [self caculateLineFinalFrameWithBtn:self.selectBtn];
             if (CGSizeEqualToSize(self.lineView.frame.size, CGSizeZero)) {
                 self.lineView.frame = finalFrame;
                 self.lineLayouted = YES;
@@ -296,7 +298,7 @@ typedef NS_ENUM(NSUInteger, FMNavBtnsLineStyle) {
                 self.lineLayouted = YES;
             }
         } else {
-            CGRect finalFrame = [self caculateLineFinalFrame];
+            CGRect finalFrame = [self caculateLineFinalFrameWithBtn:self.selectBtn];
             if (CGSizeEqualToSize(self.lineView.frame.size, CGSizeZero)) {
                 self.lineView.frame = finalFrame;
                 self.lineLayouted = YES;
@@ -310,15 +312,15 @@ typedef NS_ENUM(NSUInteger, FMNavBtnsLineStyle) {
     }
 }
 
-- (CGRect)caculateLineFinalFrame{
+- (CGRect)caculateLineFinalFrameWithBtn:(UIButton *)btn{
     if (self.lineStyle == FMNavBtnsLineStyleAuto) {
-        CGFloat x = CGRectGetMinX(self.selectBtn.frame) + self.itemMargin*0.5 - self.lineTitleMargin;
+        CGFloat x = CGRectGetMinX(btn.frame) + self.itemMargin*0.5 - self.lineTitleMargin;
         CGFloat y = CGRectGetHeight(self.frame) - self.lineSize.height - self.lineBottomMargin;
-        CGFloat width = CGRectGetWidth(self.selectBtn.frame) - self.itemMargin + self.lineTitleMargin * 2;
+        CGFloat width = CGRectGetWidth(btn.frame) - self.itemMargin + self.lineTitleMargin * 2;
         CGRect frame = CGRectMake(x, y, width, self.lineSize.height);
         return frame;
     } else {
-        CGFloat x = CGRectGetMidX(self.selectBtn.frame) - self.lineSize.width * 0.5;
+        CGFloat x = CGRectGetMidX(btn.frame) - self.lineSize.width * 0.5;
         CGFloat y = CGRectGetHeight(self.frame) - self.lineSize.height - self.lineBottomMargin;
         CGFloat width = self.lineSize.width;
         CGRect finalFrame = CGRectMake(x, y, width, self.lineSize.height);
@@ -328,6 +330,8 @@ typedef NS_ENUM(NSUInteger, FMNavBtnsLineStyle) {
 
 - (void)lineUpdateAnimationFinalFrame:(CGRect)finalFrame{
     switch (self.lineAnimation) {
+        case FMNavBtnsLineAnimationProgress:
+            break;
         case FMNavBtnsLineAnimationNone:
         {
             self.lineView.frame = finalFrame;
@@ -362,4 +366,35 @@ typedef NS_ENUM(NSUInteger, FMNavBtnsLineStyle) {
     }
 }
 
+- (void)scrollNextProgress:(CGFloat)progress{
+    if (_selected + 1 >= self.btns.count) {
+        return;
+    }
+    [self scrollToIndex:_selected + 1 progress:progress];
+}
+
+- (void)scrollPrevProgress:(CGFloat)progress{
+    if (_selected - 1 < 0) {
+        return;
+    }
+    [self scrollToIndex:_selected - 1 progress:progress];
+}
+
+- (void)scrollToIndex:(NSInteger)index progress:(CGFloat)progress{
+    UIButton *btn = self.btns[index];
+    CGRect frame = [self caculateLineFinalFrameWithBtn:btn];
+    CGRect origin = [self caculateLineFinalFrameWithBtn:self.selectBtn];
+    CGRect lineFrame = ConvertFrameProgress(origin, frame, fabs(progress));
+    self.lineView.frame = lineFrame;
+}
+
 @end
+
+
+CGRect ConvertFrameProgress(CGRect original, CGRect finalFrame, CGFloat progress){
+    CGFloat x = original.origin.x + (finalFrame.origin.x - original.origin.x) * progress;
+    CGFloat y = original.origin.y + (finalFrame.origin.y - original.origin.y) * progress;
+    CGFloat width = original.size.width + (finalFrame.size.width - original.size.width) * progress;
+    CGFloat height = original.size.height + (finalFrame.size.height - original.size.height) * progress;
+    return CGRectMake(x, y, width, height);
+}

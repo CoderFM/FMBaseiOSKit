@@ -90,6 +90,7 @@
         [section setConfigureHeaderData:^(FMLayoutBaseSection * _Nonnull section, UICollectionReusableView * _Nonnull header) {
             if (header.subviews.count == 0) {
                 FMNavBtnsView *btns = [[FMNavBtnsView alloc] init];
+                btns.lineAnimation = FMNavBtnsLineAnimationProgress;
                 btns.normalFont = [UIFont boldSystemFontOfSize:20];
                 btns.selectFont = [UIFont boldSystemFontOfSize:20];
                 btns.titles = @[@"全部", @"直播", @"便宜好货", @"买家秀"];
@@ -134,6 +135,15 @@
 
 - (NSMutableArray<FMLayoutBaseSection *> *)tesla:(FMTeslaLayoutView *)tesla sectionsInScreenIndex:(NSInteger)screenIndex{
     return self.pageSections[screenIndex];
+}
+
+- (void)tesla:(FMTeslaLayoutView *)tesla scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat progress = (scrollView.contentOffset.x - self.btnsView.selected * scrollView.frame.size.width) / scrollView.frame.size.width;
+    if (scrollView.contentOffset.x < self.btnsView.selected * scrollView.frame.size.width) {
+        [self.btnsView scrollPrevProgress:progress];
+    } else if (scrollView.contentOffset.x > self.btnsView.selected * scrollView.frame.size.width) {
+        [self.btnsView scrollNextProgress:progress];
+    }
 }
 
 - (void)tesla:(FMTeslaLayoutView *)tesla didScrollEnd:(NSInteger)index currentLayoutView:(FMLayoutView *)layoutView{

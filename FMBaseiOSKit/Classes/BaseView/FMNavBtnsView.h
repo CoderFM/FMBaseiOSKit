@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 typedef NS_ENUM(NSUInteger, FMNavBtnsLineAnimation) {
     ///没有动画
     FMNavBtnsLineAnimationNone,
+    ///根据滚动进度来的
+    FMNavBtnsLineAnimationProgress,
     ///直接移动至最终位置
     FMNavBtnsLineAnimationNormal,
     ///先放大再缩小至最终位置
@@ -40,6 +42,8 @@ typedef NS_ENUM(NSUInteger, FMNavBtnsLineAnimation) {
 @property(nonatomic, assign)CGFloat lineBottomMargin;
 ///底部线与文字垂直对齐间距 仅在FMNavBtnsLineStyleAuto生效
 @property(nonatomic, assign)CGFloat lineTitleMargin;
+///主要使用左右边距  来调节边上的空隙
+@property(nonatomic, assign)UIEdgeInsets inset;
 ///创建按钮时  可配置样式
 @property(nonatomic, copy)void(^configurationBtn)(UIButton *btn, id title, NSInteger index);
 ///是否可以选中该按钮
@@ -66,6 +70,10 @@ typedef NS_ENUM(NSUInteger, FMNavBtnsLineAnimation) {
 @property(nonatomic, copy)void(^configureLineView)(UIView *line);
 + (instancetype)viewWithBtns:(NSArray *)titles select:(NSInteger)select;
 - (void)reCreateBtns;
+- (void)updateLine;
+- (void)scrollNextProgress:(CGFloat)progress;
+- (void)scrollPrevProgress:(CGFloat)progress;
+
 @end
 
 NS_ASSUME_NONNULL_END
