@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#define FMWeakSelf __weak typeof(self) weakSelf = self
+
 NS_ASSUME_NONNULL_BEGIN
 @class FMBaseViewController, FMBaseListController, FMBaseTableController, FMCollectionLayoutController;
 @interface FMConfig : NSObject

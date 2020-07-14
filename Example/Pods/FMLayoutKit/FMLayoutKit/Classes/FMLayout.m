@@ -30,11 +30,6 @@
     [self handleSections];
 }
 
-- (void)invalidateLayout{
-    
-    [super invalidateLayout];
-}
-
 - (void)setSections:(NSMutableArray<FMLayoutBaseSection *> *)sections{
     
     if (_sections == sections) {
@@ -140,38 +135,7 @@
     }
     NSMutableArray<UICollectionViewLayoutAttributes *> *attrs = [NSMutableArray array];
     for (FMLayoutBaseSection *section in self.sections) {
-        if ([section intersectsRect:rect]) {
-            if (section.headerAttribute) {
-                UICollectionViewLayoutAttributes *showHeaderAttr = [section showHeaderLayout];
-                if (CGRectIntersectsRect(rect, showHeaderAttr.frame)) {
-                    [attrs addObject:showHeaderAttr];
-                }
-            }
-            if (section.footerAttribute) {
-                if (CGRectIntersectsRect(rect, section.footerAttribute.frame)) {
-                    [attrs addObject:section.footerAttribute];
-                }
-            }
-            if (section.bgAttribute) {
-                if (CGRectIntersectsRect(rect, section.bgAttribute.frame)) {
-                    [attrs addObject:section.bgAttribute];
-                }
-            }
-            for (UICollectionViewLayoutAttributes *item in section.itemsAttribute) {
-                if (CGRectIntersectsRect(rect, item.frame)) {
-                    [attrs addObject:item];
-                }
-            }
-        } else {
-            if (section.header.type == FMLayoutHeaderTypeSuspensionAlways) {
-                if (section.headerAttribute) {
-                    UICollectionViewLayoutAttributes *showHeaderAttr = [section showHeaderLayout];
-                    if (CGRectIntersectsRect(rect, showHeaderAttr.frame)) {
-                        [attrs addObject:showHeaderAttr];
-                    }
-                }
-            }
-        }
+        [attrs addObjectsFromArray:[section showLayoutAttributesInRect:rect]];
     }
     return attrs;
 }

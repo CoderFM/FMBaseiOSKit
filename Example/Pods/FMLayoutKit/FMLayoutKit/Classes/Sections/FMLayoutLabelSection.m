@@ -18,12 +18,22 @@
 
 @implementation FMLayoutLabelSection
 
+- (id)copyWithZone:(NSZone *)zone{
+    FMLayoutLabelSection *label = [super copyWithZone:zone];
+    label.maxLine = self.maxLine;
+    label.cellFixedHeight =  self.cellFixedHeight;
+    label.cellMaxWidth = self.cellMaxWidth;
+    label.widthBlock = [self.widthBlock copy];
+    label.overItemBlock = [self.overItemBlock copy];
+    return label;
+}
+
 - (void)prepareItems{
     if ([self prepareLayoutItemsIsOlnyChangeOffset]) return;
     if (self.direction == FMLayoutDirectionVertical) {
         self.column = 1;
         [self resetcolumnSizes];
-        NSInteger items = [self.collectionView numberOfItemsInSection:self.indexPath.section];
+        NSInteger items = MIN([self.collectionView numberOfItemsInSection:self.indexPath.section], self.itemCount);
         NSMutableArray<FMCollectionLayoutAttributes *> *attrs = [NSMutableArray array];
         int first = 0;
         NSInteger lines = 0;
@@ -92,7 +102,7 @@
     } else {
         self.column = self.maxLine;
         [self resetcolumnSizes];
-        NSInteger items = [self.collectionView numberOfItemsInSection:self.indexPath.section];
+        NSInteger items = MIN([self.collectionView numberOfItemsInSection:self.indexPath.section], self.itemCount);
         NSMutableArray *attrs = [NSMutableArray array];
         int first = 0;
         if (self.handleType == FMLayoutHandleTypeAppend) {
@@ -117,33 +127,6 @@
         }
         self.itemsAttribute = [attrs copy];
     }
-}
-
-- (UICollectionViewCell *)dequeueReusableCellForIndexPath:(NSIndexPath *)indexPath collectionView:(nonnull UICollectionView *)collectionView{
-    return [collectionView dequeueReusableCellWithReuseIdentifier:self.cellElement.reuseIdentifier forIndexPath:indexPath];
-}
-
-- (NSArray<FMCollectionLayoutAttributes *> *)horizontalItemAttributesWith:(UICollectionView *)collectionView needParam:(nonnull NSDictionary *)needParam{
-    NSInteger items = [collectionView numberOfItemsInSection:0];
-    NSMutableArray *itemAttrs = [NSMutableArray array];
-    CGFloat startX = self.sectionInset.left;
-    for (int i = 0; i<items; i++) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
-        FMCollectionLayoutAttributes *attr = [FMCollectionLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-        if (i > 0) {
-            startX += self.itemSpace;
-        }
-        CGFloat width = self.widthBlock(self, i);
-        CGFloat x = startX;
-        CGFloat y = self.header.lastMargin;
-        attr.frame = CGRectMake(x, y, width, self.cellFixedHeight);
-        [itemAttrs addObject:attr];
-        startX += width;
-        if (self.configureCellLayoutAttributes) {
-            self.configureCellLayoutAttributes(self, attr, i);
-        }
-    }
-    return itemAttrs;
 }
 
 - (CGFloat)crossSingleSectionSize{

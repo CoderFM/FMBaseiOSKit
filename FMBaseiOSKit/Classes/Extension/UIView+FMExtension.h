@@ -5,6 +5,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIView (FMExtension)
+///在主屏幕上的frame
+@property(readonly)CGRect globalFrame;
+///origin在主屏幕上的位置
+@property(readonly)CGPoint globalOrigin;
+///中心点在主屏幕上的位置
+@property(readonly)CGPoint globalCenter;
 
 + (instancetype)viewWithBackgroundColor:(UIColor *)bgColor;
 

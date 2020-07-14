@@ -77,12 +77,8 @@ typedef NS_ENUM(NSUInteger, FMNavBtnsLineStyle) {
         return;
     }
     _selected = selected;
-    if (selected > 0) {
-        if (self.canScroll) {
-            self.selectBtn = [self.scrollContent viewWithTag:selected];
-        } else {
-            self.selectBtn = [self viewWithTag:selected];
-        }
+    if (selected >= 0 && selected < self.btns.count) {
+        self.selectBtn = self.btns[selected];
     }
     [self updateLine];
 }

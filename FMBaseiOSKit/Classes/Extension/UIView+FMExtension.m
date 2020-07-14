@@ -1,7 +1,23 @@
 
 #import "UIView+FMExtension.h"
+#import "FMConfig.h"
 
 @implementation UIView (FMExtension)
+
+- (CGRect)globalFrame{
+    UIWindow *window = [FMConfig config].window;
+    return [self convertRect:self.frame toView:window];
+}
+
+- (CGPoint)globalOrigin{
+    UIWindow *window = [FMConfig config].window;
+    return [self convertPoint:self.frame.origin toView:window];
+}
+
+- (CGPoint)globalCenter{
+    UIWindow *window = [FMConfig config].window;
+    return [self convertPoint:self.center toView:window];
+}
 
 + (instancetype)viewWithBackgroundColor:(UIColor *)bgColor{
     UIView *view = [[self alloc] init];

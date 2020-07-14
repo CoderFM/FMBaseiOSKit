@@ -12,6 +12,7 @@
 
 #import "FMLayoutViewController.h"
 #import "FMFormViewController.h"
+#import "FMLayoutListViewController.h"
 
 #import <Masonry/Masonry.h>
 
@@ -35,6 +36,7 @@
             make.top.mas_equalTo(100);
             make.height.mas_equalTo(40);
         }];
+        
     }
     {
         FMNavBtnsView *nav1 = [[FMNavBtnsView alloc] init];
@@ -49,6 +51,9 @@
             make.left.right.mas_equalTo(0);
             make.top.mas_equalTo(140);
             make.height.mas_equalTo(40);
+        }];
+        [nav1 setClickSenderBlock:^(UIButton * _Nonnull sender) {
+            
         }];
     }
 }
@@ -67,7 +72,7 @@
 ////    }];
 //    [self presentViewController:vc animated:YES completion:nil];
 }
-- (IBAction)sheetClick:(id)sender {
+- (IBAction)sheetClick:(UIButton *)sender {
     [FMBaseSheetView showToView:self.view.window];
 }
 - (IBAction)alertClick:(id)sender {
@@ -75,13 +80,23 @@
 }
 
 - (IBAction)layoutClick:(id)sender {
-    FMLayoutViewController *vc = [[FMLayoutViewController alloc] init];
+    FMLayoutListViewController *vc = [[FMLayoutListViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)formClick:(id)sender {
     FMFormViewController *vc = [[FMFormViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+- (IBAction)inButtonClick:(UIButton *)sender {
+//    UIWindow *window = [FMConfig config].window;
+//    CGRect frame0 = [window convertRect:sender.frame toView:window];
+//    CGRect frame1 = [sender convertRect:sender.frame toView:window];
+    NSLog(@"frame: %@", [NSValue valueWithCGRect:sender.globalFrame]);
+    NSLog(@"origin: %@", [NSValue valueWithCGPoint:sender.globalOrigin]);
+    NSLog(@"center: %@", [NSValue valueWithCGPoint:sender.globalCenter]);
 }
 
 @end

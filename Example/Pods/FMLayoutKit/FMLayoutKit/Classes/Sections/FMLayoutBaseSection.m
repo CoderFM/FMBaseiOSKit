@@ -21,6 +21,29 @@
 
 @implementation FMLayoutBaseSection
 
+- (id)copyWithZone:(NSZone *)zone{
+    FMLayoutBaseSection *section = [[[self class] allocWithZone:zone] init];
+    
+    section.hasHandle = NO;
+    section.handleItemStart = 0;
+    section.handleType = FMLayoutHandleTypeReLayout;
+    section.changeOffset = 0;
+    
+    section.sectionInset = self.sectionInset;
+    section.header = [self.header copy];
+    section.footer = [self.footer copy];
+    section.background = [self.background copy];
+    
+    section.column = self.column;
+    section.lineSpace = self.lineSpace;
+    section.itemSpace = self.itemSpace;
+    section.configureCellLayoutAttributes = [self.configureCellLayoutAttributes copy];
+    
+    section.itemDatas = [self.itemDatas copy];
+    
+    return section;
+}
+
 - (void)dealloc{
     FMLayoutLog([NSString stringWithFormat:@"%@ dealloc", NSStringFromClass([self class])]);
     [self.kvoArray removeObserver:self forKeyPath:@"targetArray" context:nil];
@@ -208,7 +231,7 @@
 - (void)prepareItems{
     if ([self prepareLayoutItemsIsOlnyChangeOffset]) return;
     [self resetcolumnSizes];
-    NSInteger items = [self.collectionView numberOfItemsInSection:self.indexPath.section];
+    NSInteger items = MIN([self.collectionView numberOfItemsInSection:self.indexPath.section], self.itemCount);
     NSMutableArray *attrs = [NSMutableArray array];
     int first = 0;
     if (self.handleType == FMLayoutHandleTypeAppend) {
@@ -229,6 +252,43 @@
     if (self.background) {
         self.bgAttribute = [FMCollectionLayoutAttributes bgAttributesWithSection:self];
     }
+}
+
+- (NSArray *)showLayoutAttributesInRect:(CGRect)rect{
+    NSMutableArray *attrs = [NSMutableArray array];
+    if ([self intersectsRect:rect]) {
+        if (self.headerAttribute) {
+            UICollectionViewLayoutAttributes *showHeaderAttr = [self showHeaderLayout];
+            if (CGRectIntersectsRect(rect, showHeaderAttr.frame)) {
+                [attrs addObject:showHeaderAttr];
+            }
+        }
+        if (self.footerAttribute) {
+            if (CGRectIntersectsRect(rect, self.footerAttribute.frame)) {
+                [attrs addObject:self.footerAttribute];
+            }
+        }
+        if (self.bgAttribute) {
+            if (CGRectIntersectsRect(rect, self.bgAttribute.frame)) {
+                [attrs addObject:self.bgAttribute];
+            }
+        }
+        for (UICollectionViewLayoutAttributes *item in self.itemsAttribute) {
+            if (CGRectIntersectsRect(rect, item.frame)) {
+                [attrs addObject:item];
+            }
+        }
+    } else {
+        if (self.header.type == FMLayoutHeaderTypeSuspensionAlways) {
+            if (self.headerAttribute) {
+                UICollectionViewLayoutAttributes *showHeaderAttr = [self showHeaderLayout];
+                if (CGRectIntersectsRect(rect, showHeaderAttr.frame)) {
+                    [attrs addObject:showHeaderAttr];
+                }
+            }
+        }
+    }
+    return attrs;
 }
 
 ///头部悬停布局计算

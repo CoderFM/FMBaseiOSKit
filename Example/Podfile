@@ -1,3 +1,4 @@
+source 'https://gitee.com/Coder_FM/FMPodSpec.git'
 use_frameworks!
 
 platform :ios, '8.0'

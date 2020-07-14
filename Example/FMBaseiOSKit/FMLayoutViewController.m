@@ -7,40 +7,8 @@
 //
 
 #import "FMLayoutViewController.h"
-
-@interface FMCollectionCustomDecoration : UICollectionReusableView
-
-@end
-
-@implementation FMCollectionCustomDecoration
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.backgroundColor = [UIColor randomColor];
-    }
-    return self;
-}
-
-@end
-
-@interface FMCollectionCustomCell : UICollectionViewCell
-
-@end
-
-@implementation FMCollectionCustomCell
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.contentView.backgroundColor = [UIColor randomColor];
-    }
-    return self;
-}
-
-@end
+#import "FMCollectionCustomCell.h"
+#import "FMCollectionCustomDecoration.h"
 
 @interface FMLayoutViewController ()
 
@@ -51,7 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    self.navigationItem.title = @"横向布局";
-    self.baseNavItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"切换" style:UIBarButtonItemStyleDone target:self action:@selector(changeLayoutDirection)];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"添加" style:UIBarButtonItemStyleDone target:self action:@selector(addSection)];
+    UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithTitle:@"切换" style:UIBarButtonItemStyleDone target:self action:@selector(changeLayoutDirection)];
+    self.baseNavItem.rightBarButtonItems = @[item, item1];
     self.sections = [NSMutableArray array];
 //    FMLayoutCloseLog()
     
@@ -380,6 +350,10 @@
         self.collectionView.alwaysBounceVertical = NO;
         self.collectionView.alwaysBounceHorizontal = YES;
     }
+}
+
+- (void)addSection{
+    
 }
 
 @end

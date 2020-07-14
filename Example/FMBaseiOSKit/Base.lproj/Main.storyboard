@@ -47,10 +47,33 @@
                                     <action selector="formClick:" destination="whP-gf-Uak" eventType="touchUpInside" id="ZYL-GC-eED"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mai-xn-qdL">
+                                <rect key="frame" x="87.5" y="434" width="200" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOn-cv-lyp">
+                                        <rect key="frame" x="77" y="35" width="46" height="30"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="inButtonClick:" destination="whP-gf-Uak" eventType="touchUpInside" id="Qdp-29-I6T"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="KP7-9r-Z9h"/>
+                                    <constraint firstAttribute="height" constant="100" id="UsH-5e-sQE"/>
+                                    <constraint firstItem="tOn-cv-lyp" firstAttribute="centerX" secondItem="Mai-xn-qdL" secondAttribute="centerX" id="fbL-Do-YHQ"/>
+                                    <constraint firstItem="tOn-cv-lyp" firstAttribute="centerY" secondItem="Mai-xn-qdL" secondAttribute="centerY" id="mVk-gg-ggI"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vSh-QI-yYH" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="5Cu-wt-bUL"/>
+                            <constraint firstItem="Mai-xn-qdL" firstAttribute="top" secondItem="HeG-Hk-Y1H" secondAttribute="bottom" constant="30" id="6lg-33-GKG"/>
+                            <constraint firstItem="Mai-xn-qdL" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="DSO-H0-QlZ"/>
                             <constraint firstItem="X3U-RX-dMM" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="150" id="EWM-ao-xE4"/>
                             <constraint firstItem="X3U-RX-dMM" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="FRT-j0-hly"/>
                             <constraint firstItem="vSh-QI-yYH" firstAttribute="top" secondItem="olt-uK-ZPI" secondAttribute="bottom" constant="30" id="VuD-yR-etu"/>

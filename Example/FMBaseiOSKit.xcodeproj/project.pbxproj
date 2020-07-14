@@ -26,6 +26,12 @@
 		C339075024B579690041704D /* FMFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339074B24B579680041704D /* FMFormViewController.m */; };
 		C339075124B579690041704D /* FMTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339074D24B579680041704D /* FMTestViewController.m */; };
 		C339075224B579690041704D /* FMLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339074F24B579690041704D /* FMLayoutViewController.m */; };
+		C3F2998224BD561400833D9E /* FMLayoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F2998124BD561400833D9E /* FMLayoutListViewController.m */; };
+		C3F2998524BD574500833D9E /* FMTaoBaoHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F2998424BD574500833D9E /* FMTaoBaoHomeViewController.m */; };
+		C3F2998824BD5EBE00833D9E /* FMCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F2998724BD5EBE00833D9E /* FMCollectionViewCell.m */; };
+		C3F2998B24BD5ECC00833D9E /* FMCollectionCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F2998A24BD5ECC00833D9E /* FMCollectionCustomCell.m */; };
+		C3F2998E24BD5EDE00833D9E /* FMCollectionCustomDecoration.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F2998D24BD5EDE00833D9E /* FMCollectionCustomDecoration.m */; };
+		C3F2999524BD8FDB00833D9E /* FMStoreDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F2999424BD8FDB00833D9E /* FMStoreDetailViewController.m */; };
 		D4107885702B6E111D9826C2 /* Pods_FMBaseiOSKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436EB6C913688B56160BA347 /* Pods_FMBaseiOSKit_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +80,18 @@
 		C339074D24B579680041704D /* FMTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMTestViewController.m; sourceTree = "<group>"; };
 		C339074E24B579690041704D /* FMFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMFormViewController.h; sourceTree = "<group>"; };
 		C339074F24B579690041704D /* FMLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLayoutViewController.m; sourceTree = "<group>"; };
+		C3F2998024BD561400833D9E /* FMLayoutListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMLayoutListViewController.h; sourceTree = "<group>"; };
+		C3F2998124BD561400833D9E /* FMLayoutListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMLayoutListViewController.m; sourceTree = "<group>"; };
+		C3F2998324BD574500833D9E /* FMTaoBaoHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMTaoBaoHomeViewController.h; sourceTree = "<group>"; };
+		C3F2998424BD574500833D9E /* FMTaoBaoHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMTaoBaoHomeViewController.m; sourceTree = "<group>"; };
+		C3F2998624BD5EBE00833D9E /* FMCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMCollectionViewCell.h; sourceTree = "<group>"; };
+		C3F2998724BD5EBE00833D9E /* FMCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMCollectionViewCell.m; sourceTree = "<group>"; };
+		C3F2998924BD5ECC00833D9E /* FMCollectionCustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMCollectionCustomCell.h; sourceTree = "<group>"; };
+		C3F2998A24BD5ECC00833D9E /* FMCollectionCustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMCollectionCustomCell.m; sourceTree = "<group>"; };
+		C3F2998C24BD5EDE00833D9E /* FMCollectionCustomDecoration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMCollectionCustomDecoration.h; sourceTree = "<group>"; };
+		C3F2998D24BD5EDE00833D9E /* FMCollectionCustomDecoration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMCollectionCustomDecoration.m; sourceTree = "<group>"; };
+		C3F2999324BD8FDB00833D9E /* FMStoreDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMStoreDetailViewController.h; sourceTree = "<group>"; };
+		C3F2999424BD8FDB00833D9E /* FMStoreDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMStoreDetailViewController.m; sourceTree = "<group>"; };
 		E8FCF72890A69C34842B3397 /* Pods-FMBaseiOSKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FMBaseiOSKit_Tests.release.xcconfig"; path = "Target Support Files/Pods-FMBaseiOSKit_Tests/Pods-FMBaseiOSKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F7E148EACDCD882DAF50B53E /* Pods_FMBaseiOSKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FMBaseiOSKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -156,10 +174,22 @@
 				6003F59D195388D20070C39A /* FMAppDelegate.m */,
 				C339074E24B579690041704D /* FMFormViewController.h */,
 				C339074B24B579680041704D /* FMFormViewController.m */,
+				C3F2998024BD561400833D9E /* FMLayoutListViewController.h */,
+				C3F2998124BD561400833D9E /* FMLayoutListViewController.m */,
+				C3F2998324BD574500833D9E /* FMTaoBaoHomeViewController.h */,
+				C3F2998424BD574500833D9E /* FMTaoBaoHomeViewController.m */,
+				C3F2999324BD8FDB00833D9E /* FMStoreDetailViewController.h */,
+				C3F2999424BD8FDB00833D9E /* FMStoreDetailViewController.m */,
 				C339074C24B579680041704D /* FMLayoutViewController.h */,
 				C339074F24B579690041704D /* FMLayoutViewController.m */,
 				C339074A24B579680041704D /* FMTestViewController.h */,
 				C339074D24B579680041704D /* FMTestViewController.m */,
+				C3F2998624BD5EBE00833D9E /* FMCollectionViewCell.h */,
+				C3F2998724BD5EBE00833D9E /* FMCollectionViewCell.m */,
+				C3F2998924BD5ECC00833D9E /* FMCollectionCustomCell.h */,
+				C3F2998A24BD5ECC00833D9E /* FMCollectionCustomCell.m */,
+				C3F2998C24BD5EDE00833D9E /* FMCollectionCustomDecoration.h */,
+				C3F2998D24BD5EDE00833D9E /* FMCollectionCustomDecoration.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* FMViewController.h */,
 				6003F5A6195388D20070C39A /* FMViewController.m */,
@@ -390,12 +420,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F2998524BD574500833D9E /* FMTaoBaoHomeViewController.m in Sources */,
+				C3F2998824BD5EBE00833D9E /* FMCollectionViewCell.m in Sources */,
+				C3F2998E24BD5EDE00833D9E /* FMCollectionCustomDecoration.m in Sources */,
+				C3F2998224BD561400833D9E /* FMLayoutListViewController.m in Sources */,
 				6003F59E195388D20070C39A /* FMAppDelegate.m in Sources */,
 				C339075124B579690041704D /* FMTestViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* FMViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				C339075024B579690041704D /* FMFormViewController.m in Sources */,
+				C3F2999524BD8FDB00833D9E /* FMStoreDetailViewController.m in Sources */,
 				C339075224B579690041704D /* FMLayoutViewController.m in Sources */,
+				C3F2998B24BD5ECC00833D9E /* FMCollectionCustomCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,7 +6,7 @@ PODS:
     - Masonry
   - FMFormSubmitKit (1.0.6):
     - Masonry
-  - FMLayoutKit (1.0.0)
+  - FMLayoutKit (1.0.5)
   - FMPickerView (0.1.0)
   - Masonry (1.1.0)
 
@@ -14,9 +14,10 @@ DEPENDENCIES:
   - FMBaseiOSKit (from `../`)
 
 SPEC REPOS:
+  https://gitee.com/Coder_FM/FMPodSpec.git:
+    - FMLayoutKit
   trunk:
     - FMFormSubmitKit
-    - FMLayoutKit
     - FMPickerView
     - Masonry
 
@@ -25,12 +26,12 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FMBaseiOSKit: 953dd742e56d827f58e1db2cec1761df178507e1
+  FMBaseiOSKit: 7e405a251a4dd55e33f68d1c0789a56ef01db7fb
   FMFormSubmitKit: dafe344fbff9cfafe66f31018a57f38434b34bb3
-  FMLayoutKit: 8b2e312b4d71a9bf1834028c654412fb8b96d4db
+  FMLayoutKit: de5744683d20eada9b38baf05c56bc012e3246dc
   FMPickerView: 43ee1aa5dbe76fe95294547f208b2215855a35de
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
-PODFILE CHECKSUM: c4bfbcddaccc91d04ed26d6a36bd27502b56b6ac
+PODFILE CHECKSUM: d593d8e52148c47eba923ac9d38a6a2255c1fc88
 
 COCOAPODS: 1.9.2

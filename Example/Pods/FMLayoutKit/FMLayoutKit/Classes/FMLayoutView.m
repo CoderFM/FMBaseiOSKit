@@ -11,6 +11,23 @@
 #import "FMLayoutLabelSection.h"
 #import "FMLayoutBaseSection+ConfigureBlock.h"
 
+@interface _FMLayoutSussEmptyView : UICollectionReusableView
+
+@end
+
+@implementation _FMLayoutSussEmptyView
+ 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.hidden = YES;
+    }
+    return self;
+}
+
+@end
+
 @interface FMLayoutView ()<UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property(nonatomic, weak)id<UICollectionViewDataSource> externalDataSource;
@@ -21,32 +38,40 @@
 
 #pragma mark ----- Public
 - (void)appendLayoutSections:(NSArray<FMLayoutBaseSection *> *)sections{
-    [self.layout.sections addObjectsFromArray:sections];
+    [self.sections addObjectsFromArray:sections];
 }
 - (void)insertLayoutSections:(NSArray<FMLayoutBaseSection *> *)sections atIndexSet:(NSIndexSet *)indexSet{
-    [self.layout.sections insertObjects:sections atIndexes:indexSet];
+    [self.sections insertObjects:sections atIndexes:indexSet];
 }
 - (void)insertLayoutSection:(FMLayoutBaseSection *)section atIndex:(NSInteger)index{
-    if (index > self.layout.sections.count) {
-        [self.layout.sections addObject:section];
+    if (index > self.sections.count) {
+        [self.sections addObject:section];
     } else {
-        [self.layout.sections insertObject:section atIndex:index];
+        [self.sections insertObject:section atIndex:index];
     }
 }
 - (void)deleteLayoutSections:(NSArray<FMLayoutBaseSection *> *)sections{
-    [self.layout.sections removeObjectsInArray:sections];
+    [self.sections removeObjectsInArray:sections];
 }
 
 - (void)deleteLayoutSectionAt:(NSUInteger)index{
-    [self.layout.sections removeObjectAtIndex:index];
+    [self.sections removeObjectAtIndex:index];
 }
 
 - (void)deleteLayoutSectionSet:(NSIndexSet *)set{
-    [self.layout.sections removeObjectsAtIndexes:set];
+    [self.sections removeObjectsAtIndexes:set];
 }
 
 - (void)exchangeLayoutSection:(NSUInteger)index to:(NSUInteger)to{
-    [self.layout.sections exchangeObjectAtIndex:index withObjectAtIndex:to];
+    [self.sections exchangeObjectAtIndex:index withObjectAtIndex:to];
+}
+
+- (NSMutableArray<FMLayoutBaseSection *> *)sections{
+    return self.layout.sections;
+}
+
+- (void)setSections:(NSMutableArray<FMLayoutBaseSection *> *)sections{
+    self.layout.sections = sections;
 }
 
 - (void)dealloc{
@@ -57,13 +82,8 @@
     return [self initHorizontalWithFrame:CGRectZero];
 }
 - (instancetype)initHorizontalWithFrame:(CGRect)frame{
-    self = [super initWithFrame:frame collectionViewLayout:[[FMLayout alloc] init]];
-    if (self) {
-        self.layout = (FMLayout *)self.collectionViewLayout;
+    if (self = [self initWithFrame:frame]) {
         self.layout.direction = FMLayoutDirectionHorizontal;
-        self.dataSource = self;
-        self.delegate = self;
-        self.reloadOlnyChanged = YES;
     }
     return self;
 }
@@ -82,6 +102,10 @@
         self.delegate = self;
         self.reloadOlnyChanged = YES;
         self.directionalLockEnabled = YES;
+        
+        [self registerClass:[_FMLayoutSussEmptyView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass([_FMLayoutSussEmptyView class])];
+        [self registerClass:[_FMLayoutSussEmptyView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([_FMLayoutSussEmptyView class])];
+        [self registerClass:[_FMLayoutSussEmptyView class] forSupplementaryViewOfKind:UICollectionElementKindSectionBackground withReuseIdentifier:NSStringFromClass([_FMLayoutSussEmptyView class])];
     }
     return self;
 }
@@ -107,6 +131,11 @@
     [super setDelegate:self];
 }
 
+- (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UICollectionViewScrollPosition)scrollPosition animated:(BOOL)animated{
+    CGPoint offset = [self contentOffsetScrollToIndexPath:indexPath atScrollPosition:scrollPosition];
+    [self setContentOffset:offset animated:animated];
+}
+
 - (void)setReloadOlnyChanged:(BOOL)reloadOlnyChanged{
     _reloadOlnyChanged = reloadOlnyChanged;
     self.layout.reLayoutOlnyChanged = reloadOlnyChanged;
@@ -114,13 +143,13 @@
 
 - (void)reloadChangedSectionsData{
     if (self.reloadOlnyChanged) {
-        if (self.layout.sections == nil || self.layout.sections.count == 0) {
+        if (self.sections == nil || self.sections.count == 0) {
             [super reloadData];
             return;
         }
         NSMutableIndexSet *set = [NSMutableIndexSet indexSet];
-        for (int i = 0; i<self.layout.sections.count; i++) {
-            FMLayoutBaseSection *section = self.layout.sections[i];
+        for (int i = 0; i<self.sections.count; i++) {
+            FMLayoutBaseSection *section = self.sections[i];
             if (section.hasHandle == NO) {
                 [set addIndex:i];
             }
@@ -130,12 +159,60 @@
         } else {
             [super reloadData];
         }
+    } else {
+        [super reloadData];
     }
-    [super reloadData];
+}
+
+- (CGPoint)contentOffsetScrollToIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UICollectionViewScrollPosition)scrollPosition{
+    if (CGSizeEqualToSize(CGSizeZero, self.contentSize)) {
+        [self layoutIfNeeded];
+    }
+    UICollectionViewLayoutAttributes *layoutAttr = [self.layout layoutAttributesForItemAtIndexPath:indexPath];
+    CGPoint offset = self.contentOffset;
+    if (!layoutAttr) {
+        return offset;
+    }
+    if (self.layout.direction == FMLayoutDirectionVertical) {
+        switch (scrollPosition) {
+            case UICollectionViewScrollPositionTop:
+                offset.y = CGRectGetMinY(layoutAttr.frame);
+                break;
+            case UICollectionViewScrollPositionCenteredVertically:
+                offset.y = CGRectGetMinY(layoutAttr.frame) - self.frame.size.height * 0.5 + layoutAttr.frame.size.height * 0.5;
+                break;
+            case UICollectionViewScrollPositionBottom:
+                offset.y = CGRectGetMinY(layoutAttr.frame) - self.frame.size.height + layoutAttr.frame.size.height;
+                break;
+            default:
+                break;
+        }
+        if (offset.y < 0) {
+            offset.y = 0;
+        }
+    } else {
+        switch (scrollPosition) {
+            case UICollectionViewScrollPositionLeft:
+                offset.x = CGRectGetMinX(layoutAttr.frame);
+                break;
+            case UICollectionViewScrollPositionCenteredHorizontally:
+                offset.x = CGRectGetMinX(layoutAttr.frame) - self.frame.size.width * 0.5 + layoutAttr.frame.size.width * 0.5;
+                break;
+            case UICollectionViewScrollPositionRight:
+                offset.x = CGRectGetMinX(layoutAttr.frame) - self.frame.size.width + layoutAttr.frame.size.width;
+                break;
+            default:
+                break;
+        }
+        if (offset.x < 0) {
+            offset.x = 0;
+        }
+    }
+    return offset;
 }
 
 - (void)reloadSections:(NSIndexSet *)sections{
-    NSArray *layoutSections = [self.layout.sections objectsAtIndexes:sections];
+    NSArray *layoutSections = [self.sections objectsAtIndexes:sections];
     for (FMLayoutBaseSection *section in layoutSections) {
         section.hasHandle = NO;
     }
@@ -145,8 +222,8 @@
 - (void)reloadItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths{
     for (NSIndexPath *indexPath in indexPaths) {
         NSInteger section = indexPath.section;
-        if (section < self.layout.sections.count) {
-            FMLayoutBaseSection *layoutSection = self.layout.sections[section];
+        if (section < self.sections.count) {
+            FMLayoutBaseSection *layoutSection = self.sections[section];
             layoutSection.hasHandle = NO;
         }
     }
@@ -159,20 +236,20 @@
     if (self.externalDataSource && [self.externalDataSource respondsToSelector:@selector(numberOfSectionsInCollectionView:)]) {
         return [self.externalDataSource numberOfSectionsInCollectionView:collectionView];
     }
-    return self.layout.sections.count;
+    return self.sections.count;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if ([self.externalDataSource respondsToSelector:@selector(collectionView:numberOfItemsInSection:)]) {
         return [self.externalDataSource collectionView:collectionView numberOfItemsInSection:section];
     }
-    return self.layout.sections[section].itemCount;
+    return self.sections[section].itemCount;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.externalDataSource respondsToSelector:@selector(collectionView:cellForItemAtIndexPath:)]) {
         return [self.externalDataSource collectionView:collectionView cellForItemAtIndexPath:indexPath];
     }
-    FMLayoutBaseSection *sectionM = self.layout.sections[indexPath.section];
+    FMLayoutBaseSection *sectionM = self.sections[indexPath.section];
     UICollectionViewCell *cell = [sectionM dequeueReusableCellForIndexPath:indexPath];
     if (sectionM.configureCellData) {
         sectionM.configureCellData(sectionM, cell, indexPath.item);
@@ -187,9 +264,9 @@
     if (self.externalDataSource && [self.externalDataSource respondsToSelector:@selector(collectionView:viewForSupplementaryElementOfKind:atIndexPath:)]) {
         return [self.externalDataSource collectionView:collectionView viewForSupplementaryElementOfKind:kind atIndexPath:indexPath];
     }
-    FMLayoutBaseSection *sectionM = self.layout.sections[indexPath.section];
+    FMLayoutBaseSection *sectionM = self.sections[indexPath.section];
     if (sectionM.header && [kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:sectionM.header.elementKind withReuseIdentifier:NSStringFromClass(sectionM.header.viewClass) forIndexPath:indexPath];
+        UICollectionReusableView *header = [sectionM.header dequeueReusableViewWithCollection:collectionView indexPath:indexPath];
         if (sectionM.configureHeaderData) {
             sectionM.configureHeaderData(sectionM, header);
         }
@@ -199,7 +276,7 @@
         return header;
     }
     if (sectionM.footer && [kind isEqualToString:UICollectionElementKindSectionFooter]) {
-        UICollectionReusableView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:sectionM.footer.elementKind withReuseIdentifier:NSStringFromClass(sectionM.footer.viewClass) forIndexPath:indexPath];
+        UICollectionReusableView *footer = [sectionM.footer dequeueReusableViewWithCollection:collectionView indexPath:indexPath];
         if (sectionM.configureFooterData) {
             sectionM.configureFooterData(sectionM, footer);
         }
@@ -209,7 +286,7 @@
         return footer;
     }
     if (sectionM.background && [kind isEqualToString:UICollectionElementKindSectionBackground]) {
-        UICollectionReusableView *bg = [collectionView dequeueReusableSupplementaryViewOfKind:sectionM.background.elementKind withReuseIdentifier:NSStringFromClass(sectionM.background.viewClass) forIndexPath:indexPath];
+        UICollectionReusableView *bg = [sectionM.background dequeueReusableViewWithCollection:collectionView indexPath:indexPath];
         if (sectionM.configureBg) {
             sectionM.configureBg(sectionM, bg);
         }
@@ -218,7 +295,7 @@
         }
         return bg;
     }
-    return nil;
+    return [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:NSStringFromClass([_FMLayoutSussEmptyView class]) forIndexPath:indexPath];
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath API_AVAILABLE(ios(9.0)){
@@ -247,8 +324,8 @@
 #pragma mark ----- delegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section < self.layout.sections.count) {
-        FMLayoutBaseSection *sectionM = self.layout.sections[indexPath.section];
+    if (indexPath.section < self.sections.count) {
+        FMLayoutBaseSection *sectionM = self.sections[indexPath.section];
         if (sectionM.clickCellBlock) {
             sectionM.clickCellBlock(sectionM, indexPath.item);
         }
