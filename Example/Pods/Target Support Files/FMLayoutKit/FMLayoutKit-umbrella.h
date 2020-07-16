@@ -12,6 +12,7 @@
 
 #import "FMLayoutCrossCell.h"
 #import "FMLayoutCrossSection.h"
+#import "FMLayoutCrossTransformSection.h"
 #import "FMLayoutBackground.h"
 #import "FMLayoutElement.h"
 #import "FMLayoutFooter.h"

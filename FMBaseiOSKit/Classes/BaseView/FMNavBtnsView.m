@@ -82,6 +82,16 @@ CGRect ConvertFrameProgress(CGRect original, CGRect finalFrame, CGFloat progress
     if (selected >= 0 && selected < self.btns.count) {
         self.selectBtn = self.btns[selected];
     }
+    if (self.canScroll) {
+        CGFloat minOffset = CGRectGetMaxX(self.selectBtn.frame) - self.frame.size.width;
+        CGFloat maxOffset = CGRectGetMinX(self.selectBtn.frame);
+        if (self.scrollView.contentOffset.x < minOffset) {
+            [self.scrollView setContentOffset:CGPointMake(minOffset, 0) animated:YES];
+        }
+        if (self.scrollView.contentOffset.x > maxOffset) {
+            [self.scrollView setContentOffset:CGPointMake(maxOffset, 0) animated:YES];
+        }
+    }
     [self updateLine];
 }
 

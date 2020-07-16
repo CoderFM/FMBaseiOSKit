@@ -30,6 +30,7 @@
     [self.teslaView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.bottom.mas_equalTo(0);
     }];
+    self.pageSections = [NSMutableArray array];
 }
 
 - (NSArray<FMLayoutBaseSection *> *)shareSectionsInTesla:(FMTeslaLayoutView *)tesla{
@@ -40,8 +41,10 @@
     return self.pageSections.count;
 }
 
-- (NSMutableArray<FMLayoutBaseSection *> *)tesla:(FMTeslaLayoutView *)tesla sectionsInScreenIndex:(NSInteger)screenIndex{
-    return self.pageSections[screenIndex];
+- (void)tesla:(FMTeslaLayoutView *)tesla didCreatedScrollViewWithIndex:(NSInteger)index scrollView:(UIScrollView *)scrollView{
+    if ([scrollView isKindOfClass:[FMLayoutView class]]) {
+        ((FMLayoutView *)scrollView).sections = self.pageSections[index];
+    }
 }
 
 @end

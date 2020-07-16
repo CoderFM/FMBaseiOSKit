@@ -146,11 +146,11 @@
     }
 }
 
-- (void)tesla:(FMTeslaLayoutView *)tesla didScrollEnd:(NSInteger)index currentLayoutView:(FMLayoutView *)layoutView{
+- (void)tesla:(FMTeslaLayoutView *)tesla didScrollEnd:(NSInteger)index currentScrollView:(FMLayoutView *)layoutView{
     self.btnsView.selected = index;
 }
 
-- (void)tesla:(FMTeslaLayoutView *)tesla currentLayoutViewScrollDidScroll:(FMLayoutView *)currentLayoutView contentOffset:(CGPoint)contentOffset{
+- (void)tesla:(FMTeslaLayoutView *)tesla currentScrollViewScrollDidScroll:(FMLayoutView *)currentLayoutView contentOffset:(CGPoint)contentOffset{
     CGFloat shareHeight = [[tesla valueForKey:@"shareHeight"] floatValue];
     if (shareHeight > 0 && contentOffset.y >= (shareHeight - 50)) {
         self.btnsView.backgroundColor = [UIColor whiteColor];

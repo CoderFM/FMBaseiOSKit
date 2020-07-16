@@ -26,6 +26,7 @@
 		C339075024B579690041704D /* FMFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339074B24B579680041704D /* FMFormViewController.m */; };
 		C339075124B579690041704D /* FMTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339074D24B579680041704D /* FMTestViewController.m */; };
 		C339075224B579690041704D /* FMLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339074F24B579690041704D /* FMLayoutViewController.m */; };
+		C3D5DC7624C02A92000C7470 /* FMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D5DC7524C02A92000C7470 /* FMHomeViewController.m */; };
 		C3F2998224BD561400833D9E /* FMLayoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F2998124BD561400833D9E /* FMLayoutListViewController.m */; };
 		C3F2998524BD574500833D9E /* FMTaoBaoHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F2998424BD574500833D9E /* FMTaoBaoHomeViewController.m */; };
 		C3F2998824BD5EBE00833D9E /* FMCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F2998724BD5EBE00833D9E /* FMCollectionViewCell.m */; };
@@ -80,6 +81,8 @@
 		C339074D24B579680041704D /* FMTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMTestViewController.m; sourceTree = "<group>"; };
 		C339074E24B579690041704D /* FMFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMFormViewController.h; sourceTree = "<group>"; };
 		C339074F24B579690041704D /* FMLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLayoutViewController.m; sourceTree = "<group>"; };
+		C3D5DC7424C02A92000C7470 /* FMHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMHomeViewController.h; sourceTree = "<group>"; };
+		C3D5DC7524C02A92000C7470 /* FMHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMHomeViewController.m; sourceTree = "<group>"; };
 		C3F2998024BD561400833D9E /* FMLayoutListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMLayoutListViewController.h; sourceTree = "<group>"; };
 		C3F2998124BD561400833D9E /* FMLayoutListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMLayoutListViewController.m; sourceTree = "<group>"; };
 		C3F2998324BD574500833D9E /* FMTaoBaoHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMTaoBaoHomeViewController.h; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				C3F2998424BD574500833D9E /* FMTaoBaoHomeViewController.m */,
 				C3F2999324BD8FDB00833D9E /* FMStoreDetailViewController.h */,
 				C3F2999424BD8FDB00833D9E /* FMStoreDetailViewController.m */,
+				C3D5DC7424C02A92000C7470 /* FMHomeViewController.h */,
+				C3D5DC7524C02A92000C7470 /* FMHomeViewController.m */,
 				C339074C24B579680041704D /* FMLayoutViewController.h */,
 				C339074F24B579690041704D /* FMLayoutViewController.m */,
 				C339074A24B579680041704D /* FMTestViewController.h */,
@@ -420,6 +425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3D5DC7624C02A92000C7470 /* FMHomeViewController.m in Sources */,
 				C3F2998524BD574500833D9E /* FMTaoBaoHomeViewController.m in Sources */,
 				C3F2998824BD5EBE00833D9E /* FMCollectionViewCell.m in Sources */,
 				C3F2998E24BD5EDE00833D9E /* FMCollectionCustomDecoration.m in Sources */,

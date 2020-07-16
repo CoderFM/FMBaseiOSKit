@@ -9,6 +9,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 需要请求几个接口再隐藏加载中  前提要是调用netLoadDataStart, netLoadDataEnd
 @property(nonatomic, assign)NSInteger needLoadNetCount;
 
+@property(nonatomic, assign)BOOL notHasNavView;
+@property(nonatomic, assign)BOOL hasToolView;
+
 @property(nonatomic, weak)UIView *navContainer;
 @property(nonatomic, weak)UIView *navBarContainer;
 @property(nonatomic, weak)UIImageView *navBgImageView;

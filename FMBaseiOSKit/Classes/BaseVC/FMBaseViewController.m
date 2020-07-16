@@ -101,6 +101,26 @@
     return _baseNavItem;
 }
 
+- (void)setNotHasNavView:(BOOL)notHasNavView{
+    _notHasNavView = notHasNavView;
+    if (self.viewLoaded) {
+        self.loadContainer.hidden = notHasNavView;
+        [self.mainContainer mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(notHasNavView?0:[FMConfig config].navStatusHeight);
+        }];
+    }
+}
+
+- (void)setHasToolView:(BOOL)hasToolView{
+    _hasToolView = hasToolView;
+    if (self.viewLoaded) {
+        self.toolContainer.hidden = !hasToolView;
+        [self.mainContainer mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(hasToolView?[FMConfig config].tabBarHeight:0);
+        }];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -109,13 +129,14 @@
     
     [self.mainContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
-        make.top.mas_equalTo([FMConfig config].navStatusHeight);
-        make.bottom.mas_equalTo(0);
+        make.top.mas_equalTo(self.notHasNavView?0:[FMConfig config].navStatusHeight);
+        make.bottom.mas_equalTo(self.hasToolView?[FMConfig config].tabBarHeight:0);
     }];
     [self.loadContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.bottom.mas_equalTo(self.mainContainer);
     }];
     
+    self.navContainer.hidden = self.notHasNavView;
     [self.navContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.mas_equalTo(0);
         make.height.mas_equalTo([FMConfig config].navStatusHeight);
@@ -124,6 +145,8 @@
         make.left.right.bottom.mas_equalTo(0);
         make.height.mas_equalTo([FMConfig config].navHeight);
     }];
+    
+    self.toolContainer.hidden = !self.hasToolView;
     [self.toolContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.mas_equalTo(0);
         make.height.mas_equalTo([FMConfig config].tabBarHeight);

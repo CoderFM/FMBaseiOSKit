@@ -62,6 +62,19 @@
                 }
             }
         }];
+        [self setConfigureCellData:^(FMLayoutBaseSection * _Nonnull section, UICollectionViewCell * _Nonnull cell, NSInteger item) {
+            NSInteger start = 0;
+            for (FMLayoutBaseSection *subSection in weakSelf.sections) {
+                if (item < subSection.itemCount + start) {
+                    if (subSection.configureCellData) {
+                        subSection.configureCellData(subSection, cell,item - start);
+                    }
+                    break;
+                } else {
+                    start += subSection.itemCount;
+                }
+            }
+        }];
     }
     return self;
 }
@@ -158,6 +171,40 @@
         }
     }
     return maxSize;
+}
+
+- (void)exchangeObjectAtIndex:(NSInteger)index toIndex:(NSInteger)toIndex{
+    NSMutableArray *get;
+    NSMutableArray *inset;
+    NSInteger getIndex = 0;
+    NSInteger insetIndex = 0;
+    NSInteger start = 0;
+    for (FMLayoutBaseSection *section in self.sections) {
+        if (index < start + section.itemCount) {
+            if (!get) {
+                get = section.itemDatas;
+                getIndex = index - start;
+            }
+        }
+        if (toIndex < start + section.itemCount) {
+            if (!inset) {
+                inset = section.itemDatas;
+                insetIndex = toIndex - start;
+            }
+        }
+        if (get && inset) {
+            break;
+        }
+        start += section.itemCount;
+    }
+    id getObj = [get objectAtIndex:getIndex];
+    id insetObj = [inset objectAtIndex:insetIndex];
+    if (get == inset) {
+        [get exchangeObjectAtIndex:getIndex withObjectAtIndex:insetIndex];
+    } else {
+        [get replaceObjectAtIndex:getIndex withObject:insetObj];
+        [inset replaceObjectAtIndex:insetIndex withObject:getObj];
+    }
 }
 
 @end

@@ -16,9 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.baseNavItem.title = @"layout布局案例";
+    self.baseNavItem.title = @"一些列表布局示例等";
     [self.models addObject:@{@"title":@"电商首页", @"class":@"FMTaoBaoHomeViewController"}];
     [self.models addObject:@{@"title":@"外卖店铺详情", @"class":@"FMStoreDetailViewController"}];
+    [self.models addObject:@{@"title":@"多个页面滑动", @"class":@"FMHomeViewController"}];
     [self.tableView reloadData];
 }
 

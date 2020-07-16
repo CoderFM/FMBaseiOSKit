@@ -14,6 +14,7 @@
 #import "FMBaseTableController.h"
 #import "FMCollectionLayoutController.h"
 #import "FMTeslaViewController.h"
+#import "FMPagesViewController.h"
 
 #import "FMFormListSubmitVC.h"
 #import <FMLayoutKit/FMLayoutKit.h>
