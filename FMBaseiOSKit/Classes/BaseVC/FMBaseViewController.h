@@ -6,6 +6,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FMBaseViewController : UIViewController
 
+@property(nonatomic, weak)Class loadContainerClass;
+
 /// 需要请求几个接口再隐藏加载中  前提要是调用netLoadDataStart, netLoadDataEnd
 @property(nonatomic, assign)NSInteger needLoadNetCount;
 

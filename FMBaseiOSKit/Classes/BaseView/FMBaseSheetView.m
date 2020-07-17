@@ -39,10 +39,6 @@
     }
 }
 
-- (Class)cellClass{
-    return [UITableViewCell class];
-}
-
 - (void)setType:(FMSheetType)type{
     _type = type;
     switch (type) {
@@ -98,29 +94,6 @@
 //        UIRectCorner corner = UIRectCornerTopLeft | UIRectCornerTopRight;
 //        layer.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, [FMConfig config].screenWidth, [FMConfig config].screenHeight) byRoundingCorners:corner cornerRadii:CGSizeMake(BaseSize(16), BaseSize(16))].CGPath;
 //        self.contentView.layer.mask = layer;
-         
-        FMBaseTableView *tableView = [[FMBaseTableView alloc] init];
-        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        [tableView registerClass:self.cellClass forCellReuseIdentifier:NSStringFromClass(self.cellClass)];
-        tableView.showEmptyView = NO;
-        tableView.delegate = self;
-        tableView.dataSource = self;
-        [self.contentView addSubview:tableView];
-        [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.mas_equalTo(0);
-            make.bottom.mas_equalTo(0);
-            make.top.mas_equalTo(56);
-        }];
-        self.tableView = tableView;
-        
-        UIView *line = [[UIView alloc] init];
-        [self.contentView addSubview:line];
-        [line mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(15);
-            make.right.mas_equalTo(-15);
-            make.bottom.mas_equalTo(tableView.mas_top);
-            make.height.mas_equalTo(1);
-        }];
         
         UILabel *title = [[UILabel alloc] init];
         title.text = @"标题";
@@ -148,25 +121,11 @@
 }
 
 - (void)closeClick{
-    [self removeFromSuperview];
-}
-
-- (void)configurationCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath{
-    
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(self.cellClass)];
-    [self configurationCell:cell indexPath:indexPath];
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return UITableViewAutomaticDimension;
+    [self animationHidden:^{
+        if (!self.hiddenSaveSelf) {
+            [self removeFromSuperview];
+        }
+    }];
 }
 
 @end

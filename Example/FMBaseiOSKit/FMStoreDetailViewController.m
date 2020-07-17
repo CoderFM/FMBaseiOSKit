@@ -135,7 +135,7 @@
     self.pageSections = pageSections;
 }
 
-- (void)tesla:(FMTeslaLayoutView *)tesla didScrollEnd:(NSInteger)index currentLayoutView:(FMLayoutView *)layoutView{
+- (void)tesla:(FMTeslaLayoutView *)tesla didScrollEnd:(NSInteger)index currentScrollView:(UIScrollView *)scrollView{
     self.btnsView.selected = index;
 }
 

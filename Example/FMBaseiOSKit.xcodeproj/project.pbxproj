@@ -26,6 +26,8 @@
 		C339075024B579690041704D /* FMFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339074B24B579680041704D /* FMFormViewController.m */; };
 		C339075124B579690041704D /* FMTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339074D24B579680041704D /* FMTestViewController.m */; };
 		C339075224B579690041704D /* FMLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339074F24B579690041704D /* FMLayoutViewController.m */; };
+		C3D42D1524C1794F00AA8900 /* FMTimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D42D1424C1794F00AA8900 /* FMTimeLineViewController.m */; };
+		C3D42D2424C19BB000AA8900 /* FMLoadTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D42D2324C19BB000AA8900 /* FMLoadTestViewController.m */; };
 		C3D5DC7624C02A92000C7470 /* FMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D5DC7524C02A92000C7470 /* FMHomeViewController.m */; };
 		C3F2998224BD561400833D9E /* FMLayoutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F2998124BD561400833D9E /* FMLayoutListViewController.m */; };
 		C3F2998524BD574500833D9E /* FMTaoBaoHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F2998424BD574500833D9E /* FMTaoBaoHomeViewController.m */; };
@@ -81,6 +83,10 @@
 		C339074D24B579680041704D /* FMTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMTestViewController.m; sourceTree = "<group>"; };
 		C339074E24B579690041704D /* FMFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMFormViewController.h; sourceTree = "<group>"; };
 		C339074F24B579690041704D /* FMLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLayoutViewController.m; sourceTree = "<group>"; };
+		C3D42D1324C1794F00AA8900 /* FMTimeLineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMTimeLineViewController.h; sourceTree = "<group>"; };
+		C3D42D1424C1794F00AA8900 /* FMTimeLineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMTimeLineViewController.m; sourceTree = "<group>"; };
+		C3D42D2224C19BB000AA8900 /* FMLoadTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMLoadTestViewController.h; sourceTree = "<group>"; };
+		C3D42D2324C19BB000AA8900 /* FMLoadTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMLoadTestViewController.m; sourceTree = "<group>"; };
 		C3D5DC7424C02A92000C7470 /* FMHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMHomeViewController.h; sourceTree = "<group>"; };
 		C3D5DC7524C02A92000C7470 /* FMHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMHomeViewController.m; sourceTree = "<group>"; };
 		C3F2998024BD561400833D9E /* FMLayoutListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMLayoutListViewController.h; sourceTree = "<group>"; };
@@ -183,8 +189,12 @@
 				C3F2998424BD574500833D9E /* FMTaoBaoHomeViewController.m */,
 				C3F2999324BD8FDB00833D9E /* FMStoreDetailViewController.h */,
 				C3F2999424BD8FDB00833D9E /* FMStoreDetailViewController.m */,
+				C3D42D1324C1794F00AA8900 /* FMTimeLineViewController.h */,
+				C3D42D1424C1794F00AA8900 /* FMTimeLineViewController.m */,
 				C3D5DC7424C02A92000C7470 /* FMHomeViewController.h */,
 				C3D5DC7524C02A92000C7470 /* FMHomeViewController.m */,
+				C3D42D2224C19BB000AA8900 /* FMLoadTestViewController.h */,
+				C3D42D2324C19BB000AA8900 /* FMLoadTestViewController.m */,
 				C339074C24B579680041704D /* FMLayoutViewController.h */,
 				C339074F24B579690041704D /* FMLayoutViewController.m */,
 				C339074A24B579680041704D /* FMTestViewController.h */,
@@ -435,6 +445,8 @@
 				6003F5A7195388D20070C39A /* FMViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				C339075024B579690041704D /* FMFormViewController.m in Sources */,
+				C3D42D2424C19BB000AA8900 /* FMLoadTestViewController.m in Sources */,
+				C3D42D1524C1794F00AA8900 /* FMTimeLineViewController.m in Sources */,
 				C3F2999524BD8FDB00833D9E /* FMStoreDetailViewController.m in Sources */,
 				C339075224B579690041704D /* FMLayoutViewController.m in Sources */,
 				C3F2998B24BD5ECC00833D9E /* FMCollectionCustomCell.m in Sources */,

@@ -20,6 +20,8 @@
     [self.models addObject:@{@"title":@"电商首页", @"class":@"FMTaoBaoHomeViewController"}];
     [self.models addObject:@{@"title":@"外卖店铺详情", @"class":@"FMStoreDetailViewController"}];
     [self.models addObject:@{@"title":@"多个页面滑动", @"class":@"FMHomeViewController"}];
+    [self.models addObject:@{@"title":@"朋友圈动态布局", @"class":@"FMTimeLineViewController"}];
+    [self.models addObject:@{@"title":@"加载中效果", @"class":@"FMLoadTestViewController"}];
     [self.tableView reloadData];
 }
 

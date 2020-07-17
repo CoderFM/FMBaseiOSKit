@@ -14,16 +14,13 @@ typedef NS_ENUM(NSUInteger, FMSheetType) {
     FMSheetTypeTop,
 };
 
-@interface FMBaseSheetView : FMBasePopupView<UITableViewDelegate, UITableViewDataSource>
+@interface FMBaseSheetView : FMBasePopupView
 @property(nonatomic, assign)FMSheetType type;
 @property(nonatomic, assign, readonly)CGSize contentViewSize;
-@property(nonatomic, assign, readonly)Class cellClass;
-@property(nonatomic, weak)UITableView *tableView;
 @property(nonatomic, weak)UILabel *titleLabel;
 @property(nonatomic, weak)UIButton *closeBtn;
 - (void)closeClick;
 
-- (void)configurationCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath;
 
 @end
 

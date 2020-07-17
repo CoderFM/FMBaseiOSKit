@@ -22,6 +22,8 @@
 
 #import "FMBasePopupView.h"
 #import "FMBaseSheetView.h"
+#import "FMBaseSheetTableView.h"
+#import "FMBaseSheetLayoutView.h"
 #import "FMBaseAlertView.h"
 #import "FMNoneDataView.h"
 #import "FMNavBtnsView.h"

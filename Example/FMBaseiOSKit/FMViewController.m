@@ -73,7 +73,9 @@
 //    [self presentViewController:vc animated:YES completion:nil];
 }
 - (IBAction)sheetClick:(UIButton *)sender {
-    [FMBaseSheetView showToView:self.view.window];
+//    [FMBaseSheetView showToView:self.view.window];
+//    [FMBaseSheetTableView showToView:self.view.window];
+    [FMBaseSheetLayoutView showToView:self.view.window];
 }
 - (IBAction)alertClick:(id)sender {
     [FMBaseAlertView showToView:self.view.window];

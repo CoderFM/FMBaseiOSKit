@@ -28,6 +28,8 @@
 
 - (void)createPageBtns{
     FMNavBtnsView *btns = [[FMNavBtnsView alloc] init];
+    btns.lineAnimation = FMNavBtnsLineAnimationProgress;
+    btns.lineBottomMargin = 3;
     FMWeakSelf;
     [btns setClickBlock:^(NSInteger tag) {
         [weakSelf.scrollView setContentOffset:CGPointMake([FMConfig config].screenWidth * tag, 0) animated:YES];
@@ -93,6 +95,15 @@
     }
     if (self.pageNavView.selected != page) {
         self.pageNavView.selected = page;
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat progress = (scrollView.contentOffset.x - self.pageNavView.selected * scrollView.frame.size.width) / scrollView.frame.size.width;
+    if (scrollView.contentOffset.x < self.pageNavView.selected * scrollView.frame.size.width) {
+        [self.pageNavView scrollPrevProgress:progress];
+    } else if (scrollView.contentOffset.x > self.pageNavView.selected * scrollView.frame.size.width) {
+        [self.pageNavView scrollNextProgress:progress];
     }
 }
 

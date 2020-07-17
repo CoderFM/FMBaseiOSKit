@@ -90,10 +90,12 @@
         [section setConfigureHeaderData:^(FMLayoutBaseSection * _Nonnull section, UICollectionReusableView * _Nonnull header) {
             if (header.subviews.count == 0) {
                 FMNavBtnsView *btns = [[FMNavBtnsView alloc] init];
+                btns.canScroll = YES;
+                btns.itemMargin = 30;
                 btns.lineAnimation = FMNavBtnsLineAnimationProgress;
                 btns.normalFont = [UIFont boldSystemFontOfSize:20];
                 btns.selectFont = [UIFont boldSystemFontOfSize:20];
-                btns.titles = @[@"全部", @"直播", @"便宜好货", @"买家秀"];
+                btns.titles = @[@"全部标签", @"直播爱仕达历史记录卡机是老大", @"便宜好货", @"买家秀", @"买家秀", @"便宜好货"];
                 [header addSubview:btns];
                 [btns mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.left.right.top.bottom.mas_equalTo(0);
@@ -121,6 +123,8 @@
         [pageSections addObject:[page copy]];
         [pageSections addObject:[page copy]];
         [pageSections addObject:[page copy]];
+        [pageSections addObject:[page copy]];
+        [pageSections addObject:[page copy]];
     }
     self.pageSections = pageSections;
 }
@@ -131,10 +135,6 @@
 
 - (NSInteger)numberOfScreenInTesla:(FMTeslaLayoutView *)tesla{
     return self.pageSections.count;
-}
-
-- (NSMutableArray<FMLayoutBaseSection *> *)tesla:(FMTeslaLayoutView *)tesla sectionsInScreenIndex:(NSInteger)screenIndex{
-    return self.pageSections[screenIndex];
 }
 
 - (void)tesla:(FMTeslaLayoutView *)tesla scrollViewDidScroll:(UIScrollView *)scrollView{

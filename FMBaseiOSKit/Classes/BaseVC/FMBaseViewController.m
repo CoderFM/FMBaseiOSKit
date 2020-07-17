@@ -2,6 +2,7 @@
 #import "FMBaseViewController.h"
 #import <Masonry/Masonry.h>
 #import "FMConfig.h"
+#import "FMBaseVCLoadingView.h"
 
 @interface FMBaseViewController ()
 @property(nonatomic, assign)NSInteger loadEndCount;
@@ -65,7 +66,12 @@
 
 - (UIView *)loadContainer{
     if (_loadContainer == nil) {
-        UIView *view = [[UIView alloc] init];
+        UIView *view;
+        if (self.loadContainerClass) {
+            view = [[self.loadContainerClass alloc] init];
+        } else {
+           view  = [[UIView alloc] init];
+        }
         view.hidden = YES;
         [self.view addSubview:view];
         _loadContainer = view;
@@ -119,6 +125,15 @@
             make.bottom.mas_equalTo(hasToolView?[FMConfig config].tabBarHeight:0);
         }];
     }
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.loadContainerClass = [FMBaseVCLoadingView class];
+    }
+    return self;
 }
 
 - (void)viewDidLoad {
