@@ -127,6 +127,19 @@
     }
 }
 
+- (void)setLoadContainerClass:(Class)loadContainerClass{
+    _loadContainerClass = loadContainerClass;
+    if (_loadContainer && [_loadContainer superview] == self.view) {
+        [_loadContainer removeFromSuperview];
+        UIView *load = [[loadContainerClass alloc] init];
+        [self.view addSubview:load];
+        [load mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.bottom.mas_equalTo(self.mainContainer);
+        }];
+        _loadContainer = load;
+    }
+}
+
 - (instancetype)init
 {
     self = [super init];

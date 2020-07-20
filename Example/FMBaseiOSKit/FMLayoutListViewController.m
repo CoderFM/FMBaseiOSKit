@@ -22,6 +22,7 @@
     [self.models addObject:@{@"title":@"多个页面滑动", @"class":@"FMHomeViewController"}];
     [self.models addObject:@{@"title":@"朋友圈动态布局", @"class":@"FMTimeLineViewController"}];
     [self.models addObject:@{@"title":@"加载中效果", @"class":@"FMLoadTestViewController"}];
+    [self.models addObject:@{@"title":@"空列表", @"class":@"FMTestEmptyTableController"}];
     [self.tableView reloadData];
 }
 

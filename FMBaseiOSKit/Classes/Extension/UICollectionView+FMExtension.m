@@ -6,6 +6,7 @@
 
 static char nonDataViewKey;
 static char showEmptyViewKey;
+static char nonDataViewClassKey;
 
 @implementation UICollectionView (FMExtension)
 
@@ -58,11 +59,18 @@ static char showEmptyViewKey;
     objc_setAssociatedObject(self, &showEmptyViewKey, @(showEmptyView), OBJC_ASSOCIATION_RETAIN);
 }
 
-- (FMNoneDataView *)nonDataView
+- (FMNoneDataView *)fmNonDataView{
+    if ([self.nonDataView isKindOfClass:[FMNoneDataView class]]) {
+        return (FMNoneDataView *)self.nonDataView;
+    }
+    return nil;
+}
+
+- (UIView *)nonDataView
 {
-    FMNoneDataView *nonData = objc_getAssociatedObject(self, &nonDataViewKey);
+    UIView *nonData = objc_getAssociatedObject(self, &nonDataViewKey);
     if (nonData == nil) {
-        nonData = [[FMNoneDataView alloc] init];
+        nonData = [[[self nonDataViewClass] alloc] init];
         nonData.hidden = YES;
         [self insertSubview:nonData atIndex:0];
         [nonData mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -74,13 +82,29 @@ static char showEmptyViewKey;
     }
     return nonData;
 }
-- (void)setNonDataView:(FMNoneDataView *)nonDataView
+- (void)setNonDataView:(UIView *)nonDataView
 {
-    FMNoneDataView *nonData = objc_getAssociatedObject(self, &nonDataViewKey);
+    UIView *nonData = objc_getAssociatedObject(self, &nonDataViewKey);
     if (nonData) {
         [nonData removeFromSuperview];
     }
     objc_setAssociatedObject(self, &nonDataViewKey, nonDataView, OBJC_ASSOCIATION_RETAIN);
+}
+
+- (Class)nonDataViewClass{
+    Class viewClass = objc_getAssociatedObject(self, &nonDataViewClassKey);
+    if (!viewClass) {
+        viewClass = [FMNoneDataView class];
+        objc_setAssociatedObject(self, &nonDataViewClassKey, viewClass, OBJC_ASSOCIATION_RETAIN);
+    }
+    return viewClass;
+}
+
+- (void)setNonDataViewClass:(Class)nonDataViewClass{
+    Class viewClass = objc_getAssociatedObject(self, &nonDataViewClassKey);
+    if (viewClass != nonDataViewClass) {
+        objc_setAssociatedObject(self, &nonDataViewClassKey, nonDataViewClass, OBJC_ASSOCIATION_RETAIN);
+    }
 }
 
 @end

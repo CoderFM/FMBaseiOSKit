@@ -88,6 +88,7 @@
     [super viewDidLoad];
     self.baseNavItem.title = @"朋友圈动态布局";
     [self addSections];
+//    [self.collectionView reloadData];
 }
 
 - (void)addSections{

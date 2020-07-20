@@ -1,6 +1,7 @@
 
 
 #import "NSString+FMExtension.h"
+#import "NSAttributedString+FMExtension.h"
 
 @implementation NSString (FMExtension)
 
@@ -39,6 +40,11 @@
         return YES;
     }
     return NO;
+}
+
+- (NSInteger)getNumberOfLinesWithAttributes:(NSDictionary *)attributes andLabelWidth:(CGFloat)width{
+    NSAttributedString *attributeText = [[NSAttributedString alloc] initWithString:self attributes:attributes];
+    return [attributeText getNumberOfLinesWithWidth:width];
 }
 
 @end

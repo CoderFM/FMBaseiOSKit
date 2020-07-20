@@ -14,6 +14,8 @@
 @property(nonatomic, strong)UILabel *nameLabel;
 @property(nonatomic, strong)CAGradientLayer *gradientLayer;
 
+@property(nonatomic, copy)NSString *animationKey;
+
 @end
 
 @implementation FMBaseVCLoadingView
@@ -41,6 +43,8 @@
         layer.startPoint = CGPointMake(0.0, 0.6);
         layer.endPoint = CGPointMake(1.0, 0.4);
         self.gradientLayer = layer;
+        
+        self.animationKey = @"FMBaseVCLoadingViewAnimationKey";
     }
     return self;
 }
@@ -52,17 +56,23 @@
     self.nameLabel.center = CGPointMake(self.center.x, self.center.y - 100);
 }
 
+- (void)setHidden:(BOOL)hidden{
+    [super setHidden:hidden];
+    if (hidden) {
+        [self.gradientLayer removeAnimationForKey:self.animationKey];
+    } else {
+        CABasicAnimation *gradientAnimation = [CABasicAnimation animationWithKeyPath:@"locations"];
+        gradientAnimation.fromValue = @[@(-0.8),@(-0.79),@(-0.64),@(-0.63)];
+        gradientAnimation.toValue = @[@1.5,@1.51,@1.76,@1.77];
+        gradientAnimation.duration = 2.0;
+        gradientAnimation.repeatCount = MAXFLOAT;
+        [self.gradientLayer addAnimation:gradientAnimation forKey:self.animationKey];
+    }
+}
+
 - (void)didMoveToWindow{
     [super didMoveToWindow];
-    
     [self.layer addSublayer:self.gradientLayer];
-
-    CABasicAnimation *gradientAnimation = [CABasicAnimation animationWithKeyPath:@"locations"];
-    gradientAnimation.fromValue = @[@(-0.8),@(-0.79),@(-0.64),@(-0.63)];
-    gradientAnimation.toValue = @[@1.5,@1.51,@1.76,@1.77];
-    gradientAnimation.duration = 2.0;
-    gradientAnimation.repeatCount = MAXFLOAT;
-    [self.gradientLayer addAnimation:gradientAnimation forKey:nil];
 }
 
 @end

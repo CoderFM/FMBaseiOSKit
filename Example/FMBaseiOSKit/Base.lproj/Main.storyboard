@@ -34,8 +34,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSh-QI-yYH">
-                                <rect key="frame" x="138.5" y="314" width="98" height="30"/>
-                                <state key="normal" title="FMLayout布局"/>
+                                <rect key="frame" x="156.5" y="314" width="62" height="30"/>
+                                <state key="normal" title="一些示例"/>
                                 <connections>
                                     <action selector="layoutClick:" destination="whP-gf-Uak" eventType="touchUpInside" id="PCr-zG-rKF"/>
                                 </connections>

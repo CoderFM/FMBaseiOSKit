@@ -27,13 +27,13 @@
 #import "FMTeslaLayoutView.h"
 #import "FMTeslaSuspensionHeightChangeDelegate.h"
 #import "FMLayoutAbsoluteSection.h"
-#import "FMLayoutBaseSection+ConfigureBlock.h"
 #import "FMLayoutBaseSection.h"
 #import "FMLayoutCombineSection.h"
 #import "FMLayoutDynamicSection.h"
 #import "FMLayoutFillSection.h"
 #import "FMLayoutFixedSection.h"
 #import "FMLayoutLabelSection.h"
+#import "FMLayoutScaleSection.h"
 
 FOUNDATION_EXPORT double FMLayoutKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char FMLayoutKitVersionString[];

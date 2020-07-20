@@ -6,7 +6,7 @@ PODS:
     - Masonry
   - FMFormSubmitKit (1.0.6):
     - Masonry
-  - FMLayoutKit (1.0.7)
+  - FMLayoutKit (1.0.8)
   - FMPickerView (0.1.0)
   - Masonry (1.1.0)
 
@@ -28,7 +28,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   FMBaseiOSKit: 7e405a251a4dd55e33f68d1c0789a56ef01db7fb
   FMFormSubmitKit: dafe344fbff9cfafe66f31018a57f38434b34bb3
-  FMLayoutKit: 576986fa35844a7946eef2503441e5acbb46a61e
+  FMLayoutKit: 884f9a950ab9ce4caa4ad6d6a6b6c73983ea728c
   FMPickerView: 43ee1aa5dbe76fe95294547f208b2215855a35de
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 

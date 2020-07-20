@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)isHttpUrl;
 
+- (NSInteger)getNumberOfLinesWithAttributes:(NSDictionary *)attributes andLabelWidth:(CGFloat)width;
+
 @end
 
 NS_ASSUME_NONNULL_END
