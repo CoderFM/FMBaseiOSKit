@@ -110,7 +110,7 @@
 - (void)setNotHasNavView:(BOOL)notHasNavView{
     _notHasNavView = notHasNavView;
     if (self.viewLoaded) {
-        self.loadContainer.hidden = notHasNavView;
+        self.navContainer.hidden = notHasNavView;
         [self.mainContainer mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(notHasNavView?0:[FMConfig config].navStatusHeight);
         }];

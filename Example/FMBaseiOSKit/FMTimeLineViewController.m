@@ -9,6 +9,7 @@
 #import "FMTimeLineViewController.h"
 #import "FMCollectionCustomCell.h"
 #import "FMCollectionCustomDecoration.h"
+#import "FMCollectionViewCell.h"
 
 @interface FMLayoutTimeLineSection : FMLayoutDynamicSection
 
@@ -111,26 +112,21 @@
         }
         
         {
-//            FMLayoutAbsoluteSection *section = [FMLayoutAbsoluteSection sectionWithSectionInset:UIEdgeInsetsMake(0, 0, 0, 0) itemSpace:0 lineSpace:0 column:0];
-//
-//            section.itemDatas = [@[@"1", @"2", @"3"] mutableCopy];
-//            section.cellElements = @[[FMLayoutElement elementWithViewClass:[FMCollectionCustomCell class]]];
-//            [section setDeqCellReturnReuseId:^NSString * _Nonnull(FMLayoutDynamicSection * _Nonnull section, NSInteger index) {
-//                return [section.cellElements firstObject].reuseIdentifier;
-//            }];
-//            [section setFrameBlock:^CGRect(id  _Nonnull section, NSInteger item) {
-//                switch (item) {
-//                    case 0:
-//                        return CGRectMake(0, 0, 100, 100);
-//                    case 1:
-//                        return CGRectMake(200, 100, 150, 100);
-//                    case 2:
-//                        return CGRectMake(100, 400, 400, 90);
-//                    default:
-//                        return CGRectZero;
-//                        break;
-//                }
-//            }];
+                    FMLayoutFixedSection *section = [FMLayoutFixedSection sectionWithSectionInset:UIEdgeInsetsMake(0, 0, 0, 0) itemSpace:10 lineSpace:10 column:2];
+                    
+                    section.itemSize = CGSizeMake(150, 100);
+                    section.itemDatas = [@[@"1", @"2", @"3", @"2", @"3", @"2", @"3", @"2", @"3", @"2", @"3"] mutableCopy];
+                    section.cellElement = [FMLayoutElement elementWithViewClass:[FMCollectionCustomCell class]];
+                    [section setConfigureCellData:^(FMLayoutBaseSection * _Nonnull section, UICollectionViewCell * _Nonnull cell, NSInteger item) {
+        //                [(FMCollectionCustomCell *)cell label].text = [NSString stringWithFormat:@"%ld", (long)item];
+                    }];
+                    [section setClickCellBlock:^(FMLayoutBaseSection * _Nonnull section, NSInteger item) {
+                        
+                    }];
+                    [subSections addObject:section];
+                }
+        
+        {
             FMLayoutTimeLineSection *section = [FMLayoutTimeLineSection sectionWithSectionInset:UIEdgeInsetsMake(10, 10, 10, 10) itemSpace:10 lineSpace:10 column:3];
             
             section.oneMaxHeight = 300;
@@ -139,7 +135,7 @@
             section.twoOrFourCloumn = 2;
             section.twoOrFourSize = CGSizeMake(([FMConfig config].screenWidth - 30) / 2.0, ([FMConfig config].screenWidth - 30) / 2.0);
             
-            section.cellElement = [FMLayoutElement elementWithViewClass:[FMCollectionCustomCell class]];
+            section.cellElement = [FMLayoutElement elementWithViewClass:[FMCollectionViewCell class]];
             section.itemDatas = [@[@"1", @"1", @"1", @"1"] mutableCopy];
             [section setConfigureCellData:^(FMLayoutBaseSection * _Nonnull section, UICollectionViewCell * _Nonnull cell, NSInteger item) {
 //                [(FMCollectionCustomCell *)cell label].text = [NSString stringWithFormat:@"%ld", (long)item];
@@ -149,6 +145,31 @@
             }];
             [subSections addObject:section];
         }
+        
+        {
+            FMLayoutAbsoluteSection *section = [FMLayoutAbsoluteSection sectionWithSectionInset:UIEdgeInsetsMake(0, 0, 0, 0) itemSpace:0 lineSpace:0 column:0];
+
+            section.itemDatas = [@[@"1", @"2", @"3"] mutableCopy];
+            section.cellElements = @[[FMLayoutElement elementWithViewClass:[FMCollectionCustomCell class]]];
+            [section setDeqCellReturnReuseId:^NSString * _Nonnull(FMLayoutDynamicSection * _Nonnull section, NSInteger index) {
+                return [section.cellElements firstObject].reuseIdentifier;
+            }];
+            [section setFrameBlock:^CGRect(id  _Nonnull section, NSInteger item) {
+                switch (item) {
+                    case 0:
+                        return CGRectMake(0, 0, 100, 100);
+                    case 1:
+                        return CGRectMake(200, 100, 150, 100);
+                    case 2:
+                        return CGRectMake(100, 400, 400, 90);
+                    default:
+                        return CGRectZero;
+                        break;
+                }
+            }];
+            [subSections addObject:section];
+        }
+        
         
         FMLayoutCombineSection *section = [FMLayoutCombineSection combineSections:subSections];
         section.canLongPressExchange = YES;
