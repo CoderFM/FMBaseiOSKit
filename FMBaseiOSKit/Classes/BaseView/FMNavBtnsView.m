@@ -269,13 +269,15 @@ CGRect ConvertFrameProgress(CGRect original, CGRect finalFrame, CGFloat progress
     if (self.canSelectBtn) {
         if (self.canSelectBtn(sender)) {
             self.selectBtn = sender;
-            self.selected = sender.tag;
+            _selected = sender.tag;
         }
     } else {
         self.selectBtn = sender;
-        self.selected = sender.tag;
+        _selected = sender.tag;
     }
-    [self updateLine];
+    if (self.lineAnimation != FMNavBtnsLineAnimationProgress) {
+        [self updateLine];
+    }
 }
 
 - (void)layoutSubviews{
