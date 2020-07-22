@@ -25,13 +25,7 @@
 - (instancetype)appendImageWithName:(NSString *)imageName font:(UIFont *)font{
     if (imageName && imageName.length > 0) {
         UIImage *image = [UIImage imageNamed:imageName];
-        if (image) {
-            NSTextAttachment *atta = [[NSTextAttachment alloc] init];
-            atta.image = image;
-            NSAttributedString *attaAttr = [NSAttributedString attributedStringWithAttachment:atta];
-            [self appendAttributedString:attaAttr];
-            [self addAttributes:@{NSBaselineOffsetAttributeName:@((font.capHeight - image.size.height) * 0.5)} range:NSMakeRange(self.length - attaAttr.length, attaAttr.length)];
-        }
+        [self appendImage:image font:font];
     }
     return self;
 }
@@ -39,13 +33,29 @@
 - (instancetype)insertImageWithName:(NSString *)imageName font:(UIFont *)font atIndex:(NSUInteger)index{
     if (imageName && imageName.length > 0) {
         UIImage *image = [UIImage imageNamed:imageName];
-        if (image) {
-            NSTextAttachment *atta = [[NSTextAttachment alloc] init];
-            atta.image = image;
-            NSAttributedString *attaAttr = [NSAttributedString attributedStringWithAttachment:atta];
-            [self insertAttributedString:attaAttr atIndex:index];
-            [self addAttributes:@{NSBaselineOffsetAttributeName:@((font.capHeight - image.size.height) * 0.5)} range:NSMakeRange(index, attaAttr.length)];
-        }
+        [self insertImage:image font:font atIndex:index];
+    }
+    return self;
+}
+
+- (instancetype)appendImage:(UIImage *)image font:(UIFont *)font{
+    if (image) {
+        NSTextAttachment *atta = [[NSTextAttachment alloc] init];
+        atta.image = image;
+        NSAttributedString *attaAttr = [NSAttributedString attributedStringWithAttachment:atta];
+        [self appendAttributedString:attaAttr];
+        [self addAttributes:@{NSBaselineOffsetAttributeName:@((font.capHeight - image.size.height) * 0.5)} range:NSMakeRange(self.length - attaAttr.length, attaAttr.length)];
+    }
+    return self;
+}
+
+- (instancetype)insertImage:(UIImage *)image font:(UIFont *)font atIndex:(NSUInteger)index{
+    if (image) {
+        NSTextAttachment *atta = [[NSTextAttachment alloc] init];
+        atta.image = image;
+        NSAttributedString *attaAttr = [NSAttributedString attributedStringWithAttachment:atta];
+        [self insertAttributedString:attaAttr atIndex:index];
+        [self addAttributes:@{NSBaselineOffsetAttributeName:@((font.capHeight - image.size.height) * 0.5)} range:NSMakeRange(index, attaAttr.length)];
     }
     return self;
 }

@@ -9,16 +9,53 @@
 #import "FMNavBtnsView.h"
 #import "FMConfig.h"
 #import <Masonry/Masonry.h>
+#import <objc/runtime.h>
 
 #import "UIView+FMExtension.h"
 
+@interface NSObject (FMPagesLoaded)
+
+@property(nonatomic, assign)BOOL __isLayoutFinish;
+
+@end
+
+static void *__FMPagesLoadedKey = &__FMPagesLoadedKey;
+
+@implementation NSObject (FMPagesLoaded)
+
+- (BOOL)__isLayoutFinish{
+    return [objc_getAssociatedObject(self, __FMPagesLoadedKey) boolValue];
+}
+
+- (void)set__isLayoutFinish:(BOOL)__isLayoutFinish{
+    objc_setAssociatedObject(self, __FMPagesLoadedKey, @(__isLayoutFinish), OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+@end
+
 @interface FMPagesViewController ()
 
-@property(nonatomic, strong)NSArray *pages;
+@property(nonatomic, strong)NSArray *__pages;
 
 @end
 
 @implementation FMPagesViewController
+
+- (void)setCurrentIndex:(NSInteger)currentIndex{
+    [self setCurrentIndex:currentIndex animated:NO];
+}
+
+- (void)setCurrentIndex:(NSInteger)currentIndex animated:(BOOL)animated{
+    if (_currentIndex == currentIndex) {
+        return;
+    }
+    _currentIndex = currentIndex;
+    self.pageNavView.selected = currentIndex;
+    [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width * currentIndex, 0) animated:animated];
+    if (!animated) {
+        [self scrollToCurrentPage];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,11 +65,12 @@
 
 - (void)createPageBtns{
     FMNavBtnsView *btns = [[FMNavBtnsView alloc] init];
+    btns.selected = self.currentIndex;
     btns.lineAnimation = FMNavBtnsLineAnimationProgress;
     btns.lineBottomMargin = 3;
     FMWeakSelf;
     [btns setClickBlock:^(NSInteger tag) {
-        [weakSelf.scrollView setContentOffset:CGPointMake([FMConfig config].screenWidth * tag, 0) animated:YES];
+        [weakSelf.scrollView setContentOffset:CGPointMake(weakSelf.scrollView.frame.size.width * tag, 0) animated:YES];
     }];
     [self.mainContainer addSubview:btns];
     [btns mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -56,21 +94,26 @@
 
 - (void)createSubPages:(NSArray *)pages{
     [self.scrollView removeAllSubviews];
-    self.scrollView.contentSize = CGSizeMake([FMConfig config].screenWidth * pages.count, 0);
-    self.pages = pages;
+    [self.scrollView layoutIfNeeded];
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * pages.count, 0);
+    self.__pages = pages;
     for (int i = 0; i<pages.count; i++) {
-        id page = pages[i];
+        NSObject *page = pages[i];
         if ([page isKindOfClass:[UIViewController class]]) {///控制器
-            [self addChildViewController:page];
+            if (![self.childViewControllers containsObject:(UIViewController *)page]) {
+                [self addChildViewController:(UIViewController *)page];
+            }
+            page.__isLayoutFinish = NO;
         } else if ([page isKindOfClass:[UIView class]]) {///view
             UIView *pageView = (UIView *)page;
             [self.scrollView addSubview:pageView];
             [pageView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.mas_equalTo([FMConfig config].screenWidth * i);
+                make.left.mas_equalTo(self.scrollView.frame.size.width * i);
                 make.top.mas_equalTo(0);
-                make.width.mas_equalTo([FMConfig config].screenWidth);
+                make.width.mas_equalTo(self.scrollView.frame.size.width);
                 make.height.mas_equalTo(self.scrollView);
             }];
+            page.__isLayoutFinish = YES;
         }
     }
     [self scrollToCurrentPage];
@@ -78,21 +121,29 @@
 
 - (void)scrollToCurrentPage{
     NSInteger page = self.scrollView.contentOffset.x / self.scrollView.frame.size.width;
-    if (page < self.pages.count) {
-        id pageV = self.pages[page];
+    if (page < self.__pages.count) {
+        NSObject *pageV = self.__pages[page];
+        UIView *pageView;
         if ([pageV isKindOfClass:[UIViewController class]]) {
             UIViewController *pageVC = (UIViewController *)pageV;
-            if (!pageVC.viewLoaded) {
-                [self.scrollView addSubview:pageVC.view];
-                [pageVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.left.mas_equalTo([FMConfig config].screenWidth * page);
-                    make.top.mas_equalTo(0);
-                    make.width.mas_equalTo([FMConfig config].screenWidth);
-                    make.height.mas_equalTo(self.scrollView);
-                }];
-            }
+            pageView = pageVC.view;
+        } else if ([pageV isKindOfClass:[UIView class]]) {
+            pageView = (UIView *)pageV;
+        }
+        if (![self.scrollView.subviews containsObject:pageView]) {
+            [self.scrollView addSubview:pageView];
+        }
+        if (!pageV.__isLayoutFinish) {
+            [pageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.mas_equalTo(self.scrollView.frame.size.width * page);
+                make.top.mas_equalTo(0);
+                make.width.mas_equalTo(self.scrollView.frame.size.width);
+                make.height.mas_equalTo(self.scrollView);
+            }];
+            pageV.__isLayoutFinish = YES;
         }
     }
+    _currentIndex = page;
     if (self.pageNavView.selected != page) {
         self.pageNavView.selected = page;
     }

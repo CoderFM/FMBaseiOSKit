@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)appendImageWithName:(NSString *)imageName font:(UIFont *)font;
 - (instancetype)insertImageWithName:(NSString *)imageName font:(UIFont *)font atIndex:(NSUInteger)index;
 
+- (instancetype)appendImage:(UIImage *)image font:(UIFont *)font;
+- (instancetype)insertImage:(UIImage *)image font:(UIFont *)font atIndex:(NSUInteger)index;
+
 - (instancetype)setLineSpace:(CGFloat)lineSpace;
 
 @end

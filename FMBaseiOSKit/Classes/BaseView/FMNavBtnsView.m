@@ -341,6 +341,9 @@ CGRect ConvertFrameProgress(CGRect original, CGRect finalFrame, CGFloat progress
 - (void)lineUpdateAnimationFinalFrame:(CGRect)finalFrame{
     switch (self.lineAnimation) {
         case FMNavBtnsLineAnimationProgress:
+            if (!CGRectEqualToRect(finalFrame, self.lineView.frame)) {
+                self.lineView.frame = finalFrame;
+            }
             break;
         case FMNavBtnsLineAnimationNone:
         {

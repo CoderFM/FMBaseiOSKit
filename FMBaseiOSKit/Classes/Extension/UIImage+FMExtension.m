@@ -9,7 +9,7 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     [[UIApplication sharedApplication].keyWindow addSubview:view];
     view.backgroundColor = color;
-
+    
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, YES, [UIScreen mainScreen].scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     [view.layer renderInContext:context];
@@ -61,5 +61,48 @@
     
     return imageData;
 }
+
++ (instancetype)imageWithAttributes:(NSAttributedString *)attributes{
+    return [self imageWithAttributes:attributes inset:UIEdgeInsetsZero];
+}
+
++ (instancetype)imageWithAttributes:(NSAttributedString *)attributes inset:(UIEdgeInsets)inset{
+    return [self imageWithAttributes:attributes inset:inset borderWidth:0 borderColor:nil cornerRadius:0 backgroundColor:nil];
+}
+
++ (instancetype)imageWithAttributes:(NSAttributedString *)attributes inset:(UIEdgeInsets)inset borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor cornerRadius:(CGFloat)cornerRadius backgroundColor:(UIColor * __nullable)bgColor{
+    
+    CGSize attrSize = [attributes boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
+    CGSize imageSize = CGSizeMake(inset.left + attrSize.width + inset.right, inset.top + attrSize.height + inset.bottom);
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, [UIScreen mainScreen].scale);
+    [attributes drawAtPoint:CGPointMake(inset.left, inset.top)];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, imageSize.width, imageSize.height)];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.attributedText = attributes;
+    [[UIApplication sharedApplication].keyWindow addSubview:label];
+    
+    label.layer.cornerRadius = cornerRadius;
+    
+    if (bgColor) {
+        label.backgroundColor = bgColor;
+        if (cornerRadius > 0) {
+            label.layer.masksToBounds = YES;
+        }
+    }
+    
+    if (borderColor) {
+        label.layer.borderColor = borderColor.CGColor;
+        label.layer.borderWidth = borderWidth;
+    }
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [label.layer renderInContext:context];
+    [label removeFromSuperview];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 
 @end

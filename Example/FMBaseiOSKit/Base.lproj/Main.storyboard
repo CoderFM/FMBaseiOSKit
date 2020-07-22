@@ -68,14 +68,24 @@
                                     <constraint firstItem="tOn-cv-lyp" firstAttribute="centerY" secondItem="Mai-xn-qdL" secondAttribute="centerY" id="mVk-gg-ggI"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2yN-sF-4sT">
+                                <rect key="frame" x="137.5" y="554" width="100" height="100"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="EqK-Of-opq"/>
+                                    <constraint firstAttribute="height" constant="100" id="Sds-kD-Rrq"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="2yN-sF-4sT" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="1XH-4r-L5l"/>
                             <constraint firstItem="vSh-QI-yYH" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="5Cu-wt-bUL"/>
                             <constraint firstItem="Mai-xn-qdL" firstAttribute="top" secondItem="HeG-Hk-Y1H" secondAttribute="bottom" constant="30" id="6lg-33-GKG"/>
                             <constraint firstItem="Mai-xn-qdL" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="DSO-H0-QlZ"/>
                             <constraint firstItem="X3U-RX-dMM" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="150" id="EWM-ao-xE4"/>
                             <constraint firstItem="X3U-RX-dMM" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="FRT-j0-hly"/>
+                            <constraint firstItem="2yN-sF-4sT" firstAttribute="top" secondItem="Mai-xn-qdL" secondAttribute="bottom" constant="20" id="HPj-tr-5kE"/>
                             <constraint firstItem="vSh-QI-yYH" firstAttribute="top" secondItem="olt-uK-ZPI" secondAttribute="bottom" constant="30" id="VuD-yR-etu"/>
                             <constraint firstItem="HeG-Hk-Y1H" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="eDB-nV-8XL"/>
                             <constraint firstItem="HeG-Hk-Y1H" firstAttribute="top" secondItem="vSh-QI-yYH" secondAttribute="bottom" constant="30" id="pvy-RS-QOJ"/>
@@ -84,6 +94,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HtZ-c9-v73"/>
+                    <connections>
+                        <outlet property="imageView" destination="2yN-sF-4sT" id="oDO-ht-EbT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

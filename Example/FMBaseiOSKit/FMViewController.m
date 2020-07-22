@@ -17,6 +17,7 @@
 #import <Masonry/Masonry.h>
 
 @interface FMViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
@@ -56,6 +57,9 @@
             
         }];
     }
+    
+    self.imageView.image = [UIImage imageWithAttributes:[@"测试" toAttrWithAttr:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}] inset:UIEdgeInsetsMake(10, 10, 10, 10) borderWidth:1 borderColor:[UIColor blackColor] cornerRadius:10 backgroundColor:[UIColor cyanColor]];
+    
 }
 
 - (void)didReceiveMemoryWarning
