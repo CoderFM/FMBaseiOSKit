@@ -105,4 +105,8 @@
     NSLog(@"center: %@", [NSValue valueWithCGPoint:sender.globalCenter]);
 }
 
++ (NSSet<NSString *> *)keyPathsForValuesAffectingValueForKey:(NSString *)key{
+    return [super keyPathsForValuesAffectingValueForKey:key];
+}
+
 @end

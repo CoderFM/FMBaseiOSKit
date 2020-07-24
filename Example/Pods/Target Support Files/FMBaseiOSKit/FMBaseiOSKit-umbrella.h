@@ -26,6 +26,7 @@
 #import "FMBaseVCLoadingView.h"
 #import "FMNavBtnsView.h"
 #import "FMNoneDataView.h"
+#import "NSAttributedString+FMExtension.h"
 #import "NSDictionary+FMExtension.h"
 #import "NSMutableAttributedString+FMExtension.h"
 #import "NSString+FMExtension.h"

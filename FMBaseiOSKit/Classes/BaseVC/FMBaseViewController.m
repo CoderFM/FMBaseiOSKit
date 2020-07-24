@@ -122,7 +122,7 @@
     if (self.viewLoaded) {
         self.toolContainer.hidden = !hasToolView;
         [self.mainContainer mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(hasToolView?[FMConfig config].tabBarHeight:0);
+            make.bottom.mas_equalTo(hasToolView?-[FMConfig config].tabBarHeight:0);
         }];
     }
 }

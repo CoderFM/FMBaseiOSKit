@@ -10,21 +10,11 @@
 #import "FMCollectionCustomCell.h"
 #import "FMCollectionCustomDecoration.h"
 
-
-
 @interface FMTaoBaoHomeViewController ()
-@property(nonatomic, weak)FMNavBtnsView *btnsView;
+
 @end
 
 @implementation FMTaoBaoHomeViewController
-
-- (void)setBtnsView:(FMNavBtnsView *)btnsView{
-    _btnsView = btnsView;
-    FMWeakSelf;
-    [btnsView setClickBlock:^(NSInteger tag) {
-        [weakSelf.teslaView scrollToIndex:tag animated:YES];
-    }];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -100,7 +90,7 @@
                 [btns mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.left.right.top.bottom.mas_equalTo(0);
                 }];
-                weakSelf.btnsView = btns;
+                weakSelf.pageNavView = btns;
             }
         }];
         [sections addObject:section];
@@ -129,33 +119,12 @@
     self.pageSections = pageSections;
 }
 
-- (NSArray<FMLayoutBaseSection *> *)shareSectionsInTesla:(FMTeslaLayoutView *)tesla{
-    return self.shareSections;
-}
-
-- (NSInteger)numberOfScreenInTesla:(FMTeslaLayoutView *)tesla{
-    return self.pageSections.count;
-}
-
-- (void)tesla:(FMTeslaLayoutView *)tesla scrollViewDidScroll:(UIScrollView *)scrollView{
-    CGFloat progress = (scrollView.contentOffset.x - self.btnsView.selected * scrollView.frame.size.width) / scrollView.frame.size.width;
-    if (scrollView.contentOffset.x < self.btnsView.selected * scrollView.frame.size.width) {
-        [self.btnsView scrollPrevProgress:progress];
-    } else if (scrollView.contentOffset.x > self.btnsView.selected * scrollView.frame.size.width) {
-        [self.btnsView scrollNextProgress:progress];
-    }
-}
-
-- (void)tesla:(FMTeslaLayoutView *)tesla didScrollEnd:(NSInteger)index currentScrollView:(FMLayoutView *)layoutView{
-    self.btnsView.selected = index;
-}
-
 - (void)tesla:(FMTeslaLayoutView *)tesla currentScrollViewScrollDidScroll:(FMLayoutView *)currentLayoutView contentOffset:(CGPoint)contentOffset{
     CGFloat shareHeight = [[tesla valueForKey:@"shareHeight"] floatValue];
     if (shareHeight > 0 && contentOffset.y >= (shareHeight - 50)) {
-        self.btnsView.backgroundColor = [UIColor whiteColor];
+        self.pageNavView.backgroundColor = [UIColor whiteColor];
     } else {
-        self.btnsView.backgroundColor = [UIColor clearColor];
+        self.pageNavView.backgroundColor = [UIColor clearColor];
     }
 }
 

@@ -201,10 +201,7 @@ multi.dataSource = self;
 - (NSInteger)numberOfScreenInTesla:(nonnull FMTeslaLayoutView *)tesla {
     return 4;
 }
-/// 对应页面的view需要展示的Sections集合
-- (nonnull NSMutableArray<FMLayoutBaseSection *> *)tesla:(nonnull FMTeslaLayoutView *)tesla sectionsInScreenIndex:(NSInteger)screenIndex {
-    return [self.sections mutableCopy];
-}
+
 /// 头部共享的集合
 - (NSArray<FMLayoutBaseSection *> *)shareSectionsInTesla:(FMTeslaLayoutView *)tesla{
     return self.shareSections;
@@ -212,7 +209,14 @@ multi.dataSource = self;
 
 ```
 #### 版本更新
-2020-07-16(1.0.8)
+2020-07-21(1.1.1)
+合并取消支持拖拽, 会出现多重问题, 拖拽切换数据的问题修复
+
+2020-07-21(1.1.0)
+清楚长按拖拽View的背景色
+长按拖拽可控制分组中某些item不支持拖拽, 修复合并分组的奔溃问题
+
+2020-07-20(1.0.8)
 代码优化, 新增动态布局不等宽的布局, 可实现更多种布局方案
 
 2020-07-16(1.0.7)

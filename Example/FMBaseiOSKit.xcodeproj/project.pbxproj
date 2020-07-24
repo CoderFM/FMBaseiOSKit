@@ -23,6 +23,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		C304615724CA716C00C020F3 /* NSObject+FMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C304615624CA716C00C020F3 /* NSObject+FMExtension.m */; };
 		C339075024B579690041704D /* FMFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339074B24B579680041704D /* FMFormViewController.m */; };
 		C339075124B579690041704D /* FMTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339074D24B579680041704D /* FMTestViewController.m */; };
 		C339075224B579690041704D /* FMLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339074F24B579690041704D /* FMLayoutViewController.m */; };
@@ -78,6 +79,8 @@
 		A85802E873C87BD3B8FEBEB2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		AA022FB32E9262B75DFF5D7B /* Pods-FMBaseiOSKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FMBaseiOSKit_Example.debug.xcconfig"; path = "Target Support Files/Pods-FMBaseiOSKit_Example/Pods-FMBaseiOSKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		BFBB5B14ECE12BB02D3A8391 /* FMBaseiOSKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FMBaseiOSKit.podspec; path = ../FMBaseiOSKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C304615524CA716C00C020F3 /* NSObject+FMExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+FMExtension.h"; sourceTree = "<group>"; };
+		C304615624CA716C00C020F3 /* NSObject+FMExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FMExtension.m"; sourceTree = "<group>"; };
 		C339074A24B579680041704D /* FMTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMTestViewController.h; sourceTree = "<group>"; };
 		C339074B24B579680041704D /* FMFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMFormViewController.m; sourceTree = "<group>"; };
 		C339074C24B579680041704D /* FMLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLayoutViewController.h; sourceTree = "<group>"; };
@@ -213,6 +216,8 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* FMViewController.h */,
 				6003F5A6195388D20070C39A /* FMViewController.m */,
+				C304615524CA716C00C020F3 /* NSObject+FMExtension.h */,
+				C304615624CA716C00C020F3 /* NSObject+FMExtension.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -441,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3D5DC7624C02A92000C7470 /* FMHomeViewController.m in Sources */,
+				C304615724CA716C00C020F3 /* NSObject+FMExtension.m in Sources */,
 				C3F2998524BD574500833D9E /* FMTaoBaoHomeViewController.m in Sources */,
 				C3F2998824BD5EBE00833D9E /* FMCollectionViewCell.m in Sources */,
 				C3F2998E24BD5EDE00833D9E /* FMCollectionCustomDecoration.m in Sources */,
