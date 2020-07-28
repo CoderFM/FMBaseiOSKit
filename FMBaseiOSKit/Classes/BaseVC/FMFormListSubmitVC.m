@@ -35,6 +35,9 @@
         FormListSubmitView *table = [[FormListSubmitView alloc] initWithFrame:CGRectZero style:self.tableStyle];
         [table registerClass:[FormListTitleCell class] forCellReuseIdentifier:NSStringFromClass([FormListTitleCell class])];
         [self.mainContainer addSubview:table];
+        if(@available(iOS 11.0, *)) {
+            table.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
         _tableView = table;
     }
     return _tableView;

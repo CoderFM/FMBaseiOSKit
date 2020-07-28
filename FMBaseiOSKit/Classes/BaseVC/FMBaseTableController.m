@@ -22,6 +22,9 @@
         [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.top.bottom.equalTo(@(0));
         }];
+        if(@available(iOS 11.0, *)) {
+            tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
         _tableView = tableView;
     }
     return _tableView;

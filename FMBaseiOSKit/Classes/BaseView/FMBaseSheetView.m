@@ -90,6 +90,7 @@
         }];
         self.type = FMSheetTypeBottom;
         self.animationDamping = 1;
+        self.animationVelocity = 0;
 //        CAShapeLayer *layer = [CAShapeLayer layer];
 //        UIRectCorner corner = UIRectCornerTopLeft | UIRectCornerTopRight;
 //        layer.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, [FMConfig config].screenWidth, [FMConfig config].screenHeight) byRoundingCorners:corner cornerRadii:CGSizeMake(BaseSize(16), BaseSize(16))].CGPath;
