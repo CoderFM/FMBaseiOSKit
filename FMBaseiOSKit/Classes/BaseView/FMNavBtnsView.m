@@ -120,7 +120,7 @@ CGRect ConvertFrameProgress(CGRect original, CGRect finalFrame, CGFloat progress
         UIView *view = [[UIView alloc] init];
         [self.scrollView addSubview:view];
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.top.bottom.mas_equalTo(0);
+            make.left.right.top.mas_equalTo(0);
             make.height.mas_equalTo(self.scrollView.mas_height);
         }];
         self.scrollContent = view;
@@ -164,9 +164,10 @@ CGRect ConvertFrameProgress(CGRect original, CGRect finalFrame, CGFloat progress
                     if (left) {
                         make.left.mas_equalTo(left.mas_right);
                     } else {
-                        make.left.mas_equalTo(0);
+                        make.left.mas_equalTo(self.inset.left);
                     }
-                    make.top.bottom.mas_equalTo(0);
+                    make.top.mas_equalTo(self.inset.top);
+                    make.bottom.mas_equalTo(-self.inset.bottom);
                     make.width.mas_equalTo(width + self.itemMargin);
                 }];
                 left = btn;
@@ -180,7 +181,7 @@ CGRect ConvertFrameProgress(CGRect original, CGRect finalFrame, CGFloat progress
             }
             if (left) {
                 [left mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.right.mas_equalTo(0);
+                    make.right.mas_equalTo(-self.inset.right);
                 }];
             }
             [self updateLine];
@@ -193,6 +194,7 @@ CGRect ConvertFrameProgress(CGRect original, CGRect finalFrame, CGFloat progress
         } else {
             UIButton *left = nil;
             CGFloat multiplied = 1 / (self.titles.count * 1.0);
+            CGFloat margin = (self.inset.left + self.inset.right) * multiplied;
             for (int i = 0; i < self.titles.count; i++) {
                 UIButton *btn = [self createBtnIndex:i];
                 [self addSubview:btn];
@@ -200,10 +202,11 @@ CGRect ConvertFrameProgress(CGRect original, CGRect finalFrame, CGFloat progress
                     if (left) {
                         make.left.mas_equalTo(left.mas_right);
                     } else {
-                        make.left.mas_equalTo(0);
+                        make.left.mas_equalTo(self.inset.left);
                     }
-                    make.top.bottom.mas_equalTo(0);
-                    make.width.mas_equalTo(self.mas_width).multipliedBy(multiplied);
+                    make.top.mas_equalTo(self.inset.top);
+                    make.bottom.mas_equalTo(-self.inset.bottom);
+                    make.width.mas_equalTo(self.mas_width).multipliedBy(multiplied).offset(-margin);
                 }];
                 left = btn;
                 if (i == self.selected) {
@@ -285,6 +288,9 @@ CGRect ConvertFrameProgress(CGRect original, CGRect finalFrame, CGFloat progress
     if (!self.lineLayouted) {
         if (self.canScroll) {
             [self.scrollContent layoutIfNeeded];
+            if (self.scrollView.contentInset.top > 0) {
+                self.scrollView.contentInset = UIEdgeInsetsZero;
+            }
         }
         [self updateLine];
     }

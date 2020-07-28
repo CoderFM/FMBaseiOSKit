@@ -30,6 +30,7 @@
     
     {
         FMNavBtnsView *nav1 = [[FMNavBtnsView alloc] init];
+        nav1.inset = UIEdgeInsetsMake(3, 10, 3, 10);
         nav1.titles = @[@"标签1", @"标签1", @"标签1", @"标签1", @"标签1"];
         [self.view addSubview:nav1];
         [nav1 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -46,6 +47,7 @@
         nav1.lineAnimation = FMNavBtnsLineAnimationZoom;
         nav1.lineBottomMargin = 10;
         nav1.lineTitleMargin = 4;
+        nav1.inset = UIEdgeInsetsMake(3, 20, 3, 20);
         nav1.titles = @[@"标签1", @"标签标签11", @"标", @"标签1标签标签11", @"标签221", @"标签1asdasdadasd", @"标222签1", @"标s签1", @"标223434签1", @"标签1", @"标签标签11"];
         [self.view addSubview:nav1];
         [nav1 mas_makeConstraints:^(MASConstraintMaker *make) {
