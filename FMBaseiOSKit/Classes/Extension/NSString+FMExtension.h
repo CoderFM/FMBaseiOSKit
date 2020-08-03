@@ -5,6 +5,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSString (FMExtension)
 
+- (NSMutableString *)toMutableString;
+
 - (NSMutableAttributedString *)toAttr;
 
 - (NSMutableAttributedString *)toAttrWithAttr:(NSDictionary *)attr;
@@ -20,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isHttpUrl;
 
 - (NSInteger)getNumberOfLinesWithAttributes:(NSDictionary *)attributes andLabelWidth:(CGFloat)width;
+
+- (instancetype)beyondLength:(NSInteger)length end:(NSString * __nullable)end;
 
 @end
 

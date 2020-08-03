@@ -40,10 +40,15 @@
 
 - (instancetype)appendImage:(UIImage *)image font:(UIFont *)font{
     if (image) {
-        [self addAttributes:@{NSBaselineOffsetAttributeName:@((image.size.height - font.capHeight) * 0.5)} range:NSMakeRange(0, self.length)];
+        if (image.size.height > font.capHeight) {
+            [self addAttributes:@{NSBaselineOffsetAttributeName:@((image.size.height - font.capHeight) * 0.5)} range:NSMakeRange(0, self.length)];
+        }
         NSTextAttachment *atta = [[NSTextAttachment alloc] init];
         atta.image = image;
-        NSAttributedString *attaAttr = [NSAttributedString attributedStringWithAttachment:atta];
+        NSMutableAttributedString *attaAttr = [[NSAttributedString attributedStringWithAttachment:atta] mutableCopy];
+        if (image.size.height < font.capHeight) {
+            [attaAttr addAttributes:@{NSBaselineOffsetAttributeName:@((font.capHeight - image.size.height) * 0.5)} range:NSMakeRange(0, attaAttr.length)];
+        }
         [self appendAttributedString:attaAttr];
     }
     return self;
@@ -51,10 +56,15 @@
 
 - (instancetype)insertImage:(UIImage *)image font:(UIFont *)font atIndex:(NSUInteger)index{
     if (image) {
-        [self addAttributes:@{NSBaselineOffsetAttributeName:@((image.size.height - font.capHeight) * 0.5)} range:NSMakeRange(0, self.length)];
+        if (image.size.height > font.capHeight) {
+            [self addAttributes:@{NSBaselineOffsetAttributeName:@((image.size.height - font.capHeight) * 0.5)} range:NSMakeRange(0, self.length)];
+        }
         NSTextAttachment *atta = [[NSTextAttachment alloc] init];
         atta.image = image;
         NSMutableAttributedString *attaAttr = [[NSAttributedString attributedStringWithAttachment:atta] mutableCopy];
+        if (image.size.height < font.capHeight) {
+            [attaAttr addAttributes:@{NSBaselineOffsetAttributeName:@((font.capHeight - image.size.height) * 0.5)} range:NSMakeRange(0, attaAttr.length)];
+        }
         [self insertAttributedString:attaAttr atIndex:index];
     }
     return self;

@@ -34,6 +34,7 @@
 #import "UIImage+FMExtension.h"
 #import "UIImageView+FMExtension.h"
 #import "NSString+FMExtension.h"
+#import "NSMutableString+FMExtension.h"
 #import "NSDictionary+FMExtension.h"
 #import "UITableViewCell+FMExtension.h"
 #import "UICollectionView+FMExtension.h"

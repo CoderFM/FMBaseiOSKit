@@ -168,6 +168,8 @@
 		BC59FD504614ED8C0BE2D8DE014954F6 /* UITextView+FormExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B3B8E0D4BFCF572E1528621B0A78BD /* UITextView+FormExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BEC5CC4D986BF38D28B4A046FC2857A4 /* FormListImageUpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C3ABCF7FC16991FECB48626B76ED50 /* FormListImageUpModel.m */; };
 		C08D5AC8FCAE583D825A98DBAA237B0F /* FMTeslaSuspensionHeightChangeDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BF190479DB7D86A50A8ACB40BE86D61 /* FMTeslaSuspensionHeightChangeDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3A1542524D7B6C0005C9239 /* NSMutableString+FMExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = C3A1542324D7B6C0005C9239 /* NSMutableString+FMExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3A1542624D7B6C0005C9239 /* NSMutableString+FMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A1542424D7B6C0005C9239 /* NSMutableString+FMExtension.m */; };
 		C3E8B83D2A07978652943972D8758395 /* FMBaseSheetView.h in Headers */ = {isa = PBXBuildFile; fileRef = EF69E3041F7EA2A694E98BB7834841E7 /* FMBaseSheetView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3F16AF57CB05F5BDE9C613BE968C7FF /* FMLayoutDebugLog.h in Headers */ = {isa = PBXBuildFile; fileRef = CBD85F4C5AA3EB3A4CA6A214211D18F4 /* FMLayoutDebugLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C425B20453B63E4357274BDA0A9F6127 /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2885129BB75EA5C30CB69A7C9AC87325 /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -323,7 +325,7 @@
 		120ED3440649092E765246214C27F0DA /* MASViewConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewConstraint.h; path = Masonry/MASViewConstraint.h; sourceTree = "<group>"; };
 		12B9144FB49D27ACE279DCE087FB90CA /* FMPagesViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FMPagesViewController.h; sourceTree = "<group>"; };
 		12D2F64F15AFB3117742CDEB2DD5839B /* UIColor+FMExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FMExtension.m"; sourceTree = "<group>"; };
-		13087708333A0EACFA811D6B5ABDAE59 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		13087708333A0EACFA811D6B5ABDAE59 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		13FEE92B6335A0B1DE76D2C95583CEF3 /* FormListSelectModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FormListSelectModel.m; path = FMFormSubmitKit/Classes/Model/FormListSelectModel.m; sourceTree = "<group>"; };
 		1412D6DC9E1154985DD07E7953F80895 /* UIImageView+FMExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+FMExtension.m"; sourceTree = "<group>"; };
 		17A858DFF46C4B172A10ED0F3319A1D6 /* FMBaseiOSKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMBaseiOSKit.h; path = FMBaseiOSKit/Classes/FMBaseiOSKit.h; sourceTree = "<group>"; };
@@ -336,7 +338,7 @@
 		1F7C8C68240EDF6F51E5C87A7A472D93 /* FormListTitleModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FormListTitleModel.m; path = FMFormSubmitKit/Classes/Model/FormListTitleModel.m; sourceTree = "<group>"; };
 		1FA39C4E1E8817927ED496357018C8FE /* FMLayoutKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FMLayoutKit-Info.plist"; sourceTree = "<group>"; };
 		1FF9CCB5D5D550B763537117D31F065A /* FormListTitleCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FormListTitleCell.h; path = FMFormSubmitKit/Classes/View/FormListTitleCell.h; sourceTree = "<group>"; };
-		1FFED36A657123030ABB700256D73F15 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Masonry.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FFED36A657123030ABB700256D73F15 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		245D6B295A6CFF2E2F1655B810AB479C /* MASConstraintMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraintMaker.h; path = Masonry/MASConstraintMaker.h; sourceTree = "<group>"; };
 		2504CD567D3C6B313E4ECB92032BA1C0 /* FMLayoutCrossSection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMLayoutCrossSection.h; path = FMLayoutKit/Classes/Cross/FMLayoutCrossSection.h; sourceTree = "<group>"; };
 		261C163F5C52532DB49036B9BFA5A6F9 /* FMFormSubmitKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FMFormSubmitKit.modulemap; sourceTree = "<group>"; };
@@ -399,7 +401,7 @@
 		5377BCDF1DB0E21FA4F802452041A71D /* FormListSelectCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FormListSelectCell.h; path = FMFormSubmitKit/Classes/View/FormListSelectCell.h; sourceTree = "<group>"; };
 		549E0F71BBBC684ADBDD620BF4FA9D87 /* FMKVOArrayObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMKVOArrayObject.h; path = FMLayoutKit/Classes/FMKVOArrayObject.h; sourceTree = "<group>"; };
 		54E9D34A32A8D6F59975B8EF57282BC2 /* FMLayoutKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FMLayoutKit.debug.xcconfig; sourceTree = "<group>"; };
-		56F79E697964932E7018BE6E513BAD07 /* Pods_FMBaseiOSKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FMBaseiOSKit_Example.framework; path = "Pods-FMBaseiOSKit_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56F79E697964932E7018BE6E513BAD07 /* Pods_FMBaseiOSKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FMBaseiOSKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59670CC26D299BC3432DE4ACA1BCF01A /* FMLayoutKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FMLayoutKit-umbrella.h"; sourceTree = "<group>"; };
 		5B2F3682A9B8F13418FEDC4044B1BE77 /* FMLayoutDebugLog.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMLayoutDebugLog.m; path = FMLayoutKit/Classes/FMLayoutDebugLog.m; sourceTree = "<group>"; };
 		5CF00BBEE64058EBAB6915748CA29850 /* FMLayoutDynamicSection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMLayoutDynamicSection.h; path = FMLayoutKit/Classes/Sections/FMLayoutDynamicSection.h; sourceTree = "<group>"; };
@@ -458,7 +460,7 @@
 		9B5641C23BD9CDD5129EBD9A0E49850F /* FMLayoutFixedSection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMLayoutFixedSection.m; path = FMLayoutKit/Classes/Sections/FMLayoutFixedSection.m; sourceTree = "<group>"; };
 		9BA79403F970A52536C44D20BFBEA455 /* FMBaseSheetTableView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FMBaseSheetTableView.h; sourceTree = "<group>"; };
 		9C9C8E7AB8F7E648C04580D38CCAD628 /* FormListImageUpCellItemView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FormListImageUpCellItemView.m; path = FMFormSubmitKit/Classes/View/FormListImageUpCellItemView.m; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E8080B7EDF09791403901E966B98F19 /* FMLayoutScaleSection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMLayoutScaleSection.m; path = FMLayoutKit/Classes/Sections/FMLayoutScaleSection.m; sourceTree = "<group>"; };
 		9E8A26AC674BBCF1110503C182A37D3D /* FormListSelectModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FormListSelectModel.h; path = FMFormSubmitKit/Classes/Model/FormListSelectModel.h; sourceTree = "<group>"; };
 		9EF5A2293A4D65E1586A0A98A0A277E3 /* FormListTextCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FormListTextCell.h; path = FMFormSubmitKit/Classes/View/FormListTextCell.h; sourceTree = "<group>"; };
@@ -473,14 +475,14 @@
 		A426BB87A49CA0F26380C18A6108682A /* NSAttributedString+FMExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+FMExtension.m"; sourceTree = "<group>"; };
 		A4DACF73C3CC5D30AE56FD2EE3E8AAF6 /* FMSupplementary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMSupplementary.m; path = FMLayoutKit/Classes/Element/FMSupplementary.m; sourceTree = "<group>"; };
 		A69D799F328482F5BC7D4C859055FFF6 /* UIBarButtonItem+FMExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+FMExtension.h"; sourceTree = "<group>"; };
-		A7236F153774F4091D0373A93F86D432 /* FMPickerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FMPickerView.framework; path = FMPickerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7236F153774F4091D0373A93F86D432 /* FMPickerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FMPickerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA28F6E398388EFC96A154279390E528 /* FormTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FormTextView.h; path = FMFormSubmitKit/Classes/View/FormTextView.h; sourceTree = "<group>"; };
 		AA7C24ECE7A33D0621C4CFFB8EB65583 /* FMLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMLayout.h; path = FMLayoutKit/Classes/FMLayout.h; sourceTree = "<group>"; };
 		AAC2726F3DD7DDED61BB8704DA5C518F /* FMPickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMPickerView.h; path = FMPickerView/Classes/FMPickerView.h; sourceTree = "<group>"; };
 		AB40F86384B1454B5A07AB0F8AD3AF14 /* FMBaseiOSKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FMBaseiOSKit-umbrella.h"; sourceTree = "<group>"; };
 		AB86CD87EEBBE14AD25778307FD8C98E /* FMPickerDataView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMPickerDataView.m; path = FMPickerView/Classes/FMPickerDataView.m; sourceTree = "<group>"; };
 		ABB0C1229DC2DACCD84B670A57F73217 /* UIColor+FMExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIColor+FMExtension.h"; sourceTree = "<group>"; };
-		AD1A48B760CB6501865CE5334340C625 /* Pods_FMBaseiOSKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FMBaseiOSKit_Tests.framework; path = "Pods-FMBaseiOSKit_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD1A48B760CB6501865CE5334340C625 /* Pods_FMBaseiOSKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FMBaseiOSKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADF08944705D2EBBC1B03F29DAEFD520 /* FMFormSubmitKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FMFormSubmitKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE23119B15D6520236BD99487046B7FE /* FormListBaseCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FormListBaseCell.h; path = FMFormSubmitKit/Classes/View/FormListBaseCell.h; sourceTree = "<group>"; };
 		AE6978C55167B8ABBBBA68C1474CE973 /* UIImageView+FMExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIImageView+FMExtension.h"; sourceTree = "<group>"; };
@@ -501,14 +503,16 @@
 		B968E8DD05377694C98B7A54C3BA7AF1 /* UITableViewCell+FMExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+FMExtension.h"; sourceTree = "<group>"; };
 		B99228176266E098FB451DDB9CB6E3F1 /* MASConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraint.h; path = Masonry/MASConstraint.h; sourceTree = "<group>"; };
 		BE9EA2693515996FE79ED5C01F363248 /* Pods-FMBaseiOSKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FMBaseiOSKit_Tests-dummy.m"; sourceTree = "<group>"; };
-		C034651C3C5001215E2337CAE5AD645D /* FMFormSubmitKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FMFormSubmitKit.framework; path = FMFormSubmitKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C034651C3C5001215E2337CAE5AD645D /* FMFormSubmitKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FMFormSubmitKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C060DB426B924030F511CF2B204DD159 /* FMLayoutElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMLayoutElement.h; path = FMLayoutKit/Classes/Element/FMLayoutElement.h; sourceTree = "<group>"; };
 		C0E96E6777DE6400E0ACB2F7DC4C2576 /* FMLayoutDynamicSection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMLayoutDynamicSection.m; path = FMLayoutKit/Classes/Sections/FMLayoutDynamicSection.m; sourceTree = "<group>"; };
 		C0F0382EDCC4CD3DFA92E4C5A18E4A36 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
 		C20963D1C55F8E10D2A80C8F30BE4376 /* FMNoneDataView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FMNoneDataView.h; sourceTree = "<group>"; };
 		C294F4306B4DF6F2AC63B298B7AF6E80 /* FormVerifyManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FormVerifyManager.m; path = FMFormSubmitKit/Classes/Tool/FormVerifyManager.m; sourceTree = "<group>"; };
 		C2D0A7C2452E6E0C3FF28CAB89ED7D00 /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
-		C72A2997964AF1B4A94F2CC669FDD1D9 /* FMBaseiOSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FMBaseiOSKit.framework; path = FMBaseiOSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3A1542324D7B6C0005C9239 /* NSMutableString+FMExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+FMExtension.h"; sourceTree = "<group>"; };
+		C3A1542424D7B6C0005C9239 /* NSMutableString+FMExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+FMExtension.m"; sourceTree = "<group>"; };
+		C72A2997964AF1B4A94F2CC669FDD1D9 /* FMBaseiOSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FMBaseiOSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83AEA13668B893C337120D5DD2E9504 /* Pods-FMBaseiOSKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FMBaseiOSKit_Example.modulemap"; sourceTree = "<group>"; };
 		C96713C5181F18AC54366A4884055E6E /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
 		C9A7CEA1F62FE462A0AFB5C754C288F8 /* FMPickerView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FMPickerView.debug.xcconfig; sourceTree = "<group>"; };
@@ -516,13 +520,13 @@
 		CB163E005B9CFFA0132D168170EA8481 /* FormListUpImageConfigure.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FormListUpImageConfigure.h; path = FMFormSubmitKit/Classes/FormListUpImageConfigure.h; sourceTree = "<group>"; };
 		CB312D319B0CCE890438444BE0F49CE3 /* FMLayoutHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMLayoutHeader.m; path = FMLayoutKit/Classes/Element/FMLayoutHeader.m; sourceTree = "<group>"; };
 		CBD85F4C5AA3EB3A4CA6A214211D18F4 /* FMLayoutDebugLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMLayoutDebugLog.h; path = FMLayoutKit/Classes/FMLayoutDebugLog.h; sourceTree = "<group>"; };
-		CD5237ED21769F367AD59FEA53E56403 /* FMLayoutKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FMLayoutKit.framework; path = FMLayoutKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD5237ED21769F367AD59FEA53E56403 /* FMLayoutKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FMLayoutKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE410633CD61DD7DD2F7A53DB820D64 /* FMLayoutScaleSection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMLayoutScaleSection.h; path = FMLayoutKit/Classes/Sections/FMLayoutScaleSection.h; sourceTree = "<group>"; };
 		CDE465A9A5220AF715E3A72852474649 /* MASViewAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewAttribute.h; path = Masonry/MASViewAttribute.h; sourceTree = "<group>"; };
 		CE9614E53E2B51DF983FA52C292CA507 /* FMLayoutHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMLayoutHeader.h; path = FMLayoutKit/Classes/Element/FMLayoutHeader.h; sourceTree = "<group>"; };
 		CF09262FF8DEEE9F59139FF9406E330F /* MASCompositeConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASCompositeConstraint.h; path = Masonry/MASCompositeConstraint.h; sourceTree = "<group>"; };
 		D0B49A53459E2DF3FDB2EC9518206B4F /* FMLayoutKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FMLayoutKit.modulemap; sourceTree = "<group>"; };
-		D0E5643F06CAFCCD515E2A5B56A40D9C /* FMBaseiOSKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = FMBaseiOSKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		D0E5643F06CAFCCD515E2A5B56A40D9C /* FMBaseiOSKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = FMBaseiOSKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D4A6A86558E6D6C2342287DCC91892D2 /* FormListConfigure.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FormListConfigure.h; path = FMFormSubmitKit/Classes/FormListConfigure.h; sourceTree = "<group>"; };
 		D54F1A5255A3A8DB738A2FC4685547A8 /* FMLayoutCrossTransformSection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMLayoutCrossTransformSection.h; path = FMLayoutKit/Classes/Cross/FMLayoutCrossTransformSection.h; sourceTree = "<group>"; };
 		D5DA70158249DD774284240717866588 /* FMPickerBaseView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMPickerBaseView.h; path = FMPickerView/Classes/FMPickerBaseView.h; sourceTree = "<group>"; };
@@ -530,7 +534,7 @@
 		D7C35BB88A9251FFBBAA969603DF5703 /* UITableView+FMExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UITableView+FMExtension.h"; sourceTree = "<group>"; };
 		DA0DADC1B3947A926BC06A9BFF15EC5E /* FMLayoutFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMLayoutFooter.m; path = FMLayoutKit/Classes/Element/FMLayoutFooter.m; sourceTree = "<group>"; };
 		DB9B4BABC25117AA484981FC753021F5 /* NSString+FormEmoji.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+FormEmoji.h"; path = "FMFormSubmitKit/Classes/Tool/NSString+FormEmoji.h"; sourceTree = "<group>"; };
-		DC1D983C08F676017D4B5339406646BC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		DC1D983C08F676017D4B5339406646BC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		DD6A699DDBDFF1085A20D7AB9925B198 /* FormListTitleModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FormListTitleModel.h; path = FMFormSubmitKit/Classes/Model/FormListTitleModel.h; sourceTree = "<group>"; };
 		E0B659DAEEE53CFB08F08E34E0CDAAB6 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASCompositeConstraint.m; path = Masonry/MASCompositeConstraint.m; sourceTree = "<group>"; };
 		E0FF235506C9E6ABCC46D668B83F9A8A /* FMCollectionLayoutController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FMCollectionLayoutController.h; sourceTree = "<group>"; };
@@ -710,7 +714,6 @@
 				1BF190479DB7D86A50A8ACB40BE86D61 /* FMTeslaSuspensionHeightChangeDelegate.h */,
 				1E01CD9709A103E178BB3D96DFB2F5D8 /* Support Files */,
 			);
-			name = FMLayoutKit;
 			path = FMLayoutKit;
 			sourceTree = "<group>";
 		};
@@ -790,7 +793,6 @@
 				AAC2726F3DD7DDED61BB8704DA5C518F /* FMPickerView.h */,
 				AA9DBF075CAF10E13DA71DC4DFA49497 /* Support Files */,
 			);
-			name = FMPickerView;
 			path = FMPickerView;
 			sourceTree = "<group>";
 		};
@@ -855,7 +857,6 @@
 				5DF623EA4B98E462889B3A45D9D03D7A /* UITextView+FormExtension.m */,
 				9935F8D44EC1B03D4C07A6672C04BE8B /* Support Files */,
 			);
-			name = FMFormSubmitKit;
 			path = FMFormSubmitKit;
 			sourceTree = "<group>";
 		};
@@ -870,6 +871,8 @@
 				63A660E25D656747B614B7406164DAB3 /* NSMutableAttributedString+FMExtension.m */,
 				03DC733DC6415AF6379209BEA0107D82 /* NSString+FMExtension.h */,
 				716D63DF61678636184AFD2E15B458C7 /* NSString+FMExtension.m */,
+				C3A1542324D7B6C0005C9239 /* NSMutableString+FMExtension.h */,
+				C3A1542424D7B6C0005C9239 /* NSMutableString+FMExtension.m */,
 				A69D799F328482F5BC7D4C859055FFF6 /* UIBarButtonItem+FMExtension.h */,
 				8710F5CDADD3C403B99FF05F6F01890E /* UIBarButtonItem+FMExtension.m */,
 				EF97542AB7D3E7A36BACEF9A478EB5AD /* UIButton+FMExtension.h */,
@@ -987,7 +990,6 @@
 				D63BC3DE2F07599989F911E7119D8CAA /* ViewController+MASAdditions.m */,
 				E1AC69A66B0D7CE0A44EBEA04B46BB1E /* Support Files */,
 			);
-			name = Masonry;
 			path = Masonry;
 			sourceTree = "<group>";
 		};
@@ -1191,6 +1193,7 @@
 				71254CF8B9890157DB1E5CE46C08357D /* NSMutableAttributedString+FMExtension.h in Headers */,
 				FD7CECA267CFA315C6E7F8031E14C29D /* NSString+FMExtension.h in Headers */,
 				B603A078C94A6A13DB9D24F38E6B2B63 /* UIBarButtonItem+FMExtension.h in Headers */,
+				C3A1542524D7B6C0005C9239 /* NSMutableString+FMExtension.h in Headers */,
 				6BC7164C053A87CF0A8B658C2460FB29 /* UIButton+FMExtension.h in Headers */,
 				B99200D148BD208E00C7766E48C0FECD /* UICollectionView+FMExtension.h in Headers */,
 				FDB4A417CF9E6CED8C19BA67A2E60FD8 /* UIColor+FMExtension.h in Headers */,
@@ -1576,6 +1579,7 @@
 				2ABC737E2EF0A4B960EACE4043F7F66A /* FMBasePopupView.m in Sources */,
 				CA8B842A37B0571F3A16618F2D0640CF /* FMBaseSheetLayoutView.m in Sources */,
 				B20F0BFDD527318F37BA36A6F3670913 /* FMBaseSheetTableView.m in Sources */,
+				C3A1542624D7B6C0005C9239 /* NSMutableString+FMExtension.m in Sources */,
 				83C3F62973A6277EF1C4990D52D83CE7 /* FMBaseSheetView.m in Sources */,
 				F403171BD36E2FA9993EE40458293019 /* FMBaseTableController.m in Sources */,
 				72EA7B9522269CEFA77841D32C687632 /* FMBaseTableView.m in Sources */,
@@ -1868,8 +1872,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

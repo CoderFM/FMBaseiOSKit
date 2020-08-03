@@ -66,7 +66,13 @@
     UIFont *font = [UIFont systemFontOfSize:20];
     self.label.font = font;
     
-    self.label.attributedText = [[@"06-08 16:15" toAttr] insertImage:[UIImage imageWithAttributes:[@"求职" toAttrWithAttr:@{NSFontAttributeName:[UIFont systemFontOfSize:12], NSForegroundColorAttributeName:[UIColor whiteColor]}] inset:UIEdgeInsetsMake(2, 8, 2, 8) borderWidth:0 borderColor:nil cornerRadius:4 backgroundColor:[UIColor blueColor]] font:font atIndex:0];
+//    self.label.attributedText = [[@"06-08 16:15" toAttr] insertImage:[UIImage imageWithAttributes:[@"求职" toAttrWithAttr:@{NSFontAttributeName:[UIFont systemFontOfSize:12], NSForegroundColorAttributeName:[UIColor whiteColor]}] inset:UIEdgeInsetsMake(2, 8, 2, 8) borderWidth:0 borderColor:nil cornerRadius:4 backgroundColor:[UIColor blueColor]] font:font atIndex:0];
+//    self.label.attributedText = [insertImage: font:font atIndex:0];
+//    self.label.attributedText = [[@"06-08 16:15" toAttr] appendImage:[UIImage imageNamed:@"base_down_max"] font:font];
+//    self.label.attributedText = [[@"06-08 16:15" toAttr] appendImage:[UIImage imageNamed:@"base_comments"] font:font];
+    self.label.text = [@"埃里克基多拉可接受的拉可视角度" beyondLength:3 end:@"..."];
+    NSInteger lines = [@"埃里克基多拉可接受的拉可视角度" getNumberOfLinesWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]} andLabelWidth:30];
+    NSLog(@"lines:%ld", (long)lines);
 }
 
 - (void)didReceiveMemoryWarning
