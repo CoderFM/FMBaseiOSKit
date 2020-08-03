@@ -76,6 +76,12 @@
                                     <constraint firstAttribute="height" constant="100" id="Sds-kD-Rrq"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="td6-eD-VNs">
+                                <rect key="frame" x="172" y="534" width="31" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -87,7 +93,9 @@
                             <constraint firstItem="X3U-RX-dMM" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="FRT-j0-hly"/>
                             <constraint firstItem="2yN-sF-4sT" firstAttribute="top" secondItem="Mai-xn-qdL" secondAttribute="bottom" constant="20" id="HPj-tr-5kE"/>
                             <constraint firstItem="vSh-QI-yYH" firstAttribute="top" secondItem="olt-uK-ZPI" secondAttribute="bottom" constant="30" id="VuD-yR-etu"/>
+                            <constraint firstItem="td6-eD-VNs" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="dOB-uH-B5O"/>
                             <constraint firstItem="HeG-Hk-Y1H" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="eDB-nV-8XL"/>
+                            <constraint firstItem="td6-eD-VNs" firstAttribute="top" secondItem="Mai-xn-qdL" secondAttribute="bottom" id="gXO-po-XDv"/>
                             <constraint firstItem="HeG-Hk-Y1H" firstAttribute="top" secondItem="vSh-QI-yYH" secondAttribute="bottom" constant="30" id="pvy-RS-QOJ"/>
                             <constraint firstItem="olt-uK-ZPI" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="qf0-SJ-kh2"/>
                             <constraint firstItem="olt-uK-ZPI" firstAttribute="top" secondItem="X3U-RX-dMM" secondAttribute="bottom" constant="30" id="sj7-xx-Lu3"/>
@@ -96,6 +104,7 @@
                     <navigationItem key="navigationItem" id="HtZ-c9-v73"/>
                     <connections>
                         <outlet property="imageView" destination="2yN-sF-4sT" id="oDO-ht-EbT"/>
+                        <outlet property="label" destination="td6-eD-VNs" id="xa6-yo-ymC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
