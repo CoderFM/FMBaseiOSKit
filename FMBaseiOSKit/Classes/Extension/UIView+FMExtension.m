@@ -6,17 +6,17 @@
 
 - (CGRect)globalFrame{
     UIWindow *window = [FMConfig config].window;
-    return [self convertRect:self.frame toView:window];
+    return [self.superview convertRect:self.frame toView:window];
 }
 
 - (CGPoint)globalOrigin{
     UIWindow *window = [FMConfig config].window;
-    return [self convertPoint:self.frame.origin toView:window];
+    return [self.superview convertPoint:self.frame.origin toView:window];
 }
 
 - (CGPoint)globalCenter{
     UIWindow *window = [FMConfig config].window;
-    return [self convertPoint:self.center toView:window];
+    return [self.superview convertPoint:self.center toView:window];
 }
 
 + (instancetype)viewWithBackgroundColor:(UIColor *)bgColor{

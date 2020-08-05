@@ -27,6 +27,7 @@
 #import "FMBaseAlertView.h"
 #import "FMNoneDataView.h"
 #import "FMNavBtnsView.h"
+#import "FMLabel.h"
 
 #import "UIColor+FMExtension.h"
 #import "UITableView+FMExtension.h"
@@ -34,6 +35,7 @@
 #import "UIImage+FMExtension.h"
 #import "UIImageView+FMExtension.h"
 #import "NSString+FMExtension.h"
+#import "NSAttributedString+FMExtension.h"
 #import "NSMutableString+FMExtension.h"
 #import "NSDictionary+FMExtension.h"
 #import "UITableViewCell+FMExtension.h"

@@ -18,7 +18,7 @@
 
 @interface FMViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet FMLabel *label;
 
 @end
 
@@ -70,9 +70,13 @@
 //    self.label.attributedText = [insertImage: font:font atIndex:0];
 //    self.label.attributedText = [[@"06-08 16:15" toAttr] appendImage:[UIImage imageNamed:@"base_down_max"] font:font];
 //    self.label.attributedText = [[@"06-08 16:15" toAttr] appendImage:[UIImage imageNamed:@"base_comments"] font:font];
-    self.label.text = [@"埃里克基多拉可接受的拉可视角度" beyondLength:3 end:@"..."];
-    NSInteger lines = [@"埃里克基多拉可接受的拉可视角度" getNumberOfLinesWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]} andLabelWidth:30];
+    self.label.attributedText = [[@"埃里克基多拉可接受的拉可视角度" toAttrWithAttr:@{NSFontAttributeName:self.label.font}] addAttr:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:[UIColor orangeColor]} range:NSMakeRange(1, 4)];
+    self.label.userInteractionEnabled = YES;
+    NSInteger lines = [self.label.attributedText getNumberOfLinesWithWidth:50];
     NSLog(@"lines:%ld", (long)lines);
+    [self.label addClickRange:NSMakeRange(3, 4) block:^{
+        NSLog(@"addClickRange clickblock");
+    }];
 }
 
 - (void)didReceiveMemoryWarning

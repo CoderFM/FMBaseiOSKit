@@ -77,4 +77,13 @@
     return self;
 }
 
+- (instancetype)appendAttr:(NSAttributedString *)attr{
+    [self appendAttributedString:attr];
+    return self;
+}
+- (instancetype)insertAttr:(NSAttributedString *)attr atIndex:(NSInteger)index{
+    [self insertAttributedString:attr atIndex:index];
+    return self;
+}
+
 @end

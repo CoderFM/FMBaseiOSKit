@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)setLineSpace:(CGFloat)lineSpace;
 
+- (instancetype)appendAttr:(NSAttributedString *)attr;
+- (instancetype)insertAttr:(NSAttributedString *)attr atIndex:(NSInteger)index;
+
 @end
 
 NS_ASSUME_NONNULL_END

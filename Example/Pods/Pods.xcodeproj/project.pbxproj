@@ -168,6 +168,8 @@
 		BC59FD504614ED8C0BE2D8DE014954F6 /* UITextView+FormExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B3B8E0D4BFCF572E1528621B0A78BD /* UITextView+FormExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BEC5CC4D986BF38D28B4A046FC2857A4 /* FormListImageUpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C3ABCF7FC16991FECB48626B76ED50 /* FormListImageUpModel.m */; };
 		C08D5AC8FCAE583D825A98DBAA237B0F /* FMTeslaSuspensionHeightChangeDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BF190479DB7D86A50A8ACB40BE86D61 /* FMTeslaSuspensionHeightChangeDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C354661624DA9699005256B8 /* FMLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = C354661424DA9699005256B8 /* FMLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C354661724DA9699005256B8 /* FMLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C354661524DA9699005256B8 /* FMLabel.m */; };
 		C3A1542524D7B6C0005C9239 /* NSMutableString+FMExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = C3A1542324D7B6C0005C9239 /* NSMutableString+FMExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3A1542624D7B6C0005C9239 /* NSMutableString+FMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A1542424D7B6C0005C9239 /* NSMutableString+FMExtension.m */; };
 		C3E8B83D2A07978652943972D8758395 /* FMBaseSheetView.h in Headers */ = {isa = PBXBuildFile; fileRef = EF69E3041F7EA2A694E98BB7834841E7 /* FMBaseSheetView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -510,6 +512,8 @@
 		C20963D1C55F8E10D2A80C8F30BE4376 /* FMNoneDataView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FMNoneDataView.h; sourceTree = "<group>"; };
 		C294F4306B4DF6F2AC63B298B7AF6E80 /* FormVerifyManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FormVerifyManager.m; path = FMFormSubmitKit/Classes/Tool/FormVerifyManager.m; sourceTree = "<group>"; };
 		C2D0A7C2452E6E0C3FF28CAB89ED7D00 /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
+		C354661424DA9699005256B8 /* FMLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMLabel.h; sourceTree = "<group>"; };
+		C354661524DA9699005256B8 /* FMLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMLabel.m; sourceTree = "<group>"; };
 		C3A1542324D7B6C0005C9239 /* NSMutableString+FMExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+FMExtension.h"; sourceTree = "<group>"; };
 		C3A1542424D7B6C0005C9239 /* NSMutableString+FMExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+FMExtension.m"; sourceTree = "<group>"; };
 		C72A2997964AF1B4A94F2CC669FDD1D9 /* FMBaseiOSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FMBaseiOSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1026,6 +1030,8 @@
 				0592461ACFDE34389A8C2EBB0903E69D /* FMNavBtnsView.m */,
 				C20963D1C55F8E10D2A80C8F30BE4376 /* FMNoneDataView.h */,
 				EE9D126A8F03A4FA6CD3B464AF34E1C1 /* FMNoneDataView.m */,
+				C354661424DA9699005256B8 /* FMLabel.h */,
+				C354661524DA9699005256B8 /* FMLabel.m */,
 			);
 			name = BaseView;
 			path = FMBaseiOSKit/Classes/BaseView;
@@ -1196,6 +1202,7 @@
 				C3A1542524D7B6C0005C9239 /* NSMutableString+FMExtension.h in Headers */,
 				6BC7164C053A87CF0A8B658C2460FB29 /* UIButton+FMExtension.h in Headers */,
 				B99200D148BD208E00C7766E48C0FECD /* UICollectionView+FMExtension.h in Headers */,
+				C354661624DA9699005256B8 /* FMLabel.h in Headers */,
 				FDB4A417CF9E6CED8C19BA67A2E60FD8 /* UIColor+FMExtension.h in Headers */,
 				2908AAC63EADFD17080073BE4AAD951A /* UIImage+FMExtension.h in Headers */,
 				9FBCEAE4B2EDA2D601D3FB3DD5BFF19A /* UIImageView+FMExtension.h in Headers */,
@@ -1576,6 +1583,7 @@
 				88962F02464ED5CE57C59F16A38F30B5 /* FMBaseAlertView.m in Sources */,
 				2B69B18BEE8431A2E8D315C52B06824D /* FMBaseiOSKit-dummy.m in Sources */,
 				433E475A17AA0B962A7F766BFFE5B314 /* FMBaseListController.m in Sources */,
+				C354661724DA9699005256B8 /* FMLabel.m in Sources */,
 				2ABC737E2EF0A4B960EACE4043F7F66A /* FMBasePopupView.m in Sources */,
 				CA8B842A37B0571F3A16618F2D0640CF /* FMBaseSheetLayoutView.m in Sources */,
 				B20F0BFDD527318F37BA36A6F3670913 /* FMBaseSheetTableView.m in Sources */,
