@@ -40,14 +40,14 @@
 
 - (instancetype)appendImage:(UIImage *)image font:(UIFont *)font{
     if (image) {
-        if (image.size.height > font.capHeight) {
-            [self addAttributes:@{NSBaselineOffsetAttributeName:@((image.size.height - font.capHeight) * 0.5)} range:NSMakeRange(0, self.length)];
-        }
         NSTextAttachment *atta = [[NSTextAttachment alloc] init];
         atta.image = image;
         NSMutableAttributedString *attaAttr = [[NSAttributedString attributedStringWithAttachment:atta] mutableCopy];
         if (image.size.height < font.capHeight) {
             [attaAttr addAttributes:@{NSBaselineOffsetAttributeName:@((font.capHeight - image.size.height) * 0.5)} range:NSMakeRange(0, attaAttr.length)];
+        }
+        if (image.size.height > font.capHeight) {
+            [attaAttr addAttributes:@{NSBaselineOffsetAttributeName:@(-(image.size.height - font.capHeight) * 0.5)} range:NSMakeRange(0, attaAttr.length)];
         }
         [self appendAttributedString:attaAttr];
     }
@@ -56,14 +56,14 @@
 
 - (instancetype)insertImage:(UIImage *)image font:(UIFont *)font atIndex:(NSUInteger)index{
     if (image) {
-        if (image.size.height > font.capHeight) {
-            [self addAttributes:@{NSBaselineOffsetAttributeName:@((image.size.height - font.capHeight) * 0.5)} range:NSMakeRange(0, self.length)];
-        }
         NSTextAttachment *atta = [[NSTextAttachment alloc] init];
         atta.image = image;
         NSMutableAttributedString *attaAttr = [[NSAttributedString attributedStringWithAttachment:atta] mutableCopy];
         if (image.size.height < font.capHeight) {
             [attaAttr addAttributes:@{NSBaselineOffsetAttributeName:@((font.capHeight - image.size.height) * 0.5)} range:NSMakeRange(0, attaAttr.length)];
+        }
+        if (image.size.height > font.capHeight) {
+            [attaAttr addAttributes:@{NSBaselineOffsetAttributeName:@(-(image.size.height - font.capHeight) * 0.5)} range:NSMakeRange(0, attaAttr.length)];
         }
         [self insertAttributedString:attaAttr atIndex:index];
     }

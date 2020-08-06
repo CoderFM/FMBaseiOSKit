@@ -13,7 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///获取文本行数
 - (NSInteger)getNumberOfLinesWithWidth:(CGFloat)width;
 ///获取某个返回内富文本的rect
-- (NSArray *)getRectsWithWidth:(CGFloat)width limitLine:(NSInteger)limitLine fromRange:(NSRange)fromRange;
+- (NSArray *)getRectsWithWidth:(CGFloat)width maxHeight:(CGFloat)maxHeight limitLine:(NSInteger)limitLine fromRange:(NSRange)fromRange;
+- (void)asyncGetRectsWithWidth:(CGFloat)width maxHeight:(CGFloat)maxHeight limitLine:(NSInteger)limitLine fromRange:(NSRange)fromRange complete:(void(^)(NSArray *))complete;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -12,7 +12,7 @@
 
 - (NSInteger)getNumberOfLinesWithWidth:(CGFloat)width{
     CFRange range = CFRangeMake(0, 0);
-    CGFloat height = [self boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
+    CGFloat height = MAXFLOAT;
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)self);
     CGMutablePathRef Path = CGPathCreateMutable();
     CGPathAddRect(Path, NULL ,CGRectMake(0 , 0 , width, height));
@@ -25,8 +25,8 @@
     return (NSInteger)numberOfLines;
 }
 
-- (NSArray *)getRectsWithWidth:(CGFloat)width limitLine:(NSInteger)limitLine fromRange:(NSRange)fromRange{
-    CGFloat height = [self boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
+- (NSArray *)getRectsWithWidth:(CGFloat)width maxHeight:(CGFloat)maxHeight limitLine:(NSInteger)limitLine fromRange:(NSRange)fromRange{
+    CGFloat height = maxHeight;
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)self);
     CGMutablePathRef Path = CGPathCreateMutable();
     CGPathAddRect(Path, NULL ,CGRectMake(0 , 0 , width, height));
@@ -46,6 +46,7 @@
         CTLineRef line = CFArrayGetValueAtIndex(rows, i);
         // 该行文本范围
         CFRange range = CTLineGetStringRange(line);
+        
         if (range.location + range.length > fromRange.location && range.location < fromRange.location + fromRange.length) {
             // 高度矫正
             CGFloat ascent, descent;
@@ -76,6 +77,13 @@
     CGPathRelease(Path);
     CFRelease(framesetter);
     return rects;
+}
+
+- (void)asyncGetRectsWithWidth:(CGFloat)width maxHeight:(CGFloat)maxHeight limitLine:(NSInteger)limitLine fromRange:(NSRange)fromRange complete:(void(^)(NSArray *))complete{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSArray *rects = [self getRectsWithWidth:width maxHeight:maxHeight limitLine:limitLine fromRange:fromRange];
+        !complete?:complete(rects);
+    });
 }
 
 @end

@@ -41,6 +41,13 @@ NSString *__GetKeyFromRange(NSRange range){
     return _clicks;
 }
 
+- (CGFloat)attributeMaxHeight{
+    if (_attributeMaxHeight == 0) {
+        _attributeMaxHeight = 2000;
+    }
+    return _attributeMaxHeight;
+}
+
 - (void)layoutSubviews{
     [super layoutSubviews];
     if (!self.handleClickFinished) {
@@ -67,7 +74,6 @@ NSString *__GetKeyFromRange(NSRange range){
     }];
 }
 
-
 - (void)addClickRange:(NSRange)range block:(FMLabelTouchBlock)block{
     NSString *key = __GetKeyFromRange(range);
     __FMLabelClickObj *obj = [self.clicks objectForKey:key];
@@ -79,14 +85,19 @@ NSString *__GetKeyFromRange(NSRange range){
         obj.block = block;
         [self.clicks setObject:obj forKey:key];
     }
+    if (self.handleClickFinished) {
+        [self __handleAllClickRange];
+    }
 }
 
 - (void)__handleAllClickRange{
     for (__FMLabelClickObj *obj in self.clicks.allValues) {
         if (obj.rects == nil) {
             NSAttributedString *attributes = self.attributedText ?: [[NSAttributedString alloc] initWithString:self.text attributes:@{NSFontAttributeName:self.font}];
-            NSArray *rects = [attributes getRectsWithWidth:self.bounds.size.width limitLine:NSIntegerMax fromRange:obj.range];
-            obj.rects  =rects;
+            __weak typeof(obj) weakObj = obj;
+            [attributes asyncGetRectsWithWidth:self.bounds.size.width maxHeight:self.attributeMaxHeight limitLine:NSIntegerMax fromRange:obj.range complete:^(NSArray * _Nonnull rects) {
+                weakObj.rects = rects;
+            }];
         }
     }
 }

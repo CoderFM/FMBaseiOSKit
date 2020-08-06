@@ -70,12 +70,16 @@
 //    self.label.attributedText = [insertImage: font:font atIndex:0];
 //    self.label.attributedText = [[@"06-08 16:15" toAttr] appendImage:[UIImage imageNamed:@"base_down_max"] font:font];
 //    self.label.attributedText = [[@"06-08 16:15" toAttr] appendImage:[UIImage imageNamed:@"base_comments"] font:font];
-    self.label.attributedText = [[@"埃里克基多拉可接受的拉可视角度" toAttrWithAttr:@{NSFontAttributeName:self.label.font}] addAttr:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:[UIColor orangeColor]} range:NSMakeRange(1, 4)];
+    self.label.attributedText = [@"埃里克基多拉可接受的拉可视角度" toAttrWithAttr:@{NSFontAttributeName:self.label.font}];
+//    self.label.attributedText = [[[[@"埃里克基多拉可接受的拉可视角度" toAttrWithAttr:@{NSFontAttributeName:self.label.font}] addAttr:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:[UIColor orangeColor]} range:NSMakeRange(1, 4)] appendImage:[UIImage imageNamed:@"base_min_share"] font:self.label.font] setLineSpace:20];
     self.label.userInteractionEnabled = YES;
-    NSInteger lines = [self.label.attributedText getNumberOfLinesWithWidth:50];
+    NSInteger lines = [self.label.attributedText getNumberOfLinesWithWidth:100];
     NSLog(@"lines:%ld", (long)lines);
     [self.label addClickRange:NSMakeRange(3, 4) block:^{
-        NSLog(@"addClickRange clickblock");
+        NSLog(@"addClickRangeNSMakeRange(3, 4) clickblock");
+    }];
+    [self.label addClickRange:NSMakeRange(14, 2) block:^{
+        NSLog(@"addClickRangeNSMakeRange(14, 2) clickblock ");
     }];
 }
 
