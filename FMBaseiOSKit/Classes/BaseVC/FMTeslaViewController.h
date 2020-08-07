@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, weak)FMTeslaLayoutView *teslaView;
 @property(nonatomic, weak)FMNavBtnsView *pageNavView;
 @property(nonatomic, strong)NSMutableArray *shareSections;
+@property(nonatomic, assign, readonly)BOOL isLoadSubview;
 @property(nonatomic, strong)NSMutableArray<NSMutableArray<FMLayoutBaseSection *> *> *pageSections;
 
 @end

@@ -28,6 +28,7 @@
 		C339075124B579690041704D /* FMTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339074D24B579680041704D /* FMTestViewController.m */; };
 		C339075224B579690041704D /* FMLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C339074F24B579690041704D /* FMLayoutViewController.m */; };
 		C38CD57924C57B1900D89C9E /* FMTestEmptyTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = C38CD57824C57B1900D89C9E /* FMTestEmptyTableController.m */; };
+		C39F3DC924DD032B00071FE5 /* FMTeslaPageTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = C39F3DC824DD032B00071FE5 /* FMTeslaPageTestController.m */; };
 		C3D42D1524C1794F00AA8900 /* FMTimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D42D1424C1794F00AA8900 /* FMTimeLineViewController.m */; };
 		C3D42D2424C19BB000AA8900 /* FMLoadTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D42D2324C19BB000AA8900 /* FMLoadTestViewController.m */; };
 		C3D5DC7624C02A92000C7470 /* FMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D5DC7524C02A92000C7470 /* FMHomeViewController.m */; };
@@ -89,6 +90,8 @@
 		C339074F24B579690041704D /* FMLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLayoutViewController.m; sourceTree = "<group>"; };
 		C38CD57724C57B1900D89C9E /* FMTestEmptyTableController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMTestEmptyTableController.h; sourceTree = "<group>"; };
 		C38CD57824C57B1900D89C9E /* FMTestEmptyTableController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMTestEmptyTableController.m; sourceTree = "<group>"; };
+		C39F3DC724DD032B00071FE5 /* FMTeslaPageTestController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMTeslaPageTestController.h; sourceTree = "<group>"; };
+		C39F3DC824DD032B00071FE5 /* FMTeslaPageTestController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMTeslaPageTestController.m; sourceTree = "<group>"; };
 		C3D42D1324C1794F00AA8900 /* FMTimeLineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMTimeLineViewController.h; sourceTree = "<group>"; };
 		C3D42D1424C1794F00AA8900 /* FMTimeLineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMTimeLineViewController.m; sourceTree = "<group>"; };
 		C3D42D2224C19BB000AA8900 /* FMLoadTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMLoadTestViewController.h; sourceTree = "<group>"; };
@@ -207,6 +210,8 @@
 				C339074F24B579690041704D /* FMLayoutViewController.m */,
 				C339074A24B579680041704D /* FMTestViewController.h */,
 				C339074D24B579680041704D /* FMTestViewController.m */,
+				C39F3DC724DD032B00071FE5 /* FMTeslaPageTestController.h */,
+				C39F3DC824DD032B00071FE5 /* FMTeslaPageTestController.m */,
 				C3F2998624BD5EBE00833D9E /* FMCollectionViewCell.h */,
 				C3F2998724BD5EBE00833D9E /* FMCollectionViewCell.m */,
 				C3F2998924BD5ECC00833D9E /* FMCollectionCustomCell.h */,
@@ -448,6 +453,7 @@
 				C3D5DC7624C02A92000C7470 /* FMHomeViewController.m in Sources */,
 				C304615724CA716C00C020F3 /* NSObject+FMExtension.m in Sources */,
 				C3F2998524BD574500833D9E /* FMTaoBaoHomeViewController.m in Sources */,
+				C39F3DC924DD032B00071FE5 /* FMTeslaPageTestController.m in Sources */,
 				C3F2998824BD5EBE00833D9E /* FMCollectionViewCell.m in Sources */,
 				C3F2998E24BD5EDE00833D9E /* FMCollectionCustomDecoration.m in Sources */,
 				C3F2998224BD561400833D9E /* FMLayoutListViewController.m in Sources */,

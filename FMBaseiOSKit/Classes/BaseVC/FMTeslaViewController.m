@@ -16,6 +16,10 @@
 
 @implementation FMTeslaViewController
 
+- (BOOL)isLoadSubview{
+    return [[self.teslaView valueForKey:@"isLoadSubView"] boolValue];
+}
+
 - (FMTeslaLayoutView *)teslaView{
     if (_teslaView == nil) {
         FMTeslaLayoutView *tesla = [[FMTeslaLayoutView alloc] init];
