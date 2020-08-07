@@ -63,24 +63,26 @@
     
     self.imageView.image = [UIImage imageWithAttributes:[@"测试" toAttrWithAttr:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}] inset:UIEdgeInsetsMake(10, 10, 10, 10) borderWidth:1 borderColor:[UIColor blackColor] cornerRadius:10 backgroundColor:[UIColor cyanColor]];
     
-    UIFont *font = [UIFont systemFontOfSize:20];
+    UIFont *font = [UIFont systemFontOfSize:12];
     self.label.font = font;
+    
+    self.label.attributedText = [[[NSString stringWithFormat:@"%@   ", @"爱丽丝肯德基埃里克"] toAttr] appendImage:[UIImage imageWithAttributes:[[NSString stringWithFormat:@"%@回复", @"1"] toAttrWithAttr:@{NSFontAttributeName:font, NSForegroundColorAttributeName:[UIColor blackColor]}] inset:UIEdgeInsetsMake(4, 6, 4, 6) borderWidth:0 borderColor:[UIColor lightGrayColor] cornerRadius:10 backgroundColor:[UIColor cyanColor]] font:font];
     
 //    self.label.attributedText = [[@"06-08 16:15" toAttr] insertImage:[UIImage imageWithAttributes:[@"求职" toAttrWithAttr:@{NSFontAttributeName:[UIFont systemFontOfSize:12], NSForegroundColorAttributeName:[UIColor whiteColor]}] inset:UIEdgeInsetsMake(2, 8, 2, 8) borderWidth:0 borderColor:nil cornerRadius:4 backgroundColor:[UIColor blueColor]] font:font atIndex:0];
 //    self.label.attributedText = [insertImage: font:font atIndex:0];
 //    self.label.attributedText = [[@"06-08 16:15" toAttr] appendImage:[UIImage imageNamed:@"base_down_max"] font:font];
 //    self.label.attributedText = [[@"06-08 16:15" toAttr] appendImage:[UIImage imageNamed:@"base_comments"] font:font];
-    self.label.attributedText = [@"埃里克基多拉可接受的拉可视角度" toAttrWithAttr:@{NSFontAttributeName:self.label.font}];
+//    self.label.attributedText = [@"埃里克基多拉可接受的拉可视角度" toAttrWithAttr:@{NSFontAttributeName:self.label.font}];
 //    self.label.attributedText = [[[[@"埃里克基多拉可接受的拉可视角度" toAttrWithAttr:@{NSFontAttributeName:self.label.font}] addAttr:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:[UIColor orangeColor]} range:NSMakeRange(1, 4)] appendImage:[UIImage imageNamed:@"base_min_share"] font:self.label.font] setLineSpace:20];
-    self.label.userInteractionEnabled = YES;
-    NSInteger lines = [self.label.attributedText getNumberOfLinesWithWidth:100];
-    NSLog(@"lines:%ld", (long)lines);
-    [self.label addClickRange:NSMakeRange(3, 4) block:^{
-        NSLog(@"addClickRangeNSMakeRange(3, 4) clickblock");
-    }];
-    [self.label addClickRange:NSMakeRange(14, 2) block:^{
-        NSLog(@"addClickRangeNSMakeRange(14, 2) clickblock ");
-    }];
+//    self.label.userInteractionEnabled = YES;
+//    NSInteger lines = [self.label.attributedText getNumberOfLinesWithWidth:100];
+//    NSLog(@"lines:%ld", (long)lines);
+//    [self.label addClickRange:NSMakeRange(3, 4) block:^{
+//        NSLog(@"addClickRangeNSMakeRange(3, 4) clickblock");
+//    }];
+//    [self.label addClickRange:NSMakeRange(14, 2) block:^{
+//        NSLog(@"addClickRangeNSMakeRange(14, 2) clickblock ");
+//    }];
 }
 
 - (void)didReceiveMemoryWarning

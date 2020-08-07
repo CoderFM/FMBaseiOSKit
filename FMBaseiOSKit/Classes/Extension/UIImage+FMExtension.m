@@ -77,28 +77,32 @@
     UIGraphicsBeginImageContextWithOptions(imageSize, NO, [UIScreen mainScreen].scale);
     [attributes drawAtPoint:CGPointMake(inset.left, inset.top)];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, imageSize.width, imageSize.height)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, imageSize.width, imageSize.height)];
+    [[UIApplication sharedApplication].keyWindow addSubview:view];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:view.bounds];
+    label.backgroundColor = [UIColor clearColor];
     label.textAlignment = NSTextAlignmentCenter;
     label.attributedText = attributes;
-    [[UIApplication sharedApplication].keyWindow addSubview:label];
+    [view addSubview:label];
     
-    label.layer.cornerRadius = cornerRadius;
-    
+    view.layer.cornerRadius = cornerRadius;
+
     if (bgColor) {
-        label.backgroundColor = bgColor;
+        view.backgroundColor = bgColor;
         if (cornerRadius > 0) {
-            label.layer.masksToBounds = YES;
+            view.layer.masksToBounds = YES;
         }
     }
     
     if (borderColor) {
-        label.layer.borderColor = borderColor.CGColor;
-        label.layer.borderWidth = borderWidth;
+        view.layer.borderColor = borderColor.CGColor;
+        view.layer.borderWidth = borderWidth;
     }
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-    [label.layer renderInContext:context];
-    [label removeFromSuperview];
+    [view.layer renderInContext:context];
+    [view removeFromSuperview];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
