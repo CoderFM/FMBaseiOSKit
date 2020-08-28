@@ -16,6 +16,8 @@
 
 #import <Masonry/Masonry.h>
 
+#import <WebKit/WebKit.h>
+
 @interface FMViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet FMLabel *label;
@@ -27,7 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+    UIButton *btn = [UIButton buttonWithTitle:@"弹窗" font:[UIFont systemFontOfSize:15] color:[UIColor purpleColor]];
+    [btn addTarget:self action:@selector(navRightClick:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     
     {
         FMNavBtnsView *nav1 = [[FMNavBtnsView alloc] init];
@@ -57,7 +61,8 @@
             make.height.mas_equalTo(40);
         }];
         [nav1 setClickSenderBlock:^(UIButton * _Nonnull sender) {
-            
+//            [FMBaseAlertView showToView:self.view.window from:sender contentSize:CGSizeMake(100, 100) type:sender.tag % 4];
+            [FMBaseAlertView showToView:self.view];
         }];
     }
     
@@ -67,6 +72,7 @@
     self.label.font = font;
     
     self.label.attributedText = [[[NSString stringWithFormat:@"%@   ", @"爱丽丝肯德基埃里克"] toAttr] appendImage:[UIImage imageWithAttributes:[[NSString stringWithFormat:@"%@回复", @"1"] toAttrWithAttr:@{NSFontAttributeName:font, NSForegroundColorAttributeName:[UIColor blackColor]}] inset:UIEdgeInsetsMake(4, 6, 4, 6) borderWidth:0 borderColor:[UIColor lightGrayColor] cornerRadius:10 backgroundColor:[UIColor cyanColor]] font:font];
+    
     
 //    self.label.attributedText = [[@"06-08 16:15" toAttr] insertImage:[UIImage imageWithAttributes:[@"求职" toAttrWithAttr:@{NSFontAttributeName:[UIFont systemFontOfSize:12], NSForegroundColorAttributeName:[UIColor whiteColor]}] inset:UIEdgeInsetsMake(2, 8, 2, 8) borderWidth:0 borderColor:nil cornerRadius:4 backgroundColor:[UIColor blueColor]] font:font atIndex:0];
 //    self.label.attributedText = [insertImage: font:font atIndex:0];
@@ -82,6 +88,14 @@
 //    }];
 //    [self.label addClickRange:NSMakeRange(14, 2) block:^{
 //        NSLog(@"addClickRangeNSMakeRange(14, 2) clickblock ");
+//    }];
+    
+//    WKWebView *web = [[WKWebView alloc] init];
+//    [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://mrs.chinaums.com/nmrs/interface/autoH5Reg?json_data=470D4DDD7F7771CB34C6D33F94D660525E6BB13E8117BA66D050E6B55D193A9D3570D8BD935D1E9EE37577856B1EB4FBA57DF94800EA1350AC7D817C635C15B1BD786D19136CAFE4BE0A080DB8DA2B7841D1BE5F0E109E2E2E2656B345F68D0D83D179C975013EF8C52E3976B762081859DD556EF4734D27073A628885E9F97C9DB176DBE3F5532418544BE82AB4051CFC4F88F4B2C82E6A91C5F5002D1568BA60EE2E00D3AC64985859002F555D480B2889E157C4B8309BF9AAA40F27CE8B5B13706353CD1BD21BF0EF629E5BB6012D&sign_data=7383dc5bc15824404058fb5fa986c4e78fedd30a690936832549293f77452ef0&accesser_id=2d9081bc6d70720b016dbead29023079"]]];
+//    [web loadHTMLString:@"<!DOCTYPE html><html><head><meta charset=utf-8><meta name=apple-mobile-web-app-capable content=yes><meta name=viewport content=\"initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width\"><meta name=screen-orientation content=portrait><meta name=format-detection content=\"telephone=no\"><meta http-equiv=Cache-Control content=\"no-cache, no-store, must-revalidate\"><meta http-equiv=Pragma content=no-cache><meta http-equiv=Expires content=0><meta http-equiv=X-UA-Compatible content=\"IE=edge\"><title>联合信签</title><link href=../css/portalsilver.9760a7d479a2b5a30d83dfe44208d0d0.css rel=stylesheet></head><body><div id=app style=height:100%;></div><script type=text/javascript src=../js/portalsilver.b3bd57e50359f35f1db6.js></script></body></html>" baseURL:nil];
+//    [self.view addSubview:web];
+//    [web mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.top.bottom.mas_equalTo(0);
 //    }];
 }
 
@@ -105,7 +119,8 @@
     [FMBaseSheetLayoutView showToView:self.view.window];
 }
 - (IBAction)alertClick:(id)sender {
-    [FMBaseAlertView showToView:self.view.window];
+//    [FMBaseAlertView showToView:self.view.window];
+    [FMBaseAlertView showToView:self.view.window from:sender contentSize:CGSizeMake(100, 100) type:FMAlertTypeBottom];
 }
 
 - (IBAction)layoutClick:(id)sender {
@@ -123,9 +138,16 @@
 //    UIWindow *window = [FMConfig config].window;
 //    CGRect frame0 = [window convertRect:sender.frame toView:window];
 //    CGRect frame1 = [sender convertRect:sender.frame toView:window];
-    NSLog(@"frame: %@", [NSValue valueWithCGRect:sender.globalFrame]);
-    NSLog(@"origin: %@", [NSValue valueWithCGPoint:sender.globalOrigin]);
-    NSLog(@"center: %@", [NSValue valueWithCGPoint:sender.globalCenter]);
+//    NSLog(@"frame: %@", [NSValue valueWithCGRect:sender.globalFrame]);
+//    NSLog(@"origin: %@", [NSValue valueWithCGPoint:sender.globalOrigin]);
+//    NSLog(@"center: %@", [NSValue valueWithCGPoint:sender.globalCenter]);
+    
+    [FMBaseAlertView showToView:self.view.window from:sender contentSize:CGSizeMake(100, 100) type:FMAlertTypeTop];
+}
+
+- (void)navRightClick:(UIButton *)sender{
+    [FMBaseAlertView showToView:self.view.window from:sender contentSize:CGSizeMake(100, 100) type:FMAlertTypeBottom];
+//    [FMBaseAlertView showToView:self.view.window fromPoint:CGPointMake([FMConfig config].screenWidth - 10, [FMConfig config].statusHeight) contentSize:CGSizeMake(100, 100) type:FMAlertTypeBottom];
 }
 
 + (NSSet<NSString *> *)keyPathsForValuesAffectingValueForKey:(NSString *)key{

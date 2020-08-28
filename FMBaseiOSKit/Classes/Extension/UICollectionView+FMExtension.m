@@ -3,6 +3,7 @@
 #import "UICollectionView+FMExtension.h"
 #import <objc/runtime.h>
 #import <Masonry/Masonry.h>
+#import "FMConfig.h"
 
 static char nonDataViewKey;
 static char showEmptyViewKey;
@@ -16,17 +17,6 @@ static char nonDataViewClassKey;
         Method m2 = class_getInstanceMethod(self, @selector(_baseReloadData));
         method_exchangeImplementations(m1, m2);
     }
-    {
-        Method m1 = class_getInstanceMethod(self, @selector(initWithFrame:collectionViewLayout:));
-        Method m2 = class_getInstanceMethod(self, @selector(_baseInitWithFrame:collectionViewLayout:));
-        method_exchangeImplementations(m1, m2);
-    }
-}
-
-- (instancetype)_baseInitWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout{
-    UICollectionView *coll = [self _baseInitWithFrame:frame collectionViewLayout:layout];
-    coll.showEmptyView = YES;
-    return coll;
 }
 
 - (void)_baseReloadData{
@@ -94,7 +84,10 @@ static char nonDataViewClassKey;
 - (Class)nonDataViewClass{
     Class viewClass = objc_getAssociatedObject(self, &nonDataViewClassKey);
     if (!viewClass) {
-        viewClass = [FMNoneDataView class];
+        viewClass = [FMConfig config].noneViewClass;
+        if (!viewClass) {
+            viewClass = [FMNoneDataView class];
+        }
         objc_setAssociatedObject(self, &nonDataViewClassKey, viewClass, OBJC_ASSOCIATION_RETAIN);
     }
     return viewClass;

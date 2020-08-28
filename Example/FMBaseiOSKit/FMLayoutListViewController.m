@@ -24,6 +24,7 @@
     [self.models addObject:@{@"title":@"加载中效果", @"class":@"FMLoadTestViewController"}];
     [self.models addObject:@{@"title":@"空列表", @"class":@"FMTestEmptyTableController"}];
     [self.models addObject:@{@"title":@"特斯拉", @"class":@"FMTeslaPageTestController"}];
+    [self.models addObject:@{@"title":@"插入@ #等", @"class":@"FMSocialViewController"}];
     [self.tableView reloadData];
 }
 

@@ -47,4 +47,7 @@
 #import "UILabel+FMExtension.h"
 #import "UIButton+FMExtension.h"
 
+#import "FMSocialTextTool.h"
+#import "FMSocialTextItem.h"
+
 #endif /* FMBaseKit_h */

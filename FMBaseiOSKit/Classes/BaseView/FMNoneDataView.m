@@ -3,9 +3,12 @@
 #import <Masonry/Masonry.h>
 #import "UIColor+FMExtension.h"
 #import "UIButton+FMExtension.h"
+#import "FMConfig.h"
 
 @implementation FMNoneDataView
-
+- (void)dealloc{
+    
+}
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
@@ -47,6 +50,10 @@
     }];
     button.hidden = YES;
     self.nonButton = button ;
+    
+    if ([FMConfig config].configurationNoneDataView) {
+        [FMConfig config].configurationNoneDataView(self);
+    }
 }
 
 - (void)setImage:(UIImage *)image text:(NSString *)text{

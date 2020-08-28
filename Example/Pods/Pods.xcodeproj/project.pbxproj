@@ -176,6 +176,10 @@
 		C39F3DC624DCFFE200071FE5 /* FMTeslaPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = C39F3DC424DCFFE200071FE5 /* FMTeslaPageController.m */; };
 		C3A1542524D7B6C0005C9239 /* NSMutableString+FMExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = C3A1542324D7B6C0005C9239 /* NSMutableString+FMExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3A1542624D7B6C0005C9239 /* NSMutableString+FMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C3A1542424D7B6C0005C9239 /* NSMutableString+FMExtension.m */; };
+		C3BC027324F889D00007FA0C /* FMSocialTextTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BC027124F889D00007FA0C /* FMSocialTextTool.m */; };
+		C3BC027424F889D00007FA0C /* FMSocialTextTool.h in Headers */ = {isa = PBXBuildFile; fileRef = C3BC027224F889D00007FA0C /* FMSocialTextTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3BC027724F88C3A0007FA0C /* FMSocialTextItem.h in Headers */ = {isa = PBXBuildFile; fileRef = C3BC027524F88C3A0007FA0C /* FMSocialTextItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3BC027824F88C3A0007FA0C /* FMSocialTextItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BC027624F88C3A0007FA0C /* FMSocialTextItem.m */; };
 		C3E8B83D2A07978652943972D8758395 /* FMBaseSheetView.h in Headers */ = {isa = PBXBuildFile; fileRef = EF69E3041F7EA2A694E98BB7834841E7 /* FMBaseSheetView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3F16AF57CB05F5BDE9C613BE968C7FF /* FMLayoutDebugLog.h in Headers */ = {isa = PBXBuildFile; fileRef = CBD85F4C5AA3EB3A4CA6A214211D18F4 /* FMLayoutDebugLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C425B20453B63E4357274BDA0A9F6127 /* ViewController+MASAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2885129BB75EA5C30CB69A7C9AC87325 /* ViewController+MASAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -524,6 +528,10 @@
 		C39F3DC424DCFFE200071FE5 /* FMTeslaPageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMTeslaPageController.m; sourceTree = "<group>"; };
 		C3A1542324D7B6C0005C9239 /* NSMutableString+FMExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+FMExtension.h"; sourceTree = "<group>"; };
 		C3A1542424D7B6C0005C9239 /* NSMutableString+FMExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+FMExtension.m"; sourceTree = "<group>"; };
+		C3BC027124F889D00007FA0C /* FMSocialTextTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMSocialTextTool.m; sourceTree = "<group>"; };
+		C3BC027224F889D00007FA0C /* FMSocialTextTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMSocialTextTool.h; sourceTree = "<group>"; };
+		C3BC027524F88C3A0007FA0C /* FMSocialTextItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMSocialTextItem.h; sourceTree = "<group>"; };
+		C3BC027624F88C3A0007FA0C /* FMSocialTextItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMSocialTextItem.m; sourceTree = "<group>"; };
 		C72A2997964AF1B4A94F2CC669FDD1D9 /* FMBaseiOSKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FMBaseiOSKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C83AEA13668B893C337120D5DD2E9504 /* Pods-FMBaseiOSKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FMBaseiOSKit_Example.modulemap"; sourceTree = "<group>"; };
 		C96713C5181F18AC54366A4884055E6E /* MASLayoutConstraint.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASLayoutConstraint.h; path = Masonry/MASLayoutConstraint.h; sourceTree = "<group>"; };
@@ -766,6 +774,7 @@
 				17A858DFF46C4B172A10ED0F3319A1D6 /* FMBaseiOSKit.h */,
 				60E4E043729082747970E428DBC533A0 /* FMConfig.h */,
 				7AEC696E611CFDB28112AF30E352FD3E /* FMConfig.m */,
+				C3BC026C24F889290007FA0C /* Tool */,
 				BC7099FAF9C848DEDD7F4FB52D71CAF9 /* BaseVC */,
 				D61AE73D8BB00B4BA2DC6E92FE5222D7 /* BaseView */,
 				7015C91B676839E16BD7D392DAE49ACB /* Extension */,
@@ -974,6 +983,18 @@
 			);
 			name = BaseVC;
 			path = FMBaseiOSKit/Classes/BaseVC;
+			sourceTree = "<group>";
+		};
+		C3BC026C24F889290007FA0C /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				C3BC027224F889D00007FA0C /* FMSocialTextTool.h */,
+				C3BC027124F889D00007FA0C /* FMSocialTextTool.m */,
+				C3BC027524F88C3A0007FA0C /* FMSocialTextItem.h */,
+				C3BC027624F88C3A0007FA0C /* FMSocialTextItem.m */,
+			);
+			name = Tool;
+			path = FMBaseiOSKit/Classes/Tool;
 			sourceTree = "<group>";
 		};
 		C4B7770423BFFB20F70F06F90FAA4F10 /* Masonry */ = {
@@ -1219,6 +1240,8 @@
 				C39F3DC124DCF8A600071FE5 /* FMTeslaPageModel.h in Headers */,
 				FDB4A417CF9E6CED8C19BA67A2E60FD8 /* UIColor+FMExtension.h in Headers */,
 				2908AAC63EADFD17080073BE4AAD951A /* UIImage+FMExtension.h in Headers */,
+				C3BC027724F88C3A0007FA0C /* FMSocialTextItem.h in Headers */,
+				C3BC027424F889D00007FA0C /* FMSocialTextTool.h in Headers */,
 				9FBCEAE4B2EDA2D601D3FB3DD5BFF19A /* UIImageView+FMExtension.h in Headers */,
 				ECB93B786DDB071A0473C6F8269CAB88 /* UILabel+FMExtension.h in Headers */,
 				F0748902461044407256906C4B3E092D /* UITableView+FMExtension.h in Headers */,
@@ -1620,6 +1643,7 @@
 				7763E6F2AB298C2AD94BA00288DF962E /* NSDictionary+FMExtension.m in Sources */,
 				CE50C63720C8148E8616631FD2174848 /* NSMutableAttributedString+FMExtension.m in Sources */,
 				376452523004CD882266A69C84F4CFE5 /* NSString+FMExtension.m in Sources */,
+				C3BC027324F889D00007FA0C /* FMSocialTextTool.m in Sources */,
 				4DE98596E672808D763C55D8FD46D571 /* UIBarButtonItem+FMExtension.m in Sources */,
 				ABDBC1F072AAA1B4F2160C1A98139953 /* UIButton+FMExtension.m in Sources */,
 				7BBDA7D0FFA5691531FEEECE79CBB2C5 /* UICollectionView+FMExtension.m in Sources */,
@@ -1630,6 +1654,7 @@
 				810041400A23A894A2FFBB4505C5E807 /* UITableView+FMExtension.m in Sources */,
 				CA834BEC8D3D498954397C90D47B4EED /* UITableViewCell+FMExtension.m in Sources */,
 				B5249ED17C36328610E5595C78B9540F /* UIView+FMExtension.m in Sources */,
+				C3BC027824F88C3A0007FA0C /* FMSocialTextItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

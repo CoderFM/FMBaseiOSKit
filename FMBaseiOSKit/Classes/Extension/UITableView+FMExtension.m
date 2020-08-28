@@ -4,7 +4,7 @@
 #import <objc/runtime.h>
 #import <Masonry/Masonry.h>
 #import "FMBaseTableView.h"
-
+#import "FMConfig.h"
 
 static char nonDataViewKey;
 static char showEmptyViewKey;
@@ -18,19 +18,7 @@ static char nonDataViewClassKey;
         Method m2 = class_getInstanceMethod(self, @selector(_baseReloadData));
         method_exchangeImplementations(m1, m2);
     }
-    {
-        Method m1 = class_getInstanceMethod(self, @selector(initWithFrame:style:));
-        Method m2 = class_getInstanceMethod(self, @selector(_baseInitWithFrame:style:));
-        method_exchangeImplementations(m1, m2);
-    }
 }
-
-- (instancetype)_baseInitWithFrame:(CGRect)frame style:(UITableViewStyle)style{
-    UITableView *table = [self _baseInitWithFrame:frame style:style];
-    table.showEmptyView = YES;
-    return table;
-}
-
 
 - (void)_baseReloadData{
     [self _baseReloadData];
@@ -97,7 +85,10 @@ static char nonDataViewClassKey;
 - (Class)nonDataViewClass{
     Class viewClass = objc_getAssociatedObject(self, &nonDataViewClassKey);
     if (!viewClass) {
-        viewClass = [FMNoneDataView class];
+        viewClass = [FMConfig config].noneViewClass;
+        if (!viewClass) {
+            viewClass = [FMNoneDataView class];
+        }
         objc_setAssociatedObject(self, &nonDataViewClassKey, viewClass, OBJC_ASSOCIATION_RETAIN);
     }
     return viewClass;
@@ -105,6 +96,13 @@ static char nonDataViewClassKey;
 
 - (void)setNonDataViewClass:(Class)nonDataViewClass{
     Class viewClass = objc_getAssociatedObject(self, &nonDataViewClassKey);
+    UIView *nonData = objc_getAssociatedObject(self, &nonDataViewKey);
+    if (nonData && ![nonData isKindOfClass:nonDataViewClass]) {
+        if (nonData.superview) {
+            [nonData removeFromSuperview];
+        }
+        self.nonDataView = nil;
+    }
     if (viewClass != nonDataViewClass) {
         objc_setAssociatedObject(self, &nonDataViewClassKey, nonDataViewClass, OBJC_ASSOCIATION_RETAIN);
     }

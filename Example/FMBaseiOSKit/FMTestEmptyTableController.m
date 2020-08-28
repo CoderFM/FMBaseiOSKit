@@ -34,7 +34,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.baseNavItem.title = @"列表空视图";
+    self.baseNavItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"切换" style:UIBarButtonItemStyleDone target:self action:@selector(changeStyle)];
     self.tableView.nonDataViewClass = [FMTestEmptyView class];
+    [self.tableView reloadData];
+}
+
+- (void)changeStyle{
+    [[FMConfig config] setConfigurationNoneDataView:^(FMNoneDataView * _Nonnull noneData) {
+        noneData.nonTextLabel.textColor = [UIColor blackColor];
+        noneData.nonTextLabel.font = [UIFont systemFontOfSize:20];
+        noneData.nonTextLabel.text = @"重新设置的暂无数据视图";
+    }];
+    self.tableView.nonDataViewClass = nil;
     [self.tableView reloadData];
 }
 

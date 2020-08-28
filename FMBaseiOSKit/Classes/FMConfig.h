@@ -12,7 +12,7 @@
 #define FMWeakSelf __weak typeof(self) weakSelf = self
 
 NS_ASSUME_NONNULL_BEGIN
-@class FMBaseViewController, FMBaseListController, FMBaseTableController, FMCollectionLayoutController;
+@class FMBaseViewController, FMBaseListController, FMBaseTableController, FMCollectionLayoutController, FMNoneDataView;
 @interface FMConfig : NSObject
 
 extern NSInteger FMGetRandomIntegerFromRange(NSRange range);
@@ -21,6 +21,9 @@ extern NSInteger FMGetRandomIntegerFromRange(NSRange range);
 @property(nonatomic, copy)void(^configurationListVC)(FMBaseListController *list);
 @property(nonatomic, copy)void(^configurationTableVC)(FMBaseTableController *table);
 @property(nonatomic, copy)void(^configurationCollVC)(FMCollectionLayoutController *coll);
+@property(nonatomic, copy)void(^configurationNoneDataView)(FMNoneDataView *noneData);
+
+@property(nonatomic, weak)Class noneViewClass;
 
 @property(nonatomic, weak)UIWindowScene *windowScene API_AVAILABLE(ios(13.0));
 @property(nonatomic, weak)UIWindow *window;
