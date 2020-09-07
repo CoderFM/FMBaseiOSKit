@@ -5,6 +5,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (FMExtension)
+
+@property(readonly)UIImage *originalImage;
+
 + (instancetype)imageWithColor:(UIColor *)color;
 - (instancetype)fillSize:(CGSize)size;
 - (NSData *)dataCompressMaxSize:(NSInteger)maxSize;

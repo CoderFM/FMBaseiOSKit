@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///中心点在主屏幕上的位置
 @property(readonly)CGPoint globalCenter;
 
+@property(readonly)UIViewController *viewController;
+
 + (instancetype)viewWithBackgroundColor:(UIColor *)bgColor;
 
 /**
@@ -32,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
  * 移除所有子z视图
  */
 - (void)removeAllSubviews;
+
+
 
 @end
 

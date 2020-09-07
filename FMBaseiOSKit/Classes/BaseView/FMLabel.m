@@ -17,6 +17,7 @@ NSString *__GetKeyFromRange(NSRange range){
 @property(nonatomic, copy)FMLabelTouchBlock block;
 @property(nonatomic, assign)NSRange range;
 @property(nonatomic, strong)NSArray *rects;
+@property(nonatomic, strong)id bindObj;
 
 @end
 
@@ -65,7 +66,7 @@ NSString *__GetKeyFromRange(NSRange range){
         [obj.rects enumerateObjectsUsingBlock:^(NSValue *rectValue, NSUInteger idx, BOOL * _Nonnull stop1) {
             if (CGRectContainsPoint([rectValue CGRectValue], point)) {
                 if (obj.block) {
-                    obj.block();
+                    obj.block(obj.bindObj);
                     *stop = YES;
                     *stop1 = YES;
                 }
@@ -75,6 +76,10 @@ NSString *__GetKeyFromRange(NSRange range){
 }
 
 - (void)addClickRange:(NSRange)range block:(FMLabelTouchBlock)block{
+    [self addClickRange:range bindObj:nil block:block];
+}
+
+- (void)addClickRange:(NSRange)range bindObj:(id __nullable)bindObj block:(FMLabelTouchBlock)block{
     NSString *key = __GetKeyFromRange(range);
     __FMLabelClickObj *obj = [self.clicks objectForKey:key];
     if (obj) {
@@ -83,11 +88,16 @@ NSString *__GetKeyFromRange(NSRange range){
         obj = [[__FMLabelClickObj alloc] init];
         obj.range = range;
         obj.block = block;
+        obj.bindObj = bindObj;
         [self.clicks setObject:obj forKey:key];
     }
     if (self.handleClickFinished) {
         [self __handleAllClickRange];
     }
+}
+
+- (void)removeAllClick{
+    [self.clicks removeAllObjects];
 }
 
 - (void)__handleAllClickRange{

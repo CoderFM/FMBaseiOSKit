@@ -4,6 +4,7 @@
 #import <objc/runtime.h>
 #import <Masonry/Masonry.h>
 #import "FMConfig.h"
+#import "NSObject+FMExtension.h"
 
 static char nonDataViewKey;
 static char showEmptyViewKey;
@@ -12,11 +13,7 @@ static char nonDataViewClassKey;
 @implementation UICollectionView (FMExtension)
 
 + (void)load{
-    {
-        Method m1 = class_getInstanceMethod(self, @selector(reloadData));
-        Method m2 = class_getInstanceMethod(self, @selector(_baseReloadData));
-        method_exchangeImplementations(m1, m2);
-    }
+    [self fm_exchangeOriginalSel:@selector(reloadData) replaceSel:@selector(_baseReloadData)];
 }
 
 - (void)_baseReloadData{

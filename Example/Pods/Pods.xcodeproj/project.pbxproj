@@ -170,6 +170,12 @@
 		C08D5AC8FCAE583D825A98DBAA237B0F /* FMTeslaSuspensionHeightChangeDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BF190479DB7D86A50A8ACB40BE86D61 /* FMTeslaSuspensionHeightChangeDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C354661624DA9699005256B8 /* FMLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = C354661424DA9699005256B8 /* FMLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C354661724DA9699005256B8 /* FMLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C354661524DA9699005256B8 /* FMLabel.m */; };
+		C38A675D24FDD1C400100752 /* UIControl+FMExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = C38A675B24FDD1C400100752 /* UIControl+FMExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C38A675E24FDD1C400100752 /* UIControl+FMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A675C24FDD1C400100752 /* UIControl+FMExtension.m */; };
+		C38A676124FDE1D600100752 /* NSObject+FMExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = C38A675F24FDE1D600100752 /* NSObject+FMExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C38A676224FDE1D600100752 /* NSObject+FMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A676024FDE1D600100752 /* NSObject+FMExtension.m */; };
+		C38A676524FDEE7500100752 /* FMMemoryTool.h in Headers */ = {isa = PBXBuildFile; fileRef = C38A676324FDEE7500100752 /* FMMemoryTool.h */; };
+		C38A676624FDEE7500100752 /* FMMemoryTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C38A676424FDEE7500100752 /* FMMemoryTool.m */; };
 		C39F3DC124DCF8A600071FE5 /* FMTeslaPageModel.h in Headers */ = {isa = PBXBuildFile; fileRef = C39F3DBF24DCF8A600071FE5 /* FMTeslaPageModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C39F3DC224DCF8A600071FE5 /* FMTeslaPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C39F3DC024DCF8A600071FE5 /* FMTeslaPageModel.m */; };
 		C39F3DC524DCFFE200071FE5 /* FMTeslaPageController.h in Headers */ = {isa = PBXBuildFile; fileRef = C39F3DC324DCFFE200071FE5 /* FMTeslaPageController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -522,6 +528,12 @@
 		C2D0A7C2452E6E0C3FF28CAB89ED7D00 /* MASViewConstraint.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MASViewConstraint.m; path = Masonry/MASViewConstraint.m; sourceTree = "<group>"; };
 		C354661424DA9699005256B8 /* FMLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMLabel.h; sourceTree = "<group>"; };
 		C354661524DA9699005256B8 /* FMLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMLabel.m; sourceTree = "<group>"; };
+		C38A675B24FDD1C400100752 /* UIControl+FMExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+FMExtension.h"; sourceTree = "<group>"; };
+		C38A675C24FDD1C400100752 /* UIControl+FMExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+FMExtension.m"; sourceTree = "<group>"; };
+		C38A675F24FDE1D600100752 /* NSObject+FMExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+FMExtension.h"; sourceTree = "<group>"; };
+		C38A676024FDE1D600100752 /* NSObject+FMExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FMExtension.m"; sourceTree = "<group>"; };
+		C38A676324FDEE7500100752 /* FMMemoryTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMMemoryTool.h; sourceTree = "<group>"; };
+		C38A676424FDEE7500100752 /* FMMemoryTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMMemoryTool.m; sourceTree = "<group>"; };
 		C39F3DBF24DCF8A600071FE5 /* FMTeslaPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMTeslaPageModel.h; sourceTree = "<group>"; };
 		C39F3DC024DCF8A600071FE5 /* FMTeslaPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMTeslaPageModel.m; sourceTree = "<group>"; };
 		C39F3DC324DCFFE200071FE5 /* FMTeslaPageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMTeslaPageController.h; sourceTree = "<group>"; };
@@ -914,6 +926,10 @@
 				A0F759979ADFC5B52B10FA59B8B88FD9 /* UITableViewCell+FMExtension.m */,
 				B44BD17CDB8D8822C95611EA415E2585 /* UIView+FMExtension.h */,
 				B058F90D73C7F5214E08A649EB26C842 /* UIView+FMExtension.m */,
+				C38A675B24FDD1C400100752 /* UIControl+FMExtension.h */,
+				C38A675C24FDD1C400100752 /* UIControl+FMExtension.m */,
+				C38A675F24FDE1D600100752 /* NSObject+FMExtension.h */,
+				C38A676024FDE1D600100752 /* NSObject+FMExtension.m */,
 			);
 			name = Extension;
 			path = FMBaseiOSKit/Classes/Extension;
@@ -992,6 +1008,8 @@
 				C3BC027124F889D00007FA0C /* FMSocialTextTool.m */,
 				C3BC027524F88C3A0007FA0C /* FMSocialTextItem.h */,
 				C3BC027624F88C3A0007FA0C /* FMSocialTextItem.m */,
+				C38A676324FDEE7500100752 /* FMMemoryTool.h */,
+				C38A676424FDEE7500100752 /* FMMemoryTool.m */,
 			);
 			name = Tool;
 			path = FMBaseiOSKit/Classes/Tool;
@@ -1232,6 +1250,7 @@
 				71254CF8B9890157DB1E5CE46C08357D /* NSMutableAttributedString+FMExtension.h in Headers */,
 				FD7CECA267CFA315C6E7F8031E14C29D /* NSString+FMExtension.h in Headers */,
 				B603A078C94A6A13DB9D24F38E6B2B63 /* UIBarButtonItem+FMExtension.h in Headers */,
+				C38A676524FDEE7500100752 /* FMMemoryTool.h in Headers */,
 				C3A1542524D7B6C0005C9239 /* NSMutableString+FMExtension.h in Headers */,
 				6BC7164C053A87CF0A8B658C2460FB29 /* UIButton+FMExtension.h in Headers */,
 				B99200D148BD208E00C7766E48C0FECD /* UICollectionView+FMExtension.h in Headers */,
@@ -1242,7 +1261,9 @@
 				2908AAC63EADFD17080073BE4AAD951A /* UIImage+FMExtension.h in Headers */,
 				C3BC027724F88C3A0007FA0C /* FMSocialTextItem.h in Headers */,
 				C3BC027424F889D00007FA0C /* FMSocialTextTool.h in Headers */,
+				C38A675D24FDD1C400100752 /* UIControl+FMExtension.h in Headers */,
 				9FBCEAE4B2EDA2D601D3FB3DD5BFF19A /* UIImageView+FMExtension.h in Headers */,
+				C38A676124FDE1D600100752 /* NSObject+FMExtension.h in Headers */,
 				ECB93B786DDB071A0473C6F8269CAB88 /* UILabel+FMExtension.h in Headers */,
 				F0748902461044407256906C4B3E092D /* UITableView+FMExtension.h in Headers */,
 				52E873485182ADB141493F6BFFE7F5AC /* UITableViewCell+FMExtension.h in Headers */,
@@ -1645,13 +1666,16 @@
 				376452523004CD882266A69C84F4CFE5 /* NSString+FMExtension.m in Sources */,
 				C3BC027324F889D00007FA0C /* FMSocialTextTool.m in Sources */,
 				4DE98596E672808D763C55D8FD46D571 /* UIBarButtonItem+FMExtension.m in Sources */,
+				C38A676624FDEE7500100752 /* FMMemoryTool.m in Sources */,
 				ABDBC1F072AAA1B4F2160C1A98139953 /* UIButton+FMExtension.m in Sources */,
 				7BBDA7D0FFA5691531FEEECE79CBB2C5 /* UICollectionView+FMExtension.m in Sources */,
+				C38A675E24FDD1C400100752 /* UIControl+FMExtension.m in Sources */,
 				00857570265D977A2676F2F673266061 /* UIColor+FMExtension.m in Sources */,
 				041B023EE97C469DAAD0A051EC649696 /* UIImage+FMExtension.m in Sources */,
 				B14A76D2E84E3AD008BEE3C2FD41DB3D /* UIImageView+FMExtension.m in Sources */,
 				83EF81EB57EF1D98BAF0C06A00F47BE9 /* UILabel+FMExtension.m in Sources */,
 				810041400A23A894A2FFBB4505C5E807 /* UITableView+FMExtension.m in Sources */,
+				C38A676224FDE1D600100752 /* NSObject+FMExtension.m in Sources */,
 				CA834BEC8D3D498954397C90D47B4EED /* UITableViewCell+FMExtension.m in Sources */,
 				B5249ED17C36328610E5595C78B9540F /* UIView+FMExtension.m in Sources */,
 				C3BC027824F88C3A0007FA0C /* FMSocialTextItem.m in Sources */,

@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet FMLabel *label;
 
+@property(nonatomic, copy)void(^circleBlock)(void);
+
 @end
 
 @implementation FMViewController
@@ -32,7 +34,11 @@
     UIButton *btn = [UIButton buttonWithTitle:@"弹窗" font:[UIFont systemFontOfSize:15] color:[UIColor purpleColor]];
     [btn addTarget:self action:@selector(navRightClick:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    
+    [btn fm_addBlock:^(id  _Nonnull sender) {
+        
+    } event:UIControlEventTouchUpInside];
+//    [btn fm_removeBlockEvent:UIControlEventTouchUpInside];
+    [btn fm_removeAllBlock];
     {
         FMNavBtnsView *nav1 = [[FMNavBtnsView alloc] init];
         nav1.inset = UIEdgeInsetsMake(3, 10, 3, 10);
@@ -72,7 +78,13 @@
     self.label.font = font;
     
     self.label.attributedText = [[[NSString stringWithFormat:@"%@   ", @"爱丽丝肯德基埃里克"] toAttr] appendImage:[UIImage imageWithAttributes:[[NSString stringWithFormat:@"%@回复", @"1"] toAttrWithAttr:@{NSFontAttributeName:font, NSForegroundColorAttributeName:[UIColor blackColor]}] inset:UIEdgeInsetsMake(4, 6, 4, 6) borderWidth:0 borderColor:[UIColor lightGrayColor] cornerRadius:10 backgroundColor:[UIColor cyanColor]] font:font];
-    
+//    [self.label addClickRange:NSMakeRange(0, 5) block:^{
+//
+//    }];
+    self.label.userInteractionEnabled = YES;
+    [self.label addClickRange:NSMakeRange(0, 5) bindObj:@"1" block:^(id  _Nullable bindObj) {
+        
+    }];
     
 //    self.label.attributedText = [[@"06-08 16:15" toAttr] insertImage:[UIImage imageWithAttributes:[@"求职" toAttrWithAttr:@{NSFontAttributeName:[UIFont systemFontOfSize:12], NSForegroundColorAttributeName:[UIColor whiteColor]}] inset:UIEdgeInsetsMake(2, 8, 2, 8) borderWidth:0 borderColor:nil cornerRadius:4 backgroundColor:[UIColor blueColor]] font:font atIndex:0];
 //    self.label.attributedText = [insertImage: font:font atIndex:0];
@@ -97,6 +109,9 @@
 //    [web mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.left.right.top.bottom.mas_equalTo(0);
 //    }];
+    
+    NSLog(@"长度:%ld", @"😁".length);
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -126,6 +141,9 @@
 - (IBAction)layoutClick:(id)sender {
     FMLayoutListViewController *vc = [[FMLayoutListViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
+    [self setCircleBlock:^{
+        vc.navigationItem.title = @"asdlkajsldk";
+    }];
 }
 
 - (IBAction)formClick:(id)sender {

@@ -1,8 +1,13 @@
 
 
 #import "UIImage+FMExtension.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation UIImage (FMExtension)
+
+- (UIImage *)originalImage{
+    return [self imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+}
 
 + (instancetype)imageWithColor:(UIColor *)color{
     
@@ -108,5 +113,21 @@
     return newImage;
 }
 
+
++ (UIImage*)coverImageForVideo:(NSURL *)videoURL{
+    
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoURL options:nil];
+    AVAssetImageGenerator *gen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    gen.appliesPreferredTrackTransform = YES;
+    
+    CMTime time = CMTimeMakeWithSeconds(2.0, 600);
+    NSError *error = nil;
+    CMTime actualTime;
+    
+    CGImageRef image = [gen copyCGImageAtTime:time actualTime:&actualTime error:&error];
+    UIImage *thumbImg = [[UIImage alloc] initWithCGImage:image];
+    
+    return thumbImg;
+}
 
 @end

@@ -46,6 +46,8 @@
 #import "UIBarButtonItem+FMExtension.h"
 #import "UILabel+FMExtension.h"
 #import "UIButton+FMExtension.h"
+#import "UIControl+FMExtension.h"
+#import "NSObject+FMExtension.h"
 
 #import "FMSocialTextTool.h"
 #import "FMSocialTextItem.h"

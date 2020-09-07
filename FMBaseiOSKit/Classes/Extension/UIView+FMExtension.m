@@ -19,6 +19,16 @@
     return [self.superview convertPoint:self.center toView:window];
 }
 
+- (UIViewController *)viewController{
+    for (UIView *view = self; view; view = view.superview) {
+        UIResponder *nextResponder = [view nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController *)nextResponder;
+        }
+    }
+    return nil;
+}
+
 + (instancetype)viewWithBackgroundColor:(UIColor *)bgColor{
     UIView *view = [[self alloc] init];
     view.backgroundColor = bgColor;
