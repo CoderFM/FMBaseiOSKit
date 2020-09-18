@@ -109,12 +109,12 @@
             [cell.contentView setCornerRadius:10];
         }];
         [page addObject:section];
-        [pageSections addObject:[page copy]];
-        [pageSections addObject:[page copy]];
-        [pageSections addObject:[page copy]];
-        [pageSections addObject:[page copy]];
-        [pageSections addObject:[page copy]];
-        [pageSections addObject:[page copy]];
+//        [pageSections addObject:[page copy]];
+//        [pageSections addObject:[page copy]];
+//        [pageSections addObject:[page copy]];
+//        [pageSections addObject:[page copy]];
+//        [pageSections addObject:[page copy]];
+//        [pageSections addObject:[page copy]];
     }
     self.pageSections = pageSections;
 }

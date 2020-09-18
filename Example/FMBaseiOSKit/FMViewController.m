@@ -77,7 +77,7 @@
     UIFont *font = [UIFont systemFontOfSize:12];
     self.label.font = font;
     
-    self.label.attributedText = [[[NSString stringWithFormat:@"%@   ", @"爱丽丝肯德基埃里克"] toAttr] appendImage:[UIImage imageWithAttributes:[[NSString stringWithFormat:@"%@回复", @"1"] toAttrWithAttr:@{NSFontAttributeName:font, NSForegroundColorAttributeName:[UIColor blackColor]}] inset:UIEdgeInsetsMake(4, 6, 4, 6) borderWidth:0 borderColor:[UIColor lightGrayColor] cornerRadius:10 backgroundColor:[UIColor cyanColor]] font:font];
+    self.label.attributedText = [[[NSString stringWithFormat:@"测试用户40498371 回复 GG : yi"] toAttr] appendImage:[UIImage imageWithAttributes:[[NSString stringWithFormat:@"%@回复", @"1"] toAttrWithAttr:@{NSFontAttributeName:font, NSForegroundColorAttributeName:[UIColor blackColor]}] inset:UIEdgeInsetsMake(4, 6, 4, 6) borderWidth:0 borderColor:[UIColor lightGrayColor] cornerRadius:10 backgroundColor:[UIColor cyanColor]] font:font];
 //    [self.label addClickRange:NSMakeRange(0, 5) block:^{
 //
 //    }];

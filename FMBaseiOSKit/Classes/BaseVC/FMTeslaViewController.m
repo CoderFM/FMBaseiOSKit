@@ -67,7 +67,7 @@
 }
 
 - (void)tesla:(FMTeslaLayoutView *)tesla didCreatedScrollViewWithIndex:(NSInteger)index scrollView:(UIScrollView *)scrollView{
-    if ([scrollView isKindOfClass:[FMLayoutView class]]) {
+    if ([scrollView isKindOfClass:[FMLayoutView class]] && index < self.pageSections.count) {
         ((FMLayoutView *)scrollView).sections = self.pageSections[index];
     }
 }

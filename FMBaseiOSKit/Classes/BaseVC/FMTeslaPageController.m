@@ -30,18 +30,26 @@
 }
 
 - (UIScrollView *)tesla:(FMTeslaLayoutView *)tesla customCreateWithIndex:(NSInteger)index shareHeight:(CGFloat)shareHeight{
-    FMTeslaPageModel *model = self.pages[index];
-    return [model customCreateScrollViewWithShareHeight:shareHeight];
+    if (index < self.pages.count) {
+        FMTeslaPageModel *model = self.pages[index];
+        return [model customCreateScrollViewWithShareHeight:shareHeight];
+    } else {
+        return nil;
+    }
 }
 
 - (void)tesla:(FMTeslaLayoutView *)tesla didCreatedScrollViewWithIndex:(NSInteger)index scrollView:(UIScrollView *)scrollView{
-    FMTeslaPageModel *model = self.pages[index];
-    [model didCreateScrollView:scrollView];
+    if (index < self.pages.count) {
+        FMTeslaPageModel *model = self.pages[index];
+        [model didCreateScrollView:scrollView];
+    }
 }
 
 - (void)tesla:(FMTeslaLayoutView *)tesla didScrollEnd:(NSInteger)index currentScrollView:(UIScrollView *)scrollView{
-    FMTeslaPageModel *model = self.pages[index];
-    [model didShow];
+    if (index < self.pages.count) {
+        FMTeslaPageModel *model = self.pages[index];
+        [model didShow];
+    }
 }
 
 @end

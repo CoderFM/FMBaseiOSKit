@@ -62,6 +62,7 @@
             }
             textLength = MIN(range.location + range.length, fromRange.location + fromRange.length) - startIndex;
             CGFloat offsetY = height - lineOrigin.y + descent - ascent;
+//            [@"" getLineStart:<#(nullable NSUInteger *)#> end:<#(nullable NSUInteger *)#> contentsEnd:<#(nullable NSUInteger *)#> forRange:<#(NSRange)#>]
             CGFloat offsetX = CTLineGetOffsetForStringIndex(line, startIndex, nil);
             NSRange currentRange = NSMakeRange(startIndex, textLength);
             
