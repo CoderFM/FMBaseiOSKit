@@ -42,10 +42,6 @@
 @property(nonatomic, strong)NSMutableDictionary<NSNumber *, UIScrollView *> *layoutViews;
 
 @property(nonatomic, assign)BOOL isLayoutSubView;
-@property(nonatomic, assign)BOOL isLoadSubView;
-
-
-@property(nonatomic, assign)CGFloat shareHeight;
 @property(nonatomic, assign, readonly)CGFloat shareSuspensionDifferHeight;
 
 @end
@@ -55,25 +51,30 @@
 - (void)reLoadSubViews{
     if (self.isLayoutSubView && self.isLoadSubView) {
         self.isLoadSubView = NO;
-        for (UIView *view in self.layoutViews) {
+        for (UIView *view in self.layoutViews.allValues) {
             [view removeFromSuperview];
         }
+        self.layoutViews = [NSMutableDictionary dictionary];
         [self loadSubViews];
     }
 }
 
 - (void)reloadData{
     [self.shareLayoutView reloadData];
-    if ([self.currentScrollView respondsToSelector:@selector(reloadData)]) {
-        [self.currentScrollView performSelector:@selector(reloadData)];
+    if ([self.currentScrollView isKindOfClass:[UITableView class]]) {
+        [(UITableView *)self.currentScrollView reloadData];
+    } else if ([self.currentScrollView isKindOfClass:[UICollectionView class]]) {
+        [(UICollectionView *)self.currentScrollView reloadData];
     }
 }
 
 - (void)reloadDataWithIndex:(NSInteger)index{
     UIScrollView *scrollView = self.layoutViews[@(index)];
     if (scrollView) {
-        if ([scrollView respondsToSelector:@selector(reloadData)]) {
-            [scrollView performSelector:@selector(reloadData)];
+        if ([scrollView isKindOfClass:[UITableView class]]) {
+            [(UITableView *)scrollView reloadData];
+        } else if ([scrollView isKindOfClass:[UICollectionView class]]) {
+            [(UICollectionView *)scrollView reloadData];
         }
     }
 }
@@ -173,13 +174,6 @@
     [super setClipsToBounds:clipsToBounds];
 }
 
-- (void)setUserInteractionEnabled:(BOOL)userInteractionEnabled{
-    if (!userInteractionEnabled) {
-        
-    }
-    [super setUserInteractionEnabled:userInteractionEnabled];
-}
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -193,10 +187,6 @@
 }
 
 - (void)loadSubViews{
-    [self.layoutViews.allValues enumerateObjectsUsingBlock:^(UIScrollView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [obj removeFromSuperview];
-    }];
-    [self.layoutViews removeAllObjects];
     CGFloat shareHeight = 0;
     if ([self.dataSource respondsToSelector:@selector(shareSectionsInTesla:)]) {
         NSMutableArray<FMLayoutBaseSection *> *sections = [[self.dataSource shareSectionsInTesla:self] mutableCopy];
@@ -234,13 +224,13 @@
             [self.delegate tesla:self willCreateScrollViewWithIndex:index];
         }
         
-        UIScrollView *scollView;
+        UIScrollView *scrollView;
         
         if ([self.delegate respondsToSelector:@selector(tesla:customCreateWithIndex:shareHeight:)]) {
-            scollView = [self.delegate tesla:self customCreateWithIndex:index shareHeight:self.shareHeight];
+            scrollView = [self.delegate tesla:self customCreateWithIndex:index shareHeight:self.shareHeight];
         }
         
-        if (scollView == nil) {
+        if (scrollView == nil) {
             FMLayoutView *layoutView = [[FMLayoutView alloc] init];
             layoutView.backgroundColor = [UIColor clearColor];
             layoutView.bounces = YES;
@@ -249,27 +239,29 @@
             layoutView.clipsToBounds = self.clipsToBounds;
             layoutView.layout.minContentSize = self.shareHeight - self.suspensionAlwaysHeader.header.size + self.scrollView.bounds.size.height;
             [layoutView.layout setFirstSectionOffset:self.shareHeight];
-            scollView = layoutView;
+            scrollView = layoutView;
         }
         
         if ([self.delegate respondsToSelector:@selector(tesla:didCreatedScrollViewWithIndex:scrollView:)]) {
-            [self.delegate tesla:self didCreatedScrollViewWithIndex:index scrollView:scollView];
+            [self.delegate tesla:self didCreatedScrollViewWithIndex:index scrollView:scrollView];
         }
         
-        scollView.frame = CGRectMake(self.scrollView.bounds.size.width * index, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
-        [self.scrollView addSubview:scollView];
-        if ([scollView respondsToSelector:@selector(reloadData)]) {
-            [scollView performSelector:@selector(reloadData)];
+        scrollView.frame = CGRectMake(self.scrollView.bounds.size.width * index, 0, self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);
+        [self.scrollView addSubview:scrollView];
+        if ([scrollView isKindOfClass:[UITableView class]]) {
+            [(UITableView *)scrollView reloadData];
+        } else if ([scrollView isKindOfClass:[UICollectionView class]]) {
+            [(UICollectionView *)scrollView reloadData];
         }
-        self.layoutViews[@(index)] = scollView;
-        layoutView = scollView;
+        self.layoutViews[@(index)] = scrollView;
+        layoutView = scrollView;
         
         if (self.currentScrollView) {
             CGPoint contentOffset = self.currentScrollView.contentOffset;
             if (contentOffset.y < self.shareLayoutView.frame.size.height-self.suspensionAlwaysHeader.sectionSize+self.shareSuspensionDifferHeight) {
-                scollView.contentOffset = contentOffset;
+                scrollView.contentOffset = contentOffset;
             } else {
-                scollView.contentOffset = CGPointMake(contentOffset.x, self.shareLayoutView.frame.size.height-self.suspensionAlwaysHeader.sectionSize+self.shareSuspensionDifferHeight);
+                scrollView.contentOffset = CGPointMake(contentOffset.x, self.shareLayoutView.frame.size.height-self.suspensionAlwaysHeader.sectionSize+self.shareSuspensionDifferHeight);
             }
         }
     }
@@ -370,7 +362,8 @@
                         CGFloat diff = (contentOffset.y - self.shareLayoutView.frame.size.height+self.suspensionAlwaysHeader.sectionSize);
                         CGFloat showHeight = self.suspensionAlwaysHeader.header.size - diff;
                         if ([header conformsToProtocol:@protocol(FMTeslaSuspensionHeightChangeDelegate)] && [header respondsToSelector:@selector(teslaSuspensionHeaderShouldShowHeight:)]) {
-                            [header performSelector:@selector(teslaSuspensionHeaderShouldShowHeight:) withObject:@(showHeight)];
+                            id<FMTeslaSuspensionHeightChangeDelegate> delegate = header;
+                            [delegate teslaSuspensionHeaderShouldShowHeight:showHeight];
                         }
                     } else {
                         // Fallback on earlier versions
@@ -381,7 +374,8 @@
                         CGFloat diff = 0;
                         CGFloat showHeight = self.suspensionAlwaysHeader.header.size - diff;
                         if ([header conformsToProtocol:@protocol(FMTeslaSuspensionHeightChangeDelegate)] && [header respondsToSelector:@selector(teslaSuspensionHeaderShouldShowHeight:)]) {
-                            [header performSelector:@selector(teslaSuspensionHeaderShouldShowHeight:) withObject:@(showHeight)];
+                            id<FMTeslaSuspensionHeightChangeDelegate> delegate = header;
+                            [delegate teslaSuspensionHeaderShouldShowHeight:showHeight];
                         }
                     } else {
                         // Fallback on earlier versions
@@ -406,7 +400,8 @@
                     CGFloat diff = self.shareSuspensionDifferHeight;
                     CGFloat showHeight = self.suspensionAlwaysHeader.header.size - diff;
                     if ([header conformsToProtocol:@protocol(FMTeslaSuspensionHeightChangeDelegate)] && [header respondsToSelector:@selector(teslaSuspensionHeaderShouldShowHeight:)]) {
-                        [header performSelector:@selector(teslaSuspensionHeaderShouldShowHeight:) withObject:@(showHeight)];
+                        id<FMTeslaSuspensionHeightChangeDelegate> delegate = header;
+                        [delegate teslaSuspensionHeaderShouldShowHeight:showHeight];
                     }
                 } else {
                    

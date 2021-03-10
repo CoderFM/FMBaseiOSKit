@@ -41,9 +41,14 @@
 }
 
 - (CGFloat)interiorHeight{
-    NSInteger count = self.canDynamicAdd ? (self.maxCount > 0 ? MIN(self.images.count, self.maxCount) : self.images.count) : self.images.count;
-    _interiorHeight = [self.imageConfigure heightWithCount:count] + self.bottomLineHeight;
-    return _interiorHeight;
+    if (self.imageConfigure.oneLineScroll) {
+        _interiorHeight = self.imageConfigure.inset.top + self.imageConfigure.imageHeight + self.imageConfigure.inset.bottom;
+        return _interiorHeight;
+    } else {
+        NSInteger count = self.canDynamicAdd ? (self.maxCount > 0 ? MIN(self.images.count, self.maxCount) : self.images.count) : self.images.count;
+        _interiorHeight = [self.imageConfigure heightWithCount:count] + self.bottomLineHeight;
+        return _interiorHeight;
+    }
 }
 
 - (instancetype)init{
@@ -57,19 +62,29 @@
 }
 
 - (BOOL)verifySuccess:(BOOL)alert{
-    if (self.canDynamicAdd) {
+    if (self.canDynamicAdd && self.minCount == 0) {
         return YES;
     }
     __block BOOL success = YES;
     __block NSString *message = @"";
     __weak typeof(self) weakSelf = self;
+    __block NSInteger selectCount = 0;
     [self.images enumerateObjectsUsingBlock:^(FormListImageSelectModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (![obj verifySuccess]) {
             success = NO;
             message = [NSString stringWithFormat:@"%@ %@\n未上传", weakSelf.title, obj.title];
             *stop = YES;
+        } else {
+            selectCount += 1;
         }
     }];
+    if (self.canDynamicAdd) {
+        if (selectCount > self.minCount) {
+            return YES;
+        } else {
+            message = [NSString stringWithFormat:@"%@未上传", self.title];
+        }
+    }
     if (!success && alert) {
         FormVerifyFailAlert(message);
     }

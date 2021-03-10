@@ -71,13 +71,30 @@
     
     self.textF.textColor = model.textColor;
     self.textF.font = model.textFont;
-    self.textF.placeholder = model.placehoder;
-    self.textF.text = model.text;
+    
     self.textF.keyboardType = model.keyboardType;
     self.textF.textAlignment = model.alignment;
+    self.textF.tintColor = model.textTintColor;
     [self.textF mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(model.textFLeftMargin);
     }];
+    
+    if ([model.placehoder isKindOfClass:[NSString class]]) {
+        self.textF.placeholder = model.placehoder;
+        self.textF.placeholderLabel.textColor = model.placeholderColor;
+    } else if ([model.placehoder isKindOfClass:[NSAttributedString class]]) {
+        self.textF.attributedPlaceholder = model.placehoder;
+    } else {
+        self.textF.placeholder = @"";
+    }
+    
+    if ([model.text isKindOfClass:[NSString class]]) {
+        self.textF.text = model.text;
+    } else if ([model.text isKindOfClass:[NSAttributedString class]]) {
+        self.textF.attributedText = model.text;
+    } else {
+        self.textF.text = @"";
+    }
     
     if (model.hasRight && model.rightC) {
         UIView *view = [[UIView alloc] init];
@@ -121,7 +138,7 @@
     } else {
         self.textF.rightView = nil;
     }
-    !model.configurationBlock ? : model.configurationBlock(self.textF);
+    
     if (model.eyeEnable) {
         self.eyeBtn.hidden = NO;
         self.textF.secureTextEntry = model.isSecret;
@@ -130,6 +147,7 @@
         self.textF.secureTextEntry = NO;
     }
  
+    !model.configurationBlock ? : model.configurationBlock(self.textF);
 }
 
 - (void)textFieldRightViewTap{

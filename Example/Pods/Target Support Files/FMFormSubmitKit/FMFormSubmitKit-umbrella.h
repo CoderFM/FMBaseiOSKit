@@ -13,6 +13,7 @@
 #import "FMFormSubmitKit.h"
 #import "FormListCellConfigure.h"
 #import "FormListConfigure.h"
+#import "FormListHandle.h"
 #import "FormListSubmitView.h"
 #import "FormListUpImageConfigure.h"
 #import "FormListBaseModel.h"

@@ -27,12 +27,14 @@
         self.titleFont = FormCellTitleFont;
         self.textFont = FormCellTFTVFont;
         self.titleColor = FormCellTitleColor;
+        self.placeholderColor = FormCellPlaceholderColor;
+        self.textTintColor = [FormListCellConfigure defaultConfigure].textTintColor;
         self.supportEmoji = YES;
     }
     return self;
 }
 
-+ (instancetype)modelWithPlaceholder:(NSString *)placeholder keyboardType:(UIKeyboardType)type hasRight:(BOOL)hasRight righrContent:(id _Nullable)rightContent title:(NSString *)title{
++ (instancetype)modelWithPlaceholder:(id)placeholder keyboardType:(UIKeyboardType)type hasRight:(BOOL)hasRight righrContent:(id _Nullable)rightContent title:(id)title{
     FormListTextModel *model = [[self alloc] init];
     model.title = title;
     model.placehoder = placeholder;
@@ -42,7 +44,7 @@
     return model;
 }
 
-+ (instancetype)modelWithTVPlaceholder:(NSString *)placeholder title:(NSString *)title{
++ (instancetype)modelWithTVPlaceholder:(id)placeholder title:(id)title{
     FormListTextModel *model = [[self alloc] init];
     model.title = title;
     model.placehoder = placeholder;
@@ -51,7 +53,7 @@
     return model;
 }
 
-+ (instancetype)modelShowWithTitle:(NSString *)title text:(NSString *)text aligment:(NSTextAlignment)aligment textFLeftMargin:(CGFloat)textFLeftMargin{
++ (instancetype)modelShowWithTitle:(id)title text:(id)text aligment:(NSTextAlignment)aligment textFLeftMargin:(CGFloat)textFLeftMargin{
     FormListTextModel *model = [[self alloc] init];
     model.title = title;
     model.text = text;
@@ -60,7 +62,7 @@
     return model;
 }
 
-- (void)setText:(NSString *)text{
+- (void)setText:(id)text{
     _text = text;
     [[NSNotificationCenter defaultCenter] postNotificationName:FormSubmitModelValueChangeNotiKey object:self];
 }
@@ -81,7 +83,12 @@
 }
 
 - (void)reloadTVHeight{
-    CGFloat textH = [self.text boundingRectWithSize:CGSizeMake(Form_SCREEN_WIDTH - self.textFLeftMargin - FormCellLRMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:FormCellTFTVFont} context:nil].size.height;
+    CGFloat textH = 0;
+    if ([self.text isKindOfClass:[NSString class]]) {
+        textH = [self.text boundingRectWithSize:CGSizeMake(Form_SCREEN_WIDTH - self.textFLeftMargin - FormCellLRMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:FormCellTFTVFont} context:nil].size.height;
+    } else if ([self.text isKindOfClass:[NSAttributedString class]]) {
+        textH = [self.text boundingRectWithSize:CGSizeMake(Form_SCREEN_WIDTH - self.textFLeftMargin - FormCellLRMargin, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
+    }
     CGFloat lineH = FormCellTFTVFont.lineHeight;
     CGFloat margin = FormTextCellDefaultHeight - lineH;
     if (textH + margin < FormTextCellDefaultHeight) {
@@ -99,7 +106,7 @@
         if (self.verifyPredicate && self.verifyPredicate.length > 0) {
             success = [self.text verifyPredicate:self.verifyPredicate];
         } else {
-            success = self.text.length > 0;
+            success = ((NSString *)self.text).length > 0;
         }
     }
     if (!success && alert) {
@@ -113,7 +120,12 @@
         return self.submitValueBlock(self);
     }
     if (self.submitKey && self.text) {
-        return @{self.submitKey:self.text};
+        if ([self.text isKindOfClass:[NSString class]]) {
+            return @{self.submitKey:self.text};
+        }
+        if ([self.text isKindOfClass:[NSAttributedString class]]) {
+            return @{self.submitKey:[self.text string]};
+        }
     }
     return nil;
 }

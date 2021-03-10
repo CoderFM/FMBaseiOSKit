@@ -1,7 +1,8 @@
 source 'https://gitee.com/Coder_FM/FMPodSpec.git'
+source 'https://git.coding.net/CocoaPods/Specs.git'
 use_frameworks!
 
-platform :ios, '8.0'
+platform :ios, '9.0'
 
 target 'FMBaseiOSKit_Example' do
   pod 'FMBaseiOSKit', :path => '../'

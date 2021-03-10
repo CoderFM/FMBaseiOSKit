@@ -20,6 +20,8 @@ typedef void(^FMDatePickerSureBlock)(NSDate *date);
 
 + (instancetype)showTitle:(NSString *)title dateMode:(UIDatePickerMode)mode date:(NSDate  * _Nullable )date maxDate:(NSDate * _Nullable)maxDate minDate:(NSDate * _Nullable)minDate complete:(FMDatePickerSureBlock)sureBlock;
 
+- (void)showTitle:(NSString *)title dateMode:(UIDatePickerMode)mode date:(NSDate  * _Nullable )date maxDate:(NSDate * _Nullable)maxDate minDate:(NSDate * _Nullable)minDate complete:(FMDatePickerSureBlock)sureBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

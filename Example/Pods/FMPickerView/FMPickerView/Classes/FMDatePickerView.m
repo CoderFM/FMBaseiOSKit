@@ -12,13 +12,17 @@
 
 + (instancetype)showTitle:(NSString *)title dateMode:(UIDatePickerMode)mode date:(NSDate *)date maxDate:(NSDate *)maxDate minDate:(NSDate *)minDate complete:(FMDatePickerSureBlock)sureBlock{
     FMDatePickerView *show = [self show];
-    show.titleLabel.text = title;
-    show.datePicker.datePickerMode = mode;
-    show.datePicker.maximumDate = maxDate;
-    show.datePicker.minimumDate = minDate;
-    show.datePicker.date = date;
-    show.sureBlock = sureBlock;
+    [show showTitle:title dateMode:mode date:date maxDate:maxDate minDate:minDate complete:sureBlock];
     return show;
+}
+
+- (void)showTitle:(NSString *)title dateMode:(UIDatePickerMode)mode date:(NSDate  * _Nullable )date maxDate:(NSDate * _Nullable)maxDate minDate:(NSDate * _Nullable)minDate complete:(FMDatePickerSureBlock)sureBlock{
+    self.titleLabel.text = title;
+    self.datePicker.datePickerMode = mode;
+    self.datePicker.maximumDate = maxDate;
+    self.datePicker.minimumDate = minDate;
+    self.datePicker.date = date;
+    self.sureBlock = sureBlock;
 }
 
 - (void)initUI{

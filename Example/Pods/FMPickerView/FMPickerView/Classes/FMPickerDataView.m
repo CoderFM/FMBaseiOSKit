@@ -31,31 +31,67 @@
     return [self showLinkageTitle:title components:components items:items componentItems:componentItems showText:showText complete:sureBlock];
 }
 
+- (void)showLinkageTitle:(NSString *)title components:(NSInteger)components plist:(NSString *)plistPath componentItems:(FMPickerComponentItems)componentItems showText:(FMPickerLabelShowText)showText complete:(FMPickerSureSelectBlock)sureBlock{
+    NSArray *items = [NSArray arrayWithContentsOfFile:plistPath];
+    [self showLinkageTitle:title components:components items:items componentItems:componentItems showText:showText complete:sureBlock];
+}
+
+
 + (instancetype)showLinkageTitle:(NSString *)title components:(NSInteger)components items:(NSArray *)items componentItems:(FMPickerComponentItems)componentItems showText:(FMPickerLabelShowText)showText complete:(FMPickerSureSelectBlock)sureBlock{
     return [self _showLinkageType:FMPickerLinkageTypeNormal title:title components:components items:items componentItems:componentItems showText:showText complete:sureBlock];
 }
+
+- (void)showLinkageTitle:(NSString *)title components:(NSInteger)components items:(NSArray *)items componentItems:(FMPickerComponentItems)componentItems showText:(FMPickerLabelShowText)showText complete:(FMPickerSureSelectBlock)sureBlock{
+    [self _showLinkageType:FMPickerLinkageTypeNormal title:title components:components items:items componentItems:componentItems showText:showText complete:sureBlock];
+}
+
 #pragma mark ---- 不联动显示 ----
 + (instancetype)showTitle:(NSString *)title plist:(NSString *)plistPath showText:(FMPickerLabelShowText)showText complete:(FMPickerSureSelectBlock)sureBlock{
     NSArray *items = [NSArray arrayWithContentsOfFile:plistPath];
     return [self showTitle:title items:items showText:showText complete:sureBlock];
 }
 
+- (void)showTitle:(NSString *)title plist:(NSString *)plistPath showText:(FMPickerLabelShowText)showText complete:(FMPickerSureSelectBlock)sureBlock{
+    NSArray *items = [NSArray arrayWithContentsOfFile:plistPath];
+    [self showTitle:title items:items showText:showText complete:sureBlock];
+}
+
 + (instancetype)showTitle:(NSString *)title items:(NSArray *)items showText:(FMPickerLabelShowText)showText complete:(FMPickerSureSelectBlock)sureBlock{
     return [self _showLinkageType:FMPickerLinkageTypeForbid title:title components:items.count items:items componentItems:nil showText:showText complete:sureBlock];
+}
+
+- (void)showTitle:(NSString *)title items:(NSArray *)items showText:(FMPickerLabelShowText)showText complete:(FMPickerSureSelectBlock)sureBlock{
+    [self _showLinkageType:FMPickerLinkageTypeForbid title:title components:items.count items:items componentItems:nil showText:showText complete:sureBlock];
 }
 
 #pragma mark ---- 显示 ----
 + (instancetype)_showLinkageType:(FMPickerLinkageType)type title:(NSString *)title components:(NSInteger)components items:(NSArray *)items componentItems:(FMPickerComponentItems)componentItems showText:(FMPickerLabelShowText)showText complete:(FMPickerSureSelectBlock)sureBlock{
     FMPickerDataView *picker = [FMPickerDataView show];
-    picker.titleLabel.text = title;
-    picker.components = components;
-    picker.componentItems = componentItems;
-    picker.labelShowText = showText;
-    picker.sureBlock = sureBlock;
-    picker.linkageType = type;
-    picker.items = items;
+    [picker _showLinkageType:type title:title components:components items:items componentItems:componentItems showText:showText complete:sureBlock];
     return picker;
 }
+
+- (void)_showLinkageType:(FMPickerLinkageType)type title:(NSString *)title components:(NSInteger)components items:(NSArray *)items componentItems:(FMPickerComponentItems)componentItems showText:(FMPickerLabelShowText)showText complete:(FMPickerSureSelectBlock)sureBlock{
+    self.titleLabel.text = title;
+    self.components = components;
+    self.componentItems = componentItems;
+    self.labelShowText = showText;
+    self.sureBlock = sureBlock;
+    self.linkageType = type;
+    self.items = items;
+}
+
+- (void)showSelectRows:(NSDictionary<NSNumber *,NSNumber *> *)selectRows{
+    [self resetSelectRows];
+    for (int i = 0; i < self.components; i++) {
+        NSNumber *row = selectRows[@(i)];
+        if (row) {
+            self.selectRows[@(i)] = row;
+        }
+    }
+    [self showCurrentComponentRow];
+}
+
 
 - (void)initUI{
     [super initUI];
