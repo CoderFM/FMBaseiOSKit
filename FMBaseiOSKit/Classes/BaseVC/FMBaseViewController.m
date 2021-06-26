@@ -6,6 +6,9 @@
 
 @interface FMBaseViewController ()
 @property(nonatomic, assign)NSInteger loadEndCount;
+
+@property(nonatomic, assign)CGRect originNavigationBarFrame;
+
 @end
 
 @implementation FMBaseViewController
@@ -16,7 +19,7 @@
 
 - (UIView *)navContainer{
     if (_navContainer == nil) {
-        UIView *view = [[UIView alloc] init];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.originNavigationBarFrame.size.width, self.originNavigationBarFrame.size.height + self.originNavigationBarFrame.origin.y)];
         view.backgroundColor = [UIColor whiteColor];
         UIImageView *imageV = [[UIImageView alloc] init];
         [view addSubview:imageV];
@@ -32,7 +35,7 @@
 
 - (UIView *)navBarContainer{
     if (_navBarContainer == nil) {
-        UIView *view = [[UIView alloc] init];
+        UIView *view = [[UIView alloc] initWithFrame:self.originNavigationBarFrame];
         view.backgroundColor = [UIColor clearColor];
         [self.navContainer addSubview:view];
         _navBarContainer = view;
@@ -42,7 +45,7 @@
 
 - (UINavigationBar *)navBar{
     if (_navBar == nil) {
-        UINavigationBar *navBar = [[UINavigationBar alloc] init];
+        UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:self.navBarContainer.bounds];
         [navBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
         [navBar setShadowImage:[UIImage new]];
         [self.navBarContainer addSubview:navBar];
@@ -112,7 +115,7 @@
     if (self.viewLoaded) {
         self.navContainer.hidden = notHasNavView;
         [self.mainContainer mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(notHasNavView?0:[FMConfig config].navStatusHeight);
+            make.top.mas_equalTo(notHasNavView?0:self.navContainer.bounds.size.height);
         }];
     }
 }
@@ -152,29 +155,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.originNavigationBarFrame = self.navigationController.navigationBar.frame;
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.navigationBar.hidden = YES;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self.mainContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
-        make.top.mas_equalTo(self.notHasNavView?0:[FMConfig config].navStatusHeight);
-        make.bottom.mas_equalTo(self.hasToolView?[FMConfig config].tabBarHeight:0);
+        make.top.mas_equalTo(self.navContainer.mas_bottom);
+        make.bottom.mas_equalTo(self.toolContainer.mas_top);
     }];
     [self.loadContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.bottom.mas_equalTo(self.mainContainer);
     }];
     
-    self.navContainer.hidden = self.notHasNavView;
-    [self.navContainer mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.mas_equalTo(0);
-        make.height.mas_equalTo([FMConfig config].navStatusHeight);
-    }];
-    [self.navBarContainer mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.mas_equalTo(0);
-        make.height.mas_equalTo([FMConfig config].navHeight);
-    }];
-    
+    [self navBar];
+
     self.toolContainer.hidden = !self.hasToolView;
     [self.toolContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.mas_equalTo(0);

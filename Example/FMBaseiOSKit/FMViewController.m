@@ -13,16 +13,21 @@
 #import "FMLayoutViewController.h"
 #import "FMFormViewController.h"
 #import "FMLayoutListViewController.h"
+#import "FMFloadPageTestViewController.h"
+
+#import "FMPresentAnimationDelegate.h"
 
 #import <Masonry/Masonry.h>
 
 #import <WebKit/WebKit.h>
 
-@interface FMViewController ()
+@interface FMViewController ()<UIViewControllerTransitioningDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet FMLabel *label;
 
 @property(nonatomic, copy)void(^circleBlock)(void);
+
+@property(nonatomic, strong)FMDataPublisher *dataPublisher;
 
 @end
 
@@ -112,6 +117,11 @@
     
     NSLog(@"长度:%ld", @"😁".length);
     
+    self.dataPublisher = [[FMDataPublisher<NSString *> alloc] init];
+    [self.dataPublisher observe:^(NSString *data) {
+        
+    }];
+    [self.dataPublisher publish:@"111111"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -121,17 +131,24 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-//    FMTestViewController *vc = [[FMTestViewController alloc] init];
+    FMBaseViewController *vc = [[FMBaseViewController alloc] init];
+    vc.baseNavItem.title = @"测试view";
+//    vc.isBack = YES;
 //    vc.modalPresentationStyle = 0;
 ////    [vc setDidAppearBlock:^{
 ////
 ////    }];
-//    [self presentViewController:vc animated:YES completion:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 - (IBAction)sheetClick:(UIButton *)sender {
 //    [FMBaseSheetView showToView:self.view.window];
 //    [FMBaseSheetTableView showToView:self.view.window];
-    [FMBaseSheetLayoutView showToView:self.view.window];
+//    [FMBaseSheetLayoutView showToView:self.view.window];
+    
+//    FMFloadPageTestViewController *floatPage = [[FMFloadPageTestViewController alloc] init];
+//    floatPage.transitioningDelegate = self;
+//    [self presentViewController:floatPage animated:YES completion:nil];
 }
 - (IBAction)alertClick:(id)sender {
 //    [FMBaseAlertView showToView:self.view.window];
@@ -171,5 +188,14 @@
 + (NSSet<NSString *> *)keyPathsForValuesAffectingValueForKey:(NSString *)key{
     return [super keyPathsForValuesAffectingValueForKey:key];
 }
+
+
+//- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
+//
+//}
+//
+//- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
+//
+//}
 
 @end

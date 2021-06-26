@@ -51,5 +51,6 @@
 
 #import "FMSocialTextTool.h"
 #import "FMSocialTextItem.h"
+#import "FMDataPublisher.h"
 
 #endif /* FMBaseKit_h */

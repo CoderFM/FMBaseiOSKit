@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FMTestViewController : FMBaseViewController
+@interface FMTestViewController : UIViewController
 @property(nonatomic, assign)BOOL isBack;
 @end
 

@@ -29,7 +29,6 @@ NSInteger FMGetRandomIntegerFromRange(NSRange range) {
     if (self = [super init]) {
         self.screenWidth = [UIScreen mainScreen].bounds.size.width;
         self.screenHeight = [UIScreen mainScreen].bounds.size.height;
-        self.navHeight = 44;
     }
     return self;
 }

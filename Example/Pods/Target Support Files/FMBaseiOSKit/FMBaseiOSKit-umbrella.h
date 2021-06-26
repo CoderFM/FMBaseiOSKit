@@ -51,6 +51,7 @@
 #import "FMMemoryTool.h"
 #import "FMSocialTextItem.h"
 #import "FMSocialTextTool.h"
+#import "FMDataPublisher.h"
 
 FOUNDATION_EXPORT double FMBaseiOSKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char FMBaseiOSKitVersionString[];
