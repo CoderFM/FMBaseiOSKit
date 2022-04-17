@@ -29,6 +29,7 @@ static char nonDataViewClassKey;
                 }
             }
             self.nonDataView.hidden = !showEmpty;
+            [self sendSubviewToBack:self.nonDataView];
         }
     }
 }

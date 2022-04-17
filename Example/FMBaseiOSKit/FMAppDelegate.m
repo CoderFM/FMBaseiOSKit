@@ -7,12 +7,17 @@
 //
 
 #import "FMAppDelegate.h"
+#import <FMBaseiOSKit/FMBaseiOSKit.h>
 
 @implementation FMAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [FMConfig config].configurationBaseVC = ^(FMBaseViewController * _Nonnull base) {
+//        if (base.navigationController.viewControllers.count > 1) {
+//            base.baseNavItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:base action:@selector(baseBackClick)];
+//        }
+    };
     return YES;
 }
 

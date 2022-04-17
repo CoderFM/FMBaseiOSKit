@@ -9,8 +9,11 @@
 #import "FMFormViewController.h"
 #import <FormListUpImageConfigure.h>
 #import <FMPickerView.h>
+#import "FMProtocolInterceptor.h"
 
-@interface FMFormViewController ()
+@interface FMFormViewController ()<UITableViewDelegate>
+
+@property(nonatomic, strong)FMProtocolInterceptor *interceptor;
 
 @end
 
@@ -18,10 +21,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.interceptor = [FMProtocolInterceptor initWithTarget:self realTarget:self.tableView.delegate];
+    self.tableView.delegate = self.interceptor;
+    
+    [self addData1];
 }
 
-- (void)addData{
+- (void)addData1{
     {
         FormListBaseModel *model = [FormListBaseModel modelWithCellHeight:5 bottomLineHeight:5 bottomLineLRMargin:0];
         [self.dataSource addObject:model];
@@ -171,6 +178,10 @@
     
     [self.tableView reloadData];
     
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 100;
 }
 
 @end

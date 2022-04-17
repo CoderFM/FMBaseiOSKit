@@ -7,14 +7,16 @@
 @interface FMBaseViewController ()
 @property(nonatomic, assign)NSInteger loadEndCount;
 
-@property(nonatomic, assign)CGRect originNavigationBarFrame;
-
 @end
 
 @implementation FMBaseViewController
 
 - (void)dealloc{
     NSLog(@"%@ dealloc", NSStringFromClass([self class]));
+}
+
+- (BOOL)showCustomNavigationBar{
+    return YES;
 }
 
 - (UIView *)navContainer{
@@ -148,14 +150,23 @@
     self = [super init];
     if (self) {
         self.loadContainerClass = [FMBaseVCLoadingView class];
+        self.isFullScreen = YES;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.originNavigationBarFrame = self.navigationController.navigationBar.frame;
+    if (self.isFullScreen) {
+        CGRect navigationBarFrame = self.navigationController.navigationBar.frame;
+        if (navigationBarFrame.origin.y > 0) {
+            self.originNavigationBarFrame = navigationBarFrame;
+        } else {
+            self.originNavigationBarFrame = CGRectMake(navigationBarFrame.origin.x, [UIApplication sharedApplication].statusBarFrame.size.height, navigationBarFrame.size.width, navigationBarFrame.size.height);
+        }
+    } else {
+        self.originNavigationBarFrame = self.navigationController.navigationBar.frame;
+    }
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.navigationBar.hidden = YES;

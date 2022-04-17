@@ -33,7 +33,6 @@
 		C3B06E082621C06200711255 /* FMPresentStyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B06E072621C06200711255 /* FMPresentStyleViewController.m */; };
 		C3B06E0D2621D42F00711255 /* FMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B06E0C2621D42F00711255 /* FMNavigationController.m */; };
 		C3B5F5B9265A48D5003F7345 /* FMFloadPageTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B5F5B8265A48D5003F7345 /* FMFloadPageTestViewController.m */; };
-		C3B5F5BE265A4991003F7345 /* FMPresentAnimationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B5F5BD265A4991003F7345 /* FMPresentAnimationDelegate.m */; };
 		C3BC027B24F8922D0007FA0C /* FMSocialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3BC027A24F8922D0007FA0C /* FMSocialViewController.m */; };
 		C3D42D1524C1794F00AA8900 /* FMTimeLineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D42D1424C1794F00AA8900 /* FMTimeLineViewController.m */; };
 		C3D42D2424C19BB000AA8900 /* FMLoadTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D42D2324C19BB000AA8900 /* FMLoadTestViewController.m */; };
@@ -106,8 +105,6 @@
 		C3B06E0C2621D42F00711255 /* FMNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMNavigationController.m; sourceTree = "<group>"; };
 		C3B5F5B7265A48D5003F7345 /* FMFloadPageTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMFloadPageTestViewController.h; sourceTree = "<group>"; };
 		C3B5F5B8265A48D5003F7345 /* FMFloadPageTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMFloadPageTestViewController.m; sourceTree = "<group>"; };
-		C3B5F5BC265A4991003F7345 /* FMPresentAnimationDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMPresentAnimationDelegate.h; sourceTree = "<group>"; };
-		C3B5F5BD265A4991003F7345 /* FMPresentAnimationDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMPresentAnimationDelegate.m; sourceTree = "<group>"; };
 		C3BC027924F8922D0007FA0C /* FMSocialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMSocialViewController.h; sourceTree = "<group>"; };
 		C3BC027A24F8922D0007FA0C /* FMSocialViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMSocialViewController.m; sourceTree = "<group>"; };
 		C3D42D1324C1794F00AA8900 /* FMTimeLineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMTimeLineViewController.h; sourceTree = "<group>"; };
@@ -249,8 +246,6 @@
 				6003F5A6195388D20070C39A /* FMViewController.m */,
 				C3B5F5B7265A48D5003F7345 /* FMFloadPageTestViewController.h */,
 				C3B5F5B8265A48D5003F7345 /* FMFloadPageTestViewController.m */,
-				C3B5F5BC265A4991003F7345 /* FMPresentAnimationDelegate.h */,
-				C3B5F5BD265A4991003F7345 /* FMPresentAnimationDelegate.m */,
 				C304615524CA716C00C020F3 /* NSObject+FMExtension.h */,
 				C304615624CA716C00C020F3 /* NSObject+FMExtension.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
@@ -494,7 +489,6 @@
 				C339075124B579690041704D /* FMTestViewController.m in Sources */,
 				C3B06E0D2621D42F00711255 /* FMNavigationController.m in Sources */,
 				6003F5A7195388D20070C39A /* FMViewController.m in Sources */,
-				C3B5F5BE265A4991003F7345 /* FMPresentAnimationDelegate.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				C339075024B579690041704D /* FMFormViewController.m in Sources */,
 				C3D42D2424C19BB000AA8900 /* FMLoadTestViewController.m in Sources */,

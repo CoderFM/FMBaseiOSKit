@@ -272,11 +272,11 @@ CGRect ConvertFrameProgress(CGRect original, CGRect finalFrame, CGFloat progress
     if (self.canSelectBtn) {
         if (self.canSelectBtn(sender)) {
             self.selectBtn = sender;
-            _selected = sender.tag;
+            self.selected = sender.tag;
         }
     } else {
         self.selectBtn = sender;
-        _selected = sender.tag;
+        self.selected = sender.tag;
     }
     if (self.lineAnimation != FMNavBtnsLineAnimationProgress) {
         [self updateLine];
@@ -350,7 +350,9 @@ CGRect ConvertFrameProgress(CGRect original, CGRect finalFrame, CGFloat progress
     switch (self.lineAnimation) {
         case FMNavBtnsLineAnimationProgress:
             if (!CGRectEqualToRect(finalFrame, self.lineView.frame)) {
-                self.lineView.frame = finalFrame;
+                [UIView animateWithDuration:self.duration animations:^{
+                    self.lineView.frame = finalFrame;
+                }];
             }
             break;
         case FMNavBtnsLineAnimationNone:

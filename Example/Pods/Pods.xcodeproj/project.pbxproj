@@ -172,8 +172,20 @@
 		BF310EB45D074A46A09746F77FF05775 /* FMBaseTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9A14423CDF85D45A2A521BAAE6D2B6 /* FMBaseTableController.m */; };
 		C0CD5D7C286E23D1E60624A73F20FF7B /* MASUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 0039C34DF55B3A6DBD623029AC000EE0 /* MASUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C2DB073404DEC30058C8C99B1084FA51 /* FMNoneDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CC90A5DC32E362C9220251259D0293 /* FMNoneDataView.m */; };
+		C324EDC5280BB26500BCE05E /* FMPresentAnimationDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = C324EDBB280BB26400BCE05E /* FMPresentAnimationDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C324EDC6280BB26500BCE05E /* FMPresentAnimationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C324EDBC280BB26400BCE05E /* FMPresentAnimationDelegate.m */; };
+		C324EDC7280BB26500BCE05E /* FMTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = C324EDBD280BB26400BCE05E /* FMTransitionAnimator.m */; };
+		C324EDC8280BB26500BCE05E /* FMTransitionAnimatorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = C324EDBE280BB26400BCE05E /* FMTransitionAnimatorFactory.m */; };
+		C324EDC9280BB26500BCE05E /* FMProtocolInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = C324EDBF280BB26400BCE05E /* FMProtocolInterceptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C324EDCA280BB26500BCE05E /* FMTransitionAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = C324EDC0280BB26400BCE05E /* FMTransitionAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C324EDCB280BB26500BCE05E /* FMProtocolInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C324EDC1280BB26400BCE05E /* FMProtocolInterceptor.m */; };
+		C324EDCC280BB26500BCE05E /* FMTransitionAnimatorFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = C324EDC2280BB26400BCE05E /* FMTransitionAnimatorFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C324EDCD280BB26500BCE05E /* FMFloatContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C324EDC3280BB26400BCE05E /* FMFloatContainerController.m */; };
+		C324EDCE280BB26500BCE05E /* FMFloatContainerController.h in Headers */ = {isa = PBXBuildFile; fileRef = C324EDC4280BB26500BCE05E /* FMFloatContainerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C355EEDA263AF82800086D6E /* FMDataPublisher.h in Headers */ = {isa = PBXBuildFile; fileRef = C355EED8263AF82800086D6E /* FMDataPublisher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C355EEDB263AF82800086D6E /* FMDataPublisher.m in Sources */ = {isa = PBXBuildFile; fileRef = C355EED9263AF82800086D6E /* FMDataPublisher.m */; };
+		C398D21E269AF76B004564E7 /* FMDesignKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C398D21C269AF76B004564E7 /* FMDesignKit.h */; };
+		C398D21F269AF76B004564E7 /* FMDesignKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C398D21D269AF76B004564E7 /* FMDesignKit.m */; };
 		C3B384C8D1FF15464699488608CF0EE1 /* UIView+FMExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3CB8CAFA1A8F14F1766385C7482B95 /* UIView+FMExtension.m */; };
 		C3B5F5AE265A48AA003F7345 /* FMFloatPageController.h in Headers */ = {isa = PBXBuildFile; fileRef = C3B5F5AC265A48AA003F7345 /* FMFloatPageController.h */; };
 		C3B5F5AF265A48AA003F7345 /* FMFloatPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B5F5AD265A48AA003F7345 /* FMFloatPageController.m */; };
@@ -538,8 +550,20 @@
 		C2506DDFC16F395F32ECA96EC2FB6C57 /* FMBaseListController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FMBaseListController.m; sourceTree = "<group>"; };
 		C280C72DB1153B57CF2346EAFF359748 /* FMLayoutHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FMLayoutHeader.m; path = FMLayoutKit/Classes/Element/FMLayoutHeader.m; sourceTree = "<group>"; };
 		C2E637CD84E51E3CC90578BC9A55B532 /* Masonry-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Masonry-Info.plist"; sourceTree = "<group>"; };
+		C324EDBB280BB26400BCE05E /* FMPresentAnimationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMPresentAnimationDelegate.h; sourceTree = "<group>"; };
+		C324EDBC280BB26400BCE05E /* FMPresentAnimationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMPresentAnimationDelegate.m; sourceTree = "<group>"; };
+		C324EDBD280BB26400BCE05E /* FMTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMTransitionAnimator.m; sourceTree = "<group>"; };
+		C324EDBE280BB26400BCE05E /* FMTransitionAnimatorFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMTransitionAnimatorFactory.m; sourceTree = "<group>"; };
+		C324EDBF280BB26400BCE05E /* FMProtocolInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMProtocolInterceptor.h; sourceTree = "<group>"; };
+		C324EDC0280BB26400BCE05E /* FMTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMTransitionAnimator.h; sourceTree = "<group>"; };
+		C324EDC1280BB26400BCE05E /* FMProtocolInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMProtocolInterceptor.m; sourceTree = "<group>"; };
+		C324EDC2280BB26400BCE05E /* FMTransitionAnimatorFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMTransitionAnimatorFactory.h; sourceTree = "<group>"; };
+		C324EDC3280BB26400BCE05E /* FMFloatContainerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMFloatContainerController.m; sourceTree = "<group>"; };
+		C324EDC4280BB26500BCE05E /* FMFloatContainerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMFloatContainerController.h; sourceTree = "<group>"; };
 		C355EED8263AF82800086D6E /* FMDataPublisher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMDataPublisher.h; sourceTree = "<group>"; };
 		C355EED9263AF82800086D6E /* FMDataPublisher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDataPublisher.m; sourceTree = "<group>"; };
+		C398D21C269AF76B004564E7 /* FMDesignKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMDesignKit.h; sourceTree = "<group>"; };
+		C398D21D269AF76B004564E7 /* FMDesignKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMDesignKit.m; sourceTree = "<group>"; };
 		C3B5F5AC265A48AA003F7345 /* FMFloatPageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMFloatPageController.h; sourceTree = "<group>"; };
 		C3B5F5AD265A48AA003F7345 /* FMFloatPageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMFloatPageController.m; sourceTree = "<group>"; };
 		C49F95ADA355F1DE4380B848DF13D955 /* Masonry-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-umbrella.h"; sourceTree = "<group>"; };
@@ -788,6 +812,16 @@
 		22137365D6682C3FA4440886A23BC3F6 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				C324EDC4280BB26500BCE05E /* FMFloatContainerController.h */,
+				C324EDC3280BB26400BCE05E /* FMFloatContainerController.m */,
+				C324EDBB280BB26400BCE05E /* FMPresentAnimationDelegate.h */,
+				C324EDBC280BB26400BCE05E /* FMPresentAnimationDelegate.m */,
+				C324EDBF280BB26400BCE05E /* FMProtocolInterceptor.h */,
+				C324EDC1280BB26400BCE05E /* FMProtocolInterceptor.m */,
+				C324EDC0280BB26400BCE05E /* FMTransitionAnimator.h */,
+				C324EDBD280BB26400BCE05E /* FMTransitionAnimator.m */,
+				C324EDC2280BB26400BCE05E /* FMTransitionAnimatorFactory.h */,
+				C324EDBE280BB26400BCE05E /* FMTransitionAnimatorFactory.m */,
 				896E956D0BBA06355F909D386EB03CFD /* FMMemoryTool.h */,
 				788560D9302EE84B637FEF5848102F18 /* FMMemoryTool.m */,
 				8115820D8416BB753E96E17090E1C139 /* FMSocialTextItem.h */,
@@ -796,6 +830,8 @@
 				E08C9773B7B2E346BA6426DCCDEBE6F8 /* FMSocialTextTool.m */,
 				C355EED8263AF82800086D6E /* FMDataPublisher.h */,
 				C355EED9263AF82800086D6E /* FMDataPublisher.m */,
+				C398D21C269AF76B004564E7 /* FMDesignKit.h */,
+				C398D21D269AF76B004564E7 /* FMDesignKit.m */,
 			);
 			name = Tool;
 			path = FMBaseiOSKit/Classes/Tool;
@@ -1214,6 +1250,7 @@
 				FB79059FFBFC5C48E7005B0A17870028 /* FMBaseiOSKit.h in Headers */,
 				410AFFE8302DB3FEA3147FC837594726 /* FMBaseListController.h in Headers */,
 				AD00605138C4E08A9AF9894AE21E1189 /* FMBasePopupView.h in Headers */,
+				C398D21E269AF76B004564E7 /* FMDesignKit.h in Headers */,
 				E4AB718B7DDD27B5EB091187F6E97A63 /* FMBaseSheetLayoutView.h in Headers */,
 				1066F02C1DDD1293A13F956368DC1F5C /* FMBaseSheetTableView.h in Headers */,
 				2CE44E8F1E061F3E82D7B26CCED156EE /* FMBaseSheetView.h in Headers */,
@@ -1246,6 +1283,11 @@
 				6B324ADA8E905678CB76AEDF622B1AE6 /* UIColor+FMExtension.h in Headers */,
 				B23DAB8F12F4D3A0F7D1B3BCCAE8A9E5 /* UIControl+FMExtension.h in Headers */,
 				87C4E64F5675315EC588C5D06DB178B3 /* UIImage+FMExtension.h in Headers */,
+				C324EDCC280BB26500BCE05E /* FMTransitionAnimatorFactory.h in Headers */,
+				C324EDCA280BB26500BCE05E /* FMTransitionAnimator.h in Headers */,
+				C324EDC5280BB26500BCE05E /* FMPresentAnimationDelegate.h in Headers */,
+				C324EDC9280BB26500BCE05E /* FMProtocolInterceptor.h in Headers */,
+				C324EDCE280BB26500BCE05E /* FMFloatContainerController.h in Headers */,
 				FC70DC08E6B428CAA4C1E1F15F9116A2 /* UIImageView+FMExtension.h in Headers */,
 				FEC480D41F2B33F9AA48FF4597C5B059 /* UILabel+FMExtension.h in Headers */,
 				C3B5F5AE265A48AA003F7345 /* FMFloatPageController.h in Headers */,
@@ -1562,6 +1604,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C324EDC8280BB26500BCE05E /* FMTransitionAnimatorFactory.m in Sources */,
 				C3B5F5AF265A48AA003F7345 /* FMFloatPageController.m in Sources */,
 				E108371C6A6798A7BBF72842F5AFE428 /* FMBaseAlertView.m in Sources */,
 				E264899789D7494D86519E52B1A04C8B /* FMBaseiOSKit-dummy.m in Sources */,
@@ -1572,6 +1615,8 @@
 				2F326DA5D123B3C29530F7954C76843A /* FMBaseSheetView.m in Sources */,
 				BF310EB45D074A46A09746F77FF05775 /* FMBaseTableController.m in Sources */,
 				D7004B083931E9821C81C85A3CA21F74 /* FMBaseTableView.m in Sources */,
+				C324EDC7280BB26500BCE05E /* FMTransitionAnimator.m in Sources */,
+				C324EDCD280BB26500BCE05E /* FMFloatContainerController.m in Sources */,
 				CDFDD773CFB6EF32B0217B695D088089 /* FMBaseVCLoadingView.m in Sources */,
 				A8B75C2C83D1FA876B2AB0888F293023 /* FMBaseViewController.m in Sources */,
 				17A41780A6A36E038EDD69C51C27F7D4 /* FMCollectionLayoutController.m in Sources */,
@@ -1588,14 +1633,17 @@
 				6E17F248A5B484B7CC813AD68964D054 /* FMTeslaPageModel.m in Sources */,
 				5DE8FEE471894D9BCFD2E4789B4E78CF /* FMTeslaViewController.m in Sources */,
 				33F4DBCD15707F1B9F4C54EA7C4F0803 /* NSAttributedString+FMExtension.m in Sources */,
+				C324EDC6280BB26500BCE05E /* FMPresentAnimationDelegate.m in Sources */,
 				0329245337CB19583648D5D6C6A57B22 /* NSDictionary+FMExtension.m in Sources */,
 				A860DB07301971C378CC41B2254D21E1 /* NSMutableAttributedString+FMExtension.m in Sources */,
 				245B3E434EBC602F0B5EE0F85DEFFCDD /* NSMutableString+FMExtension.m in Sources */,
+				C398D21F269AF76B004564E7 /* FMDesignKit.m in Sources */,
 				6F6F04BEFFE85E5F925CFB0ED4F02793 /* NSObject+FMExtension.m in Sources */,
 				1C246E2BC8B8183AFC964D78ADCC0A94 /* NSString+FMExtension.m in Sources */,
 				3B1BE976870A546FCDD3990866CD6DFF /* UIBarButtonItem+FMExtension.m in Sources */,
 				FA203DD42EDF1E31256FAFDBFB55521F /* UIButton+FMExtension.m in Sources */,
 				7CBA2FA3C81D21C2D38F7712B85BCAC3 /* UICollectionView+FMExtension.m in Sources */,
+				C324EDCB280BB26500BCE05E /* FMProtocolInterceptor.m in Sources */,
 				6F364F25F4812B9CD223A6BA81D1E915 /* UIColor+FMExtension.m in Sources */,
 				93C1AC0C9660550A6823B2063561E283 /* UIControl+FMExtension.m in Sources */,
 				C355EEDB263AF82800086D6E /* FMDataPublisher.m in Sources */,

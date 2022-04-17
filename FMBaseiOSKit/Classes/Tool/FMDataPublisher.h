@@ -9,10 +9,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^FMDataObserveBlock)(id data);
+typedef void(^FMDataObserveDisposeBlock)(id obj);
+
 @interface FMDataPublisher<DataType> : NSObject
 
+@property(nonatomic, copy, readonly)FMDataObserveDisposeBlock lifeCircle;
+
 - (void)publish:(DataType)data;
-- (void)observe:(void(^)(DataType data))block;
+- (void)addObserve:(FMDataObserveBlock)block;
 
 @end
 

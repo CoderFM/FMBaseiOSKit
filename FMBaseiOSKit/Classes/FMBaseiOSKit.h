@@ -53,4 +53,10 @@
 #import "FMSocialTextItem.h"
 #import "FMDataPublisher.h"
 
+#import "FMFloatContainerController.h"
+#import "FMPresentAnimationDelegate.h"
+#import "FMProtocolInterceptor.h"
+#import "FMTransitionAnimator.h"
+#import "FMTransitionAnimatorFactory.h"
+
 #endif /* FMBaseKit_h */

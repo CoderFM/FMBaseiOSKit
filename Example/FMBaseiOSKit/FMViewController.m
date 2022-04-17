@@ -15,19 +15,19 @@
 #import "FMLayoutListViewController.h"
 #import "FMFloadPageTestViewController.h"
 
-#import "FMPresentAnimationDelegate.h"
-
 #import <Masonry/Masonry.h>
 
 #import <WebKit/WebKit.h>
 
-@interface FMViewController ()<UIViewControllerTransitioningDelegate>
+@interface FMViewController ()<UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet FMLabel *label;
 
 @property(nonatomic, copy)void(^circleBlock)(void);
 
 @property(nonatomic, strong)FMDataPublisher *dataPublisher;
+
+@property(nonatomic, strong)FMTransitionAnimator *transtionAnimator;
 
 @end
 
@@ -36,6 +36,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.transtionAnimator = [FMTransitionAnimatorFactory translateAnimationWithType:FMTransitionTranslateBTT];
+    
     UIButton *btn = [UIButton buttonWithTitle:@"弹窗" font:[UIFont systemFontOfSize:15] color:[UIColor purpleColor]];
     [btn addTarget:self action:@selector(navRightClick:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
@@ -118,10 +120,13 @@
     NSLog(@"长度:%ld", @"😁".length);
     
     self.dataPublisher = [[FMDataPublisher<NSString *> alloc] init];
-    [self.dataPublisher observe:^(NSString *data) {
+    [self.dataPublisher addObserve:^(NSString *data) {
         
     }];
     [self.dataPublisher publish:@"111111"];
+    
+//    self.interceptor = [FMProtocolInterceptor initWithTarget:self realTarget:self.navigationController.delegate];
+//    self.navigationController.delegate = self.interceptor;
 }
 
 - (void)didReceiveMemoryWarning
@@ -146,8 +151,17 @@
 //    [FMBaseSheetTableView showToView:self.view.window];
 //    [FMBaseSheetLayoutView showToView:self.view.window];
     
+    [FMFloatContainerController showWithInViewController:self contentViewController:[UIViewController new] contentSize:300 contentInset:UIEdgeInsetsMake(0, 10, 20, 10) completion:^{
+        
+    }];
+//    UIViewController *vc = [[UIViewController alloc] init];
+//    vc.view.backgroundColor = [UIColor redColor];
+//    vc.preferredContentSize = CGSizeMake(100, 100);
+//    vc.modalPresentationStyle = UIModalPresentationPopover;
+//    vc.popoverPresentationController.sourceView = self.view;
+//    vc.popoverPresentationController.sourceRect = CGRectMake(20, self.view.bounds.size.height - 100, 100, 40);
+//    [self presentViewController:vc animated:YES completion:nil];
 //    FMFloadPageTestViewController *floatPage = [[FMFloadPageTestViewController alloc] init];
-//    floatPage.transitioningDelegate = self;
 //    [self presentViewController:floatPage animated:YES completion:nil];
 }
 - (IBAction)alertClick:(id)sender {
@@ -181,7 +195,9 @@
 }
 
 - (void)navRightClick:(UIButton *)sender{
-    [FMBaseAlertView showToView:self.view.window from:sender contentSize:CGSizeMake(100, 100) type:FMAlertTypeBottom];
+    
+//    [FMBaseAlertView showToView:self.view.window from:sender contentSize:CGSizeMake(100, 100) type:FMAlertTypeBottom];
+    
 //    [FMBaseAlertView showToView:self.view.window fromPoint:CGPointMake([FMConfig config].screenWidth - 10, [FMConfig config].statusHeight) contentSize:CGSizeMake(100, 100) type:FMAlertTypeBottom];
 }
 
@@ -189,13 +205,28 @@
     return [super keyPathsForValuesAffectingValueForKey:key];
 }
 
+- (nullable id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                   animationControllerForOperation:(UINavigationControllerOperation)operation
+                                                fromViewController:(UIViewController *)fromVC
+                                                           toViewController:(UIViewController *)toVC  API_AVAILABLE(ios(7.0)){
+    switch (operation) {
+        case UINavigationControllerOperationPush:
+            return [self.transtionAnimator open];
+            break;
+        case UINavigationControllerOperationPop:
+            return [self.transtionAnimator close];
+            break;
+        default:
+            break;
+    }
+    return self.transtionAnimator;
+}
 
-//- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
-//
-//}
-//
-//- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
-//
-//}
+- (nullable id <UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController
+                                   interactionControllerForAnimationController:(id <UIViewControllerAnimatedTransitioning>) animationController API_AVAILABLE(ios(7.0)){
+    
+//    return [ui];
+    return nil;
+}
 
 @end

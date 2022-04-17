@@ -24,6 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, weak)UIView *toolBarContainer;
 
 @property(nonatomic, strong)UINavigationItem *baseNavItem;
+/// 系统的导航栏尺寸
+@property(nonatomic, assign)CGRect originNavigationBarFrame;
+/// 是否显示自定义的导航栏  默认为yes
+@property(nonatomic, assign, readonly)BOOL showCustomNavigationBar;
+/// 是否是全屏
+@property(nonatomic, assign)BOOL isFullScreen;
 
 @property(nonatomic, copy)void(^didAppearBlock)(void);
 @property(nonatomic, assign)BOOL didAppear;
