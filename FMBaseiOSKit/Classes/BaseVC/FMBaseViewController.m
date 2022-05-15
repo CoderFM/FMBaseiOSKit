@@ -159,10 +159,14 @@
     [super viewDidLoad];
     if (self.isFullScreen) {
         CGRect navigationBarFrame = self.navigationController.navigationBar.frame;
-        if (navigationBarFrame.origin.y > 0) {
-            self.originNavigationBarFrame = navigationBarFrame;
+        if (CGRectEqualToRect(navigationBarFrame, CGRectZero) || CGSizeEqualToSize(navigationBarFrame.size, CGSizeZero)) {
+            self.originNavigationBarFrame = CGRectZero;
         } else {
-            self.originNavigationBarFrame = CGRectMake(navigationBarFrame.origin.x, [UIApplication sharedApplication].statusBarFrame.size.height, navigationBarFrame.size.width, navigationBarFrame.size.height);
+            if (navigationBarFrame.origin.y > 0) {
+                self.originNavigationBarFrame = navigationBarFrame;
+            } else {
+                self.originNavigationBarFrame = CGRectMake(navigationBarFrame.origin.x, [UIApplication sharedApplication].statusBarFrame.size.height, navigationBarFrame.size.width, navigationBarFrame.size.height);
+            }
         }
     } else {
         self.originNavigationBarFrame = self.navigationController.navigationBar.frame;
@@ -219,6 +223,7 @@
 - (void)netLoadDataStart{
     if (self.loadEndCount < self.needLoadNetCount) {
         self.loadContainer.hidden = NO;
+        self.mainContainer.hidden = YES;
     }
 }
 - (void)netLoadDataEnd{
@@ -226,6 +231,7 @@
     if (self.loadEndCount >= self.needLoadNetCount) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.loadContainer.hidden = YES;
+            self.mainContainer.hidden = NO;
         });
     }
 }
