@@ -18,7 +18,7 @@
     config.contentSize = 100;
     config.type = FMTransitionTranslateBTT;
     config.animationDuration = 0.25;
-    config.animationOptions = UIViewAnimationCurveLinear;
+    config.animationOptions = UIViewAnimationOptionCurveLinear;
     config.animationDelay = 0;
     config.animationDamping = 1;
     config.animationVelocity = 0;
