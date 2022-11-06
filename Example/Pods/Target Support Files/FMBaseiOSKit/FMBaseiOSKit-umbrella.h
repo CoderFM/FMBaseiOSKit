@@ -14,6 +14,7 @@
 #import "FMBaseTableController.h"
 #import "FMBaseViewController.h"
 #import "FMCollectionLayoutController.h"
+#import "FMFloatPageController.h"
 #import "FMFormListSubmitVC.h"
 #import "FMPagesViewController.h"
 #import "FMTeslaPageController.h"
@@ -48,10 +49,16 @@
 #import "UIView+FMExtension.h"
 #import "FMBaseiOSKit.h"
 #import "FMConfig.h"
+#import "FMDataPublisher.h"
+#import "FMDesignKit.h"
+#import "FMFloatContainerController.h"
 #import "FMMemoryTool.h"
+#import "FMPresentAnimationDelegate.h"
+#import "FMProtocolInterceptor.h"
 #import "FMSocialTextItem.h"
 #import "FMSocialTextTool.h"
-#import "FMDataPublisher.h"
+#import "FMTransitionAnimator.h"
+#import "FMTransitionAnimatorFactory.h"
 
 FOUNDATION_EXPORT double FMBaseiOSKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char FMBaseiOSKitVersionString[];

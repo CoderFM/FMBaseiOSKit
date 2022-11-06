@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'FMBaseiOSKit'
-  s.version          = '0.4.3'
+  s.version          = '0.4.4'
   s.summary          = '一个iOS项目基础框架'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
